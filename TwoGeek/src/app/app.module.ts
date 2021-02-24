@@ -1,17 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ComentariosComponent } from './comentarios/comentarios.component';
-import { ComunidadComponent } from './comunidad/comunidad.component';
-import { HeaderComponent } from './header/header.component';
-import { LoginComponent } from './login/login.component';
-import { PaginaInicioComponent } from './pagina-inicio/pagina-inicio.component';
-import { PerfilMainComponent } from './perfil-main/perfil-main.component';
-import { PerfilUsuarioComponent } from './perfil-usuario/perfil-usuario.component';
-import { PostComponent } from './post/post.component';
-import { RegistroComponent } from './registro/registro.component';
+import { ComentariosComponent } from './Components/comentarios/comentarios.component';
+import { ComunidadComponent } from './Components/comunidad/comunidad.component';
+import { HeaderComponent } from './Components/header/header.component';
+import { LoginComponent } from './Components/login/login.component';
+import { PaginaInicioComponent } from './Components/pagina-inicio/pagina-inicio.component';
+import { PerfilMainComponent } from './Components/perfil-main/perfil-main.component';
+import { PerfilUsuarioComponent } from './Components/perfil-usuario/perfil-usuario.component';
+import { PostComponent } from './Components/post/post.component';
+import { RegistroComponent } from './Components/registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { RegistroComponent } from './registro/registro.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
