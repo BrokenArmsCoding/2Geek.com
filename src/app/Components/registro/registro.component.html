@@ -1,1 +1,93 @@
-<p>registro works!</p>
+<div class="container-fluids">
+
+  <form [formGroup]="Usuario" (ngSubmit)="Data_Check()" class="m-3 pt-3 pr-3 pl-3 pb-1 rounded">
+
+    <!-- Nombre -->
+    <div class="form-group">
+      <p>Nick</p>
+      <input type="text" placeholder="Entra tu nombre" formControlName="nombre" class="form-control"
+        [ngClass]="{'is-invalid': Data.nombre.touched && Data.nombre.errors}">
+
+      <div *ngIf="Data.nombre.touched && Data.nombre.errors" class="invalid-feedback">
+        <div *ngIf="Data.nombre.errors.required">El campo Nombre esta vacio!!</div>
+      </div>
+    </div>
+
+    <!-- Apellido -->
+    <div class="form-group">
+      <p>Apellido</p>
+      <input type="text" placeholder="Entra tu apellido" formControlName="apellido" class="form-control"
+        [ngClass]="{'is-invalid': Data.apellido.touched && Data.apellido.errors}">
+
+      <div *ngIf="Data.apellido.touched && Data.apellido.errors" class="invalid-feedback">
+        <div *ngIf="Data.apellido.errors.required">El campo Apellido esta vacio!!</div>
+      </div>
+    </div>
+
+    <!-- Fecha Nazimiento -->
+    <div class="form-group">
+      <p>Fecha de Nazimiento</p>
+      <input type="date" formControlName="fecha_nazimiento" class="form-control"
+        [ngClass]="{'is-invalid': Data.fecha_nazimiento.touched && Data.fecha_nazimiento.errors}">
+
+      <div *ngIf="Data.fecha_nazimiento.touched && Data.fecha_nazimientoo.errors" class="invalid-feedback">
+        <div *ngIf="Data.fecha_nazimiento.errors.required">El campo Apellido esta vacio!!</div>
+      </div>
+    </div>
+
+    <!-- Nick -->
+    <div class="form-group">
+      <p>Nick</p>
+      <input type="text" placeholder="Entra tu nick" formControlName="nick" class="form-control"
+        [ngClass]="{'is-invalid': Data.nick.touched && Data.nick.errors}">
+
+      <div *ngIf="Data.nick.touched && Data.nick.errors" class="invalid-feedback">
+        <div *ngIf="Data.nick.errors.required">El campo Nick esta vacio!!</div>
+        <div *ngIf="Data.nick.errors.pattern"> Solo se admiten letras , numeros y barras bajas</div>
+      </div>
+    </div>
+
+    <!-- Correo -->
+    <div class="form-group">
+      <p>Correo</p>
+      <input type="email" placeholder="Entra tu correo" formControlName="correo" class="form-control"
+        [ngClass]="{'is-invalid': Data.correo.touched && Data.correo.errors}">
+
+      <div *ngIf="Data.nick.touched && Data.nick.errors" class="invalid-feedback">
+        <div *ngIf="Data.correo.errors.required">El campo Correo esta vacio!!</div>
+        <div *ngIf="Data.correo.errors.email">Escribe el formato adecuado de correo</div>
+      </div>
+    </div>
+
+
+    <!-- Contraseña -->
+    <div class="form-group">
+      <label>Contraseña</label>
+      <input type="password" placeholder="Entra tu contraseña" formControlName="cont_a" class="form-control"
+        [ngClass]="{'is-invalid':Data.cont_a.touched && Data.cont_a.errors}">
+
+      <div *ngIf="Data.cont_a.touched && Data.cont_a.errors" class="invalid-feedback">
+        <div *ngIf="Data.cont_a.errors.required">El campo Contraseña esta vacio!!</div>
+      </div>
+    </div>
+
+    <!-- Contraseña repetida -->
+    <div class="form-group">
+      <label>Repite la Contraseña</label>
+      <input type="password" placeholder="Repite tu contraseña" formControlName="rep_cont_a" class="form-control"
+        [ngClass]="{'is-invalid': Data.rep_cont_a.touched && Data.rep_cont_a.errors}">
+
+      <div *ngIf="Data.rep_cont_a.touched && Data.rep_cont_a.errors" class="invalid-feedback">
+        <div *ngIf="Data.rep_cont_a.errors.required"> El campo Contraseña esta vacio!!</div>
+        <div *ngIf="Data.rep_cont_a.errors.Comprobacion"> La contraseña no coincide</div>
+      </div>
+    </div>
+
+    <div class="form-group mt-4">
+      <button type="submit" [disabled]="Usuario.invalid" class="btn btn-dark mr-4">Crear</button>
+      <button type="button" (click)="gotoLogin()" class="btn btn-dark">Volver</button>
+    </div>
+
+  </form>
+
+</div>
