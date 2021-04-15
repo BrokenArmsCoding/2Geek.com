@@ -12,8 +12,8 @@ import Swal from 'sweetalert2';
 
 export class RegistroComponent implements OnInit {
 
-
   Usuario: FormGroup;
+
   constructor(private formBuilder: FormBuilder,public router: Router) { }
 
   ngOnInit(): void {
