@@ -28,6 +28,7 @@
     "bootstrap": "^4.6.0",
     "express": "^4.17.1",
     "jquery": "^1.9.1",
+    "ngx-show-hide-password": "^2.3.0",
     "path": "^0.12.7",
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.7",
