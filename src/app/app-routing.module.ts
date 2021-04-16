@@ -12,6 +12,7 @@ import { RegistroComponent } from './Components/registro/registro.component';
 
 
 const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'Registro'},
   { path: 'login', component: LoginComponent},
   { path: 'comentarios', component: ComentariosComponent},
   { path: 'comunidad', component: ComunidadComponent},
