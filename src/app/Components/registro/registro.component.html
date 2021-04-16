@@ -30,8 +30,8 @@
       <input type="date" formControlName="fecha_nazimiento" class="form-control"
         [ngClass]="{'is-invalid': Data.fecha_nazimiento.touched && Data.fecha_nazimiento.errors}">
 
-      <div *ngIf="Data.fecha_nazimiento.touched && Data.fecha_nazimientoo.errors" class="invalid-feedback">
-        <div *ngIf="Data.fecha_nazimiento.errors.required">El campo Apellido esta vacio!!</div>
+      <div *ngIf="Data.fecha_nazimiento.touched && Data.fecha_nazimiento.errors" class="invalid-feedback">
+        <div *ngIf="Data.fecha_nazimiento.errors.required">El campo Fecha esta vacio!!</div>
       </div>
     </div>
 
@@ -53,7 +53,7 @@
       <input type="email" placeholder="Entra tu correo" formControlName="correo" class="form-control"
         [ngClass]="{'is-invalid': Data.correo.touched && Data.correo.errors}">
 
-      <div *ngIf="Data.nick.touched && Data.nick.errors" class="invalid-feedback">
+      <div *ngIf="Data.correo.touched && Data.correo.errors" class="invalid-feedback">
         <div *ngIf="Data.correo.errors.required">El campo Correo esta vacio!!</div>
         <div *ngIf="Data.correo.errors.email">Escribe el formato adecuado de correo</div>
       </div>
@@ -63,23 +63,23 @@
     <!-- Contraseña -->
     <div class="form-group">
       <label>Contraseña</label>
-      <input type="password" placeholder="Entra tu contraseña" formControlName="cont_a" class="form-control"
-        [ngClass]="{'is-invalid':Data.cont_a.touched && Data.cont_a.errors}">
+      <input type="password" placeholder="Entra tu contraseña" formControlName="cont" class="form-control"
+        [ngClass]="{'is-invalid':Data.cont.touched && Data.cont.errors}">
 
-      <div *ngIf="Data.cont_a.touched && Data.cont_a.errors" class="invalid-feedback">
-        <div *ngIf="Data.cont_a.errors.required">El campo Contraseña esta vacio!!</div>
+      <div *ngIf="Data.cont.touched && Data.cont.errors" class="invalid-feedback">
+        <div *ngIf="Data.cont.errors.required">El campo Contraseña esta vacio!!</div>
       </div>
     </div>
 
     <!-- Contraseña repetida -->
     <div class="form-group">
       <label>Repite la Contraseña</label>
-      <input type="password" placeholder="Repite tu contraseña" formControlName="rep_cont_a" class="form-control"
-        [ngClass]="{'is-invalid': Data.rep_cont_a.touched && Data.rep_cont_a.errors}">
+      <input type="password" placeholder="Repite tu contraseña" formControlName="rep_cont" class="form-control"
+        [ngClass]="{'is-invalid': Data.rep_cont.touched && Data.rep_cont.errors}">
 
-      <div *ngIf="Data.rep_cont_a.touched && Data.rep_cont_a.errors" class="invalid-feedback">
-        <div *ngIf="Data.rep_cont_a.errors.required"> El campo Contraseña esta vacio!!</div>
-        <div *ngIf="Data.rep_cont_a.errors.Comprobacion"> La contraseña no coincide</div>
+      <div *ngIf="Data.rep_cont.touched && Data.rep_cont.errors" class="invalid-feedback">
+        <div *ngIf="Data.rep_cont.errors.required"> El campo Contraseña esta vacio!!</div>
+        <div *ngIf="Data.rep_cont.errors.Comprobacion"> La contraseña no coincide</div>
       </div>
     </div>
 

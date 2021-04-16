@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Comprobacion } from './Contra_Repetida';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
+//import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
@@ -27,7 +27,7 @@ export class RegistroComponent implements OnInit {
       cont: ['', Validators.required],
       rep_cont: ['', Validators.required]
     }, {
-      validator: Comprobacion('cont_a', 'rep_cont_a')
+      validator: Comprobacion('cont', 'rep_cont')
     });
 
   }
