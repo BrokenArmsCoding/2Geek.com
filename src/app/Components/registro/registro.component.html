@@ -63,29 +63,53 @@
     <!-- Contraseña -->
     <div class="form-group">
       <label>Contraseña</label>
-      <input type="password" placeholder="Entra tu contraseña" formControlName="cont" class="form-control"
-        [ngClass]="{'is-invalid':Data.cont.touched && Data.cont.errors}">
 
-      <div *ngIf="Data.cont.touched && Data.cont.errors" class="invalid-feedback">
-        <div *ngIf="Data.cont.errors.required">El campo Contraseña esta vacio!!</div>
+      <div class="input-group">
+
+        <input type="password" placeholder="Entra tu contraseña" formControlName="cont" id="contra" class="form-control"
+          [ngClass]="{'is-invalid':Data.cont.touched && Data.cont.errors}" showHideInput>
+
+        <div class="input-group-append ngx-show-hide-password">
+          <button class="btn btn-outline-dark" type="button" showHideTrigger="contra">
+            <i class="fa" [showHideStatus]="{show: 'fa-eye', hide: 'fa-eye-slash', id: 'contra'}"></i>
+          </button>
+        </div>
+
+        <div *ngIf="Data.cont.touched && Data.cont.errors" class="invalid-feedback">
+          <div *ngIf="Data.cont.errors.required">El campo Contraseña esta vacio!!</div>
+        </div>
+
       </div>
+
     </div>
 
     <!-- Contraseña repetida -->
     <div class="form-group">
       <label>Repite la Contraseña</label>
-      <input type="password" placeholder="Repite tu contraseña" formControlName="rep_cont" class="form-control"
-        [ngClass]="{'is-invalid': Data.rep_cont.touched && Data.rep_cont.errors}">
 
-      <div *ngIf="Data.rep_cont.touched && Data.rep_cont.errors" class="invalid-feedback">
-        <div *ngIf="Data.rep_cont.errors.required"> El campo Contraseña esta vacio!!</div>
-        <div *ngIf="Data.rep_cont.errors.Comprobacion"> La contraseña no coincide</div>
+      <div class="input-group">
+
+        <input type="password" placeholder="Repite tu contraseña" formControlName="rep_cont" id="rep_contra"
+          class="form-control" [ngClass]="{'is-invalid': Data.rep_cont.touched && Data.rep_cont.errors}" showHideInput>
+
+        <div class="input-group-append ngx-show-hide-password">
+          <button class="btn btn-outline-dark" type="button" showHideTrigger="rep_contra">
+            <i class="fa" [showHideStatus]="{show: 'fa-eye', hide: 'fa-eye-slash', id: 'rep_contra'}"></i>
+          </button>
+        </div>
+
+        <div *ngIf="Data.rep_cont.touched && Data.rep_cont.errors" class="invalid-feedback">
+          <div *ngIf="Data.rep_cont.errors.required"> El campo Contraseña esta vacio!!</div>
+          <div *ngIf="Data.rep_cont.errors.Comprobacion"> La contraseña no coincide</div>
+        </div>
+
       </div>
+
     </div>
 
     <div class="form-group mt-4">
       <button type="submit" [disabled]="Usuario.invalid" class="btn btn-dark mr-4">Crear</button>
-      <button type="button" (click)="gotoLogin()" class="btn btn-dark">Volver</button>
+      <button type="button" class="btn btn-dark">Volver</button>
     </div>
 
   </form>
