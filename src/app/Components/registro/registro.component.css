@@ -3,6 +3,10 @@ form{
   border-radius: 4px;
 }
 
+.sep{
+  margin-top: 90px;
+}
+
 input{
   border-color: black;
 }
