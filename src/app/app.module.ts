@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +14,8 @@ import { PerfilMainComponent } from './Components/perfil-main/perfil-main.compon
 import { PerfilUsuarioComponent } from './Components/perfil-usuario/perfil-usuario.component';
 import { PostComponent } from './Components/post/post.component';
 import { RegistroComponent } from './Components/registro/registro.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { RegistroComponent } from './Components/registro/registro.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
     ShowHidePasswordModule
   ],
   providers: [],

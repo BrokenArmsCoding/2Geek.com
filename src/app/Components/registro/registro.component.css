@@ -3,7 +3,11 @@ form{
   border-radius: 4px;
 }
 
+input{
+  border-color: black;
+}
+
 button:disabled{
   background-color:red;
-  border-color: black;
+  border-color: red;
 }
