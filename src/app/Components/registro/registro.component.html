@@ -62,26 +62,12 @@
 
     <!-- Contraseña -->
     <div class="form-group">
-
       <label>Contraseña</label>
+      <input type="password" placeholder="Entra tu contraseña" formControlName="cont" class="form-control"
+        [ngClass]="{'is-invalid':Data.cont.touched && Data.cont.errors}">
 
-      <div class="input-group">
-
-
-        <input type="password" placeholder="Entra tu contraseña" formControlName="cont" id="cont" class="form-control"
-          [ngClass]="{'is-invalid':Data.cont.touched && Data.cont.errors}" showHideInput>
-
-        <div class="input-group-append ngx-show-hide-password">
-
-          <button class="btn btn-outline-light" type="button" showHideTrigger="cont">
-            <i class="fa" [showHideStatus]="{show: 'fa-eye', hide: 'fa-eye-slash', id: 'cont'}"></i>
-          </button>
-
-        </div>
-
-        <div *ngIf="Data.cont.touched && Data.cont.errors" class="invalid-feedback">
-          <div *ngIf="Data.cont.errors.required">El campo Contraseña esta vacio!!</div>
-        </div>
+      <div *ngIf="Data.cont.touched && Data.cont.errors" class="invalid-feedback">
+        <div *ngIf="Data.cont.errors.required">El campo Contraseña esta vacio!!</div>
       </div>
     </div>
 
