@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  serverUrl: "postgres://yfljjumwdtjtva:09414da77035c5a68cf49e66466ae10dbfc05f4dcb2e13a352f2fbbbc1e1dee1@ec2-34-252-251-16.eu-west-1.compute.amazonaws.com:5432/deumj0q8t7p16i/"
 };
 
 /*

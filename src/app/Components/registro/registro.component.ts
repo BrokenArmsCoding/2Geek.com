@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Comprobacion } from './Contra_Repetida';
 import { Router } from '@angular/router';
+import { ServicesService } from 'src/app/Services/services.service';
 //import Swal from 'sweetalert2';
 
 @Component({
@@ -14,7 +15,11 @@ export class RegistroComponent implements OnInit {
 
   Usuario: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,public router: Router) { }
+  DatosUsuario : {
+
+  }
+
+  constructor(private formBuilder: FormBuilder,public router: Router, private BD: ServicesService) { }
 
   ngOnInit(): void {
 
@@ -41,6 +46,11 @@ export class RegistroComponent implements OnInit {
   }
 
   Data_Check(){
+    console.log("dajflkjk");
+    this.BD.selectPrueba().subscribe(
+
+      result => this.DatosUsuario = result[0]
+    )
 
   }
 
