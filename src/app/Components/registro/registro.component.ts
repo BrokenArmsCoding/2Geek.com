@@ -46,12 +46,31 @@ export class RegistroComponent implements OnInit {
   }
 
   Data_Check(){
-    console.log("dajflkjk");
-    this.BD.selectPrueba().subscribe(
+    this.BD.selectPrueba(this.Usuario.getRawValue()).subscribe(
 
-      result => this.DatosUsuario = result[0]
-    )
+      datos => {
+        this.Crear_Perfil();
+        if (datos['response'] == 'OK') {
+          console.log("correcto usuario");
 
+        } else {
+          console.log("fallo usuario");
+        }
+      }
+    );
+  }
+
+  Crear_Perfil(){
+    this.BD.createPerfil(this.Usuario.getRawValue()).subscribe(
+      datos => {
+        if (datos['response'] == 'OK') {
+          console.log("correcto perfil");
+          this.Data_Check();
+        } else {
+          console.log("fallo perfil");
+        }
+      }
+    );
   }
 
 }
