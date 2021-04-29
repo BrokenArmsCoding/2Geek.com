@@ -28,7 +28,7 @@ export class RegistroComponent implements OnInit {
       apellido: ['', Validators.required],
       fecha_nacimiento: ['', Validators.required],
       nick: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9_]+')]],
-      correo: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email]],
       cont: ['', Validators.required],
       rep_cont: ['', Validators.required]
     }, {

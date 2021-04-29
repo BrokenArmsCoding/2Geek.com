@@ -50,12 +50,12 @@
     <!-- Correo -->
     <div class="form-group">
       <p>Correo</p>
-      <input type="email" placeholder="Entra tu correo" formControlName="correo" class="form-control"
-        [ngClass]="{'is-invalid': Data.correo.touched && Data.correo.errors}">
+      <input type="email" placeholder="Entra tu correo" formControlName="email" class="form-control"
+        [ngClass]="{'is-invalid': Data.email.touched && Data.email.errors}">
 
-      <div *ngIf="Data.correo.touched && Data.correo.errors" class="invalid-feedback">
-        <div *ngIf="Data.correo.errors.required">El campo Correo esta vacio!!</div>
-        <div *ngIf="Data.correo.errors.email">Escribe el formato adecuado de correo</div>
+      <div *ngIf="Data.email.touched && Data.email.errors" class="invalid-feedback">
+        <div *ngIf="Data.email.errors.required">El campo Correo esta vacio!!</div>
+        <div *ngIf="Data.email.errors.email">Escribe el formato adecuado de correo</div>
       </div>
     </div>
 
