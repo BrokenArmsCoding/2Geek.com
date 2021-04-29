@@ -26,7 +26,7 @@ export class RegistroComponent implements OnInit {
     this.Usuario = this.formBuilder.group({
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
-      fecha_nazimiento: ['', Validators.required],
+      fecha_nacimiento: ['', Validators.required],
       nick: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9_]+')]],
       correo: ['', [Validators.required, Validators.email]],
       cont: ['', Validators.required],
@@ -46,12 +46,16 @@ export class RegistroComponent implements OnInit {
   }
 
   Data_Check(){
+    console.log(this.Usuario.getRawValue());
+
     this.BD.selectPrueba(this.Usuario.getRawValue()).subscribe(
 
       datos => {
         this.Crear_Perfil();
         if (datos['response'] == 'OK') {
-          console.log("correcto usuario");
+
+
+
 
         } else {
           console.log("fallo usuario");

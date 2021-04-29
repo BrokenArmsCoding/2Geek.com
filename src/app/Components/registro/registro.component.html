@@ -24,14 +24,14 @@
       </div>
     </div>
 
-    <!-- Fecha Nazimiento -->
+    <!-- Fecha Nacimiento -->
     <div class="form-group">
       <p>Fecha de Nazimiento</p>
-      <input type="date" formControlName="fecha_nazimiento" class="form-control"
-        [ngClass]="{'is-invalid': Data.fecha_nazimiento.touched && Data.fecha_nazimiento.errors}">
+      <input type="date" formControlName="fecha_nacimiento" class="form-control"
+        [ngClass]="{'is-invalid': Data.fecha_nacimiento.touched && Data.fecha_nacimiento.errors}">
 
-      <div *ngIf="Data.fecha_nazimiento.touched && Data.fecha_nazimiento.errors" class="invalid-feedback">
-        <div *ngIf="Data.fecha_nazimiento.errors.required">El campo Fecha esta vacio!!</div>
+      <div *ngIf="Data.fecha_nacimiento.touched && Data.fecha_nacimiento.errors" class="invalid-feedback">
+        <div *ngIf="Data.fecha_nacimiento.errors.required">El campo Fecha esta vacio!!</div>
       </div>
     </div>
 
