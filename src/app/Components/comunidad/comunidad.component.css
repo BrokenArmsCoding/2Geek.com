@@ -1,11 +1,46 @@
-.marco_claro{
+.marco_claro {
   background-color: white;
   border-radius: 5px;
 }
 
-.marco_oscuro{
-  background-color: black;
+.card-header {
+  border: 0;
+  background-color: white;
+  margin-bottom: -2%;
+}
+
+.card-footer {
+  border: 0;
+  background-color: white;
+  margin-top: 2%;
+}
+
+.marco_oscuro {
+  background-color: #1d1f1e;
   text-decoration: none;
   color: white;
   border-radius: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color: #00ff84;
+}
+
+.verde_bord {
+  border-color: #00ff84;
+}
+
+.img_trend {
+  max-height: 40px;
+  max-width: 60px;
+  border-radius: 5px;
+}
+
+.sep {
+  margin-top: 90px;
 }
