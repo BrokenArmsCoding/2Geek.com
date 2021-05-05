@@ -1,0 +1,36 @@
+nav{
+  background-color: #1D1F1E;
+}
+
+.logo{
+  height: 40px;
+}
+
+.perfil{
+  width: 50px;
+}
+
+a{
+  text-decoration: none;
+  color:white;
+}
+
+a:hover{
+  color:#00FF84;
+}
+
+.menu{
+  background-color: #1D1F1E;
+  border-color: #00FF84;
+  max-width: 20px;
+}
+
+.boton_menu:hover{
+  background-color: #1D1F1E;
+}
+
+.navbar-toggler{
+  color:#cfcfcf;
+  border-color: #cfcfcf;
+  position: center;
+}
