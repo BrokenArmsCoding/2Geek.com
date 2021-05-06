@@ -32,13 +32,9 @@ a {
   user-select: none;
 }
 
-a:hover {
-  color: #00ff84;
-}
+a:hover { color: #00ff84; }
 
-.verde_bord {
-  border-color: #00ff84;
-}
+.verde_bord { border-color: #00ff84; }
 
 .img_trend {
   max-height: 40px;
@@ -46,6 +42,8 @@ a:hover {
   border-radius: 5px;
 }
 
-.sep {
-  margin-top: 90px;
-}
+p{ user-select: none; }
+
+h5{ user-select: none; }
+
+.sep { margin-top: 90px; }
