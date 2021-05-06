@@ -1,6 +1,17 @@
 .marco_claro {
   background-color: white;
   border-radius: 5px;
+  margin-left: 3%;
+  margin-right: 1%;
+  border-color: black;
+  border-width:1.5px ;
+}
+
+.marco_oscuro {
+  background-color: #1d1f1e;
+  text-decoration: none;
+  color: white;
+  border-radius: 5px;
 }
 
 .card-header {
@@ -13,13 +24,6 @@
   border: 0;
   background-color: white;
   margin-top: 2%;
-}
-
-.marco_oscuro {
-  background-color: #1d1f1e;
-  text-decoration: none;
-  color: white;
-  border-radius: 5px;
 }
 
 a {
