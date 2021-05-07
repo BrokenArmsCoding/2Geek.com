@@ -10,12 +10,11 @@ import { ComunidadComponent } from './Components/comunidad/comunidad.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { LoginComponent } from './Components/login/login.component';
 import { PaginaInicioComponent } from './Components/pagina-inicio/pagina-inicio.component';
-import { PerfilMainComponent } from './Components/perfil-main/perfil-main.component';
-import { PerfilUsuarioComponent } from './Components/perfil-usuario/perfil-usuario.component';
 import { PostComponent } from './Components/post/post.component';
 import { RegistroComponent } from './Components/registro/registro.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
+import { PerfilComponent } from './Components/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -25,10 +24,9 @@ import { ShowHidePasswordModule } from 'ngx-show-hide-password';
     HeaderComponent,
     LoginComponent,
     PaginaInicioComponent,
-    PerfilMainComponent,
-    PerfilUsuarioComponent,
     PostComponent,
-    RegistroComponent
+    RegistroComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,

@@ -5,10 +5,9 @@ import { ComunidadComponent } from './Components/comunidad/comunidad.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { LoginComponent } from './Components/login/login.component';
 import { PaginaInicioComponent } from './Components/pagina-inicio/pagina-inicio.component';
-import { PerfilMainComponent } from './Components/perfil-main/perfil-main.component';
-import { PerfilUsuarioComponent } from './Components/perfil-usuario/perfil-usuario.component';
 import { PostComponent } from './Components/post/post.component';
 import { RegistroComponent } from './Components/registro/registro.component';
+import { PerfilComponent } from './Components/perfil/perfil.component';
 
 
 const routes: Routes = [
@@ -18,8 +17,7 @@ const routes: Routes = [
   { path: 'comunidad', component: ComunidadComponent},
   { path: 'header', component: HeaderComponent},
   { path: 'PaginaInicio', component: PaginaInicioComponent},
-  { path: 'PerfilMain', component: PerfilMainComponent},
-  { path: 'PerfilUsuario', component: PerfilUsuarioComponent},
+  { path: 'Perfil', component: PerfilComponent},
   { path: 'Post', component: PostComponent},
   { path: 'Registro', component: RegistroComponent},
 ];
