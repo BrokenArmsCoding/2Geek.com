@@ -11,7 +11,7 @@ import { PerfilComponent } from './Components/perfil/perfil.component';
 
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'Registro'},
+  { path: '', pathMatch: 'full', redirectTo: 'Perfil'},
   { path: 'login', component: LoginComponent},
   { path: 'comentarios', component: ComentariosComponent},
   { path: 'comunidad', component: ComunidadComponent},
