@@ -17,7 +17,7 @@ $con=conexion();
 
 
 
-$resultado = mysqli_query($con,"INSERT INTO usuarios (id_usuario,nombre,apellido,email,descripcion,contrasena,fecha_nacimiento,imagen_perfil) VALUES ('','$params->nombre','$params->apellido','$params->email','','$params->cont','$params->fecha_nacimiento','$params->imagen_perfil')");
+$resultado = mysqli_query($con,"INSERT INTO usuarios (id_usuario,nombre,nick,apellido,email,descripcion,contrasena,fecha_nacimiento) VALUES ('','$params->nombre','$params->nick','$params->apellido','$params->email','','$params->cont','$params->fecha_nacimiento')");
 
 class Result {}
 
@@ -25,9 +25,10 @@ $response = new Result();
 
 if($resultado) {
   $response->response = 'OK';
-}
-else {
+
+} else {
   $response->response = 'FAIL';
+   
 }
 
 echo json_encode($response);
