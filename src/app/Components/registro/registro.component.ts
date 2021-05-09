@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Comprobacion } from './Contra_Repetida';
 import { Router } from '@angular/router';
 import { ServicesService } from 'src/app/Services/services.service';
+import Swal from 'sweetalert2';
 //import Swal from 'sweetalert2';
 
 @Component({
@@ -47,18 +48,36 @@ export class RegistroComponent implements OnInit {
 
 
   Crear_Perfil(){
+
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "¡ Estos son los datos con los que crearas el perfil !",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#4a4a50',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, crear!'
+
+    }).then((result) => {
+
+      if (result.isConfirmed == true) {
+
+
     this.BD.createPerfil(this.Usuario.getRawValue()).subscribe(
 
       datos => {
         console.log(this.Usuario);
         if (datos['response'] == 'OK') {
-          console.log("correcto perfil");
+          Swal.fire('Creado', '');
 
-        } else {
-          console.log("fallo perfil");
+        } else if (datos['response'] == 'FAIL'){
+          Swal.fire('Usuario ya existe', '');
         }
       }
     );
+      }
+    })
   }
-
 }
+
+
