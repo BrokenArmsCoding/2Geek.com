@@ -1,0 +1,26 @@
+#fondo{
+  background-color: #1D1F1E;
+  padding: 30px;
+}
+
+.logo{
+  height: 150px;
+}
+
+#lema{
+  font-size: 55px;
+}
+
+.pgris{
+  color: #cfcfcf;
+}
+
+#pblanca{
+  color: white;
+  padding-left: 250px;
+}
+
+#cdatos{
+  background-color: #cfcfcf;
+}
+
