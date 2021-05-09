@@ -45,31 +45,15 @@ export class RegistroComponent implements OnInit {
     this.router.navigate(['LOG']);
   }
 
-  Data_Check(){
-    console.log(this.Usuario.getRawValue());
-
-    this.BD.selectPrueba(this.Usuario.getRawValue()).subscribe(
-
-      datos => {
-        this.Crear_Perfil();
-        if (datos['response'] == 'OK') {
-
-
-
-
-        } else {
-          console.log("fallo usuario");
-        }
-      }
-    );
-  }
 
   Crear_Perfil(){
     this.BD.createPerfil(this.Usuario.getRawValue()).subscribe(
+
       datos => {
+        console.log(this.Usuario);
         if (datos['response'] == 'OK') {
           console.log("correcto perfil");
-          this.Data_Check();
+
         } else {
           console.log("fallo perfil");
         }

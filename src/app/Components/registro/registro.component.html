@@ -1,6 +1,6 @@
 <div class="container-fluid sep">
 
-  <form [formGroup]="Usuario" (ngSubmit)="Data_Check()" class="m-4 pt-3 pr-3 pl-3 pb-1 rounded">
+  <form [formGroup]="Usuario" (ngSubmit)="Crear_Perfil()" class="m-4 pt-3 pr-3 pl-3 pb-1 rounded">
 
     <!-- Nombre -->
     <div class="form-group">
@@ -26,7 +26,7 @@
 
     <!-- Fecha Nacimiento -->
     <div class="form-group">
-      <p>Fecha de Nazimiento</p>
+      <p>Fecha de Nacimiento</p>
       <input type="date" formControlName="fecha_nacimiento" class="form-control"
         [ngClass]="{'is-invalid': Data.fecha_nacimiento.touched && Data.fecha_nacimiento.errors}">
 
@@ -108,7 +108,7 @@
     </div>
 
     <div class="form-group mt-4">
-      <button type="submit" [disabled]="Usuario.invalid" class="btn btn-dark mr-4">Crear</button>
+      <button type="submit" [disabled]="Usuario.invalid "class="btn btn-dark mr-4">Crear</button>
       <button type="button" class="btn btn-dark">Volver</button>
     </div>
 
