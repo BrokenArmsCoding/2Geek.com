@@ -21,7 +21,7 @@
     <!-- Columna Derecha -->
     <div class="col-12 col-sm-12 col-md-6 col-lg-6">
 
-      <form [formGroup]="Usuario" class="mr-3 p-3 rounded">
+      <form [formGroup]="Usuario" class="mr-3 p-3 rounded"  (ngSubmit)="LoginUsuario()">
 
         <div class="form-group">
 
@@ -39,8 +39,8 @@
 
           <div class="input-group">
 
-            <input type="password" placeholder="Entra tu contraseña" formControlName="cont" id="contra"
-              class="form-control" [ngClass]="{'is-invalid':Data.cont.touched && Data.cont.errors}" showHideInput>
+            <input type="password" placeholder="Entra tu contraseña" formControlName="password" id="contra"
+              class="form-control" [ngClass]="{'is-invalid':Data.password.touched && Data.password.errors}" showHideInput>
 
             <div class="input-group-append ngx-show-hide-password">
               <button class="btn btn-outline-dark" type="button" showHideTrigger="contra">
@@ -48,8 +48,8 @@
               </button>
             </div>
 
-            <div *ngIf="Data.cont.touched && Data.cont.errors" class="invalid-feedback">
-              <div *ngIf="Data.cont.errors.required">El campo Contraseña esta vacio!!</div>
+            <div *ngIf="Data.password.touched && Data.password.errors" class="invalid-feedback">
+              <div *ngIf="Data.password.errors.required">El campo Contraseña esta vacio!!</div>
             </div>
 
           </div>
