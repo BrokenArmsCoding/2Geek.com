@@ -16,6 +16,10 @@ a{
   text-decoration: none;
 }
 
+input{
+  border-color: black;
+}
+
 p.lema{
   color: #cfcfcf;
   font-size: xx-large;
