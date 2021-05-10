@@ -12,6 +12,10 @@ height: 20%;
 width: 50%;
 }
 
+a{
+  text-decoration: none;
+}
+
 p.lema{
   color: #cfcfcf;
   font-size: xx-large;
