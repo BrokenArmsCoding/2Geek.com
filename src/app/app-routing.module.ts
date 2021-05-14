@@ -11,10 +11,10 @@ import { PerfilComponent } from './Components/perfil/perfil.component';
 
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'comunidad'},
+  { path: '', pathMatch: 'full', redirectTo: 'Comunidad'},
   { path: 'login', component: LoginComponent},
   { path: 'comentarios', component: ComentariosComponent},
-  { path: 'comunidad', component: ComunidadComponent},
+  { path: 'Comunidad', component: ComunidadComponent},
   { path: 'header', component: HeaderComponent},
   { path: 'PaginaInicio', component: PaginaInicioComponent},
   { path: 'Perfil', component: PerfilComponent},
