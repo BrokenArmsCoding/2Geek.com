@@ -1,0 +1,49 @@
+.marco_claro {
+  background-color: white;
+  border-radius: 5px;
+  margin-left: 3%;
+  margin-right: 1%;
+  border-color: black;
+  border-width:1.5px ;
+}
+
+.marco_oscuro {
+  background-color: #1d1f1e;
+  text-decoration: none;
+  color: white;
+  border-radius: 5px;
+}
+
+.card-header {
+  border: 0;
+  background-color: white;
+  margin-bottom: -2%;
+}
+
+.card-footer {
+  border: 0;
+  background-color: white;
+  margin-top: 2%;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  user-select: none;
+}
+
+a:hover { color: #00ff84; }
+
+.verde_bord { border-color: #00ff84; }
+
+.img_trend {
+  max-height: 40px;
+  max-width: 60px;
+  border-radius: 5px;
+}
+
+p{ user-select: none; }
+
+h5{ user-select: none; }
+
+.sep { margin-top: 90px; }
