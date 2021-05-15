@@ -14,7 +14,7 @@ $params = json_decode($json);
 $con;
 $con=conexion();
 
-$resultado = mysqli_query($con, "SELECT nombre,contrasena FROM usuarios WHERE nick='$params->nick' AND contrasena='$params->password'");
+$resultado = mysqli_query($con, "SELECT nick,contrasena FROM usuarios WHERE nick='$params->nick' AND contrasena='$params->password'");
 
 
 class Result {}
