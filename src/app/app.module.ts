@@ -15,6 +15,7 @@ import { RegistroComponent } from './Components/registro/registro.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 import { PerfilComponent } from './Components/perfil/perfil.component';
+import { PerfilComunidadComponent } from './Components/comunidad/perfil-comunidad/perfil-comunidad.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PerfilComponent } from './Components/perfil/perfil.component';
     PaginaInicioComponent,
     PostComponent,
     RegistroComponent,
-    PerfilComponent
+    PerfilComponent,
+    PerfilComunidadComponent
   ],
   imports: [
     BrowserModule,

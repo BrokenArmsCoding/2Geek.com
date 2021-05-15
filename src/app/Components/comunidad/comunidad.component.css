@@ -9,6 +9,16 @@
   background-color:#1d1f1e;
 }
 
+.sel:hover{
+  background-color:#1d1f1e;
+  color:white;
+}
+
+.sel:focus{
+  background-color:#1d1f1e;
+  color:white;
+}
+
 form.Busq{
   margin: auto;
   border-style: double;

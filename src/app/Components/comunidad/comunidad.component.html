@@ -1,27 +1,10 @@
 <app-header></app-header>
 <div class="container-fluid sep">
   <div class="btn-group d-flex border border-dark rounded">
-    <button
-      type="button"
-      class="btn btn-light w-100"
-      (click)="Cambiar_Opcion('MisCom')"
-    >
-      Mis Comunidades
-    </button>
-    <button
-      type="button"
-      class="btn btn-light w-100"
-      (click)="Cambiar_Opcion('Busqueda')"
-    >
-      Buscar Comunidad
-    </button>
-    <button
-      type="button"
-      class="btn btn-light w-100"
-      (click)="Cambiar_Opcion('CreaCom')"
-    >
-      Crear Comunidad
-    </button>
+
+    <button type="button" class="btn btn-light w-100 sel" (click)='Cambiar_Opcion("MisCom")'>Mis Comunidades</button>
+    <button type="button" class="btn btn-light w-100 sel" (click)='Cambiar_Opcion("Busqueda")'>Buscar Comunidad</button>
+    <button type="button" class="btn btn-light w-100 sel" (click)='Cambiar_Opcion("CreaCom")'>Crear Comunidad</button>
   </div>
 
   <div *ngIf="Opcion_Selec == 'MisCom'">
