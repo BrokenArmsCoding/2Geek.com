@@ -43,6 +43,9 @@
           <option value="Acc">Accion</option>
           <option value="Comd">Comedia</option>
           <option value="Peli">Peliculas</option>
+          <option value="Peli">Anime</option>
+          <option value="Peli">Videojuegos</option>
+
         </select>
       </div>
 
@@ -68,7 +71,7 @@
   <div *ngIf='Opcion_Selec == "CreaCom"'>
 
     <!-- Faltara funcion (click) para recojer los datos y enviarlos para alinsertar -->
-    <form class="mt-5 p-4 Crea" [formGroup]="NuevaComunidad" method="POST">
+    <form class="mt-5 p-4 Crea" [formGroup]="NuevaComunidad"  method="POST">
 
       <div class="form-group">
         <lablel>Nombre Comunidad</lablel>
@@ -99,9 +102,11 @@
         <select class="custom-select form-control border border-dark" formControlName="tag"
         [ngClass]="{'is-invalid': data.tag.touched && data.tag.errors}">
           <option selected> </option>
-          <option value="Acc">Accion</option>
-          <option value="Comd">Comedia</option>
-          <option value="Peli">Peliculas</option>
+          <option value="Accion">Accion</option>
+          <option value="Comedia">Comedia</option>
+          <option value="Peliculas">Peliculas</option>
+          <option value="Anime">Anime</option>
+          <option value="Videojuegos">Videojuegos</option>
         </select>
 
         <div *ngIf="data.tag.touched && data.tag.errors" class="invalid-feedback">
@@ -109,7 +114,7 @@
         </div>
       </div>
 
-      <button type="submit" [disabled]="NuevaComunidad.invalid" class="btn btn-dark">Crear Comunidad</button>
+      <button type="submit" [disabled]="NuevaComunidad.invalid" (click)="CrearComunidad()" class="btn btn-dark">Crear Comunidad</button>
 
     </form>
 

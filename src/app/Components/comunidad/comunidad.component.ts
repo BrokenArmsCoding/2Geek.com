@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ServicesService } from 'src/app/Services/services.service';
+import { isThisTypeNode } from 'typescript';
 
 @Component({
   selector: 'app-comunidad',
@@ -11,8 +13,18 @@ export class ComunidadComponent implements OnInit {
   Opcion_Selec: String = "Busqueda";
   Parametros: FormGroup;
   NuevaComunidad: FormGroup;
+  NombreUsuario: String;
 
-  constructor(private formBuilder: FormBuilder) { }
+
+  DatosComunidad: any = {
+    nombreComunidad: String,
+    descripcionComunidad: String,
+    tagComunidad: String,
+    nombreUsuario: String
+  }
+
+
+  constructor(private formBuilder: FormBuilder,  private BD: ServicesService) { }
 
   ngOnInit(): void {
 
@@ -26,6 +38,8 @@ export class ComunidadComponent implements OnInit {
       mensaje:['', Validators.required],
       tag: ['', Validators.required]
     });
+
+    this.NombreUsuario = localStorage.getItem("User");
 
   }
 
@@ -43,5 +57,20 @@ export class ComunidadComponent implements OnInit {
     this.NuevaComunidad.reset();
 
   }
+
+  CrearComunidad(){
+
+    this.DatosComunidad.nombreUsuario = this.NombreUsuario;
+    this.DatosComunidad.nombreComunidad = this.data.nombre.value;
+    this.DatosComunidad.descripcionComunidad = this.data.mensaje.value;
+    this.DatosComunidad.tagComunidad = this.data.tag.value;
+
+    this.BD.createComunidad(this.DatosComunidad).subscribe(
+
+    )
+  }
+
+
+
 
 }
