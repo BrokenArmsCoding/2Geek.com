@@ -4,7 +4,26 @@
   margin-left: 3%;
   margin-right: 1%;
   border-color: black;
-  border-width:1.5px ;
+  border-width:1.5px;
+}
+
+.marco_2{
+  background-color: #2a2929;
+  color:white;
+  border-radius: 5px;
+  margin-left: 3%;
+  margin-right: 1%;
+  border-color: black;
+  border-width:1px ;
+  border-top: none;
+}
+
+.marco_3{
+  color:white;
+  border: solid;
+  border-radius: 5px;
+  border-color: #00FF84;
+  border-width:2px;
 }
 
 .card-header {
