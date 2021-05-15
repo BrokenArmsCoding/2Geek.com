@@ -10,8 +10,6 @@ export class ServicesService {
 
   constructor(private http: HttpClient) { }
 
-
-
   selectPrueba(usuario){
     console.log(usuario);
     return this.http.post(`${environment.serverUrl}InsertUsuario.php`, JSON.stringify(usuario));
@@ -20,6 +18,11 @@ export class ServicesService {
   createPerfil(usuario){
 
     return this.http.post(`${environment.serverUrl}InsertUsuario.php`,JSON.stringify(usuario));
+  }
+
+  loginUser(usuario){
+    console.log(usuario);
+    return this.http.post(`${environment.serverUrl}LoginUsuario.php`,JSON.stringify(usuario));
   }
 
 }

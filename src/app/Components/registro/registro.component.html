@@ -1,4 +1,4 @@
-<div class="container-fluid sep">
+<div class="container-fluid">
 
   <form [formGroup]="Usuario" (ngSubmit)="Crear_Perfil()" class="m-4 pt-3 pr-3 pl-3 pb-1 rounded">
 
@@ -108,8 +108,8 @@
     </div>
 
     <div class="form-group mt-4">
-      <button type="submit" [disabled]="Usuario.invalid "class="btn btn-dark mr-4">Crear</button>
-      <button type="button" class="btn btn-dark">Volver</button>
+      <button type="submit" [disabled]="Usuario.invalid" class="btn btn-dark mr-4">Crear</button>
+      <button type="button" (clic)="gotoLogin()" class="btn btn-dark">Volver</button>
     </div>
 
   </form>
