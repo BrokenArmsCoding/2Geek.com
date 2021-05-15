@@ -33,6 +33,14 @@ export class ServicesService {
     return this.http.post(`${environment.serverUrl}CrearTablaComunidad.php`,JSON.stringify(DatosComunidad));
   }
 
+  insertCreadorTablaComunidad(DatosComunidad){
+    return this.http.post(`${environment.serverUrl}InsertarCreador.php`,JSON.stringify(DatosComunidad));
+  }
+
+  insertTags(DatosComunidad){
+    return this.http.post(`${environment.serverUrl}InsertTagsComunidad.php`,JSON.stringify(DatosComunidad));
+  }
+
   selectComunidades(NombreUsuario){
     return this.http.post(`${environment.serverUrl}SelectComunidades.php`,JSON.stringify(NombreUsuario));
   }

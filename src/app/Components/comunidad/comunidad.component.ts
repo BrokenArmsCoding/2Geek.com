@@ -24,7 +24,8 @@ export class ComunidadComponent implements OnInit {
     nombreComunidad: String,
     descripcionComunidad: String,
     tagComunidad: String,
-    nombreUsuario: String
+    nombreUsuario: String,
+    tag: String
   }
 
   SelectComunidad: Object = {
@@ -94,10 +95,16 @@ export class ComunidadComponent implements OnInit {
 
   CrearComunidad(){
 
+    this.DatosComunidad.tag = this.data.tag.value;
     this.DatosComunidad.nombreUsuario = this.NombreUsuario;
     this.DatosComunidad.nombreComunidad = this.data.nombre.value;
     this.DatosComunidad.descripcionComunidad = this.data.mensaje.value;
     this.DatosComunidad.tagComunidad = this.data.tag.value;
+    this.DatosComunidad.idComunidad;
+
+
+console.log(this.DatosComunidad);
+
 
     this.BD.createComunidad(this.DatosComunidad).subscribe(
       datos => {
@@ -110,7 +117,16 @@ export class ComunidadComponent implements OnInit {
     )
     this.BD.crearTablaComunidad(this.DatosComunidad).subscribe(
 
+    );
+    this.BD.insertCreadorTablaComunidad(this.DatosComunidad).subscribe(
+
+    );
+
+    this.BD.insertTags(this.DatosComunidad).subscribe(
+
     )
+
+
   }
 
 
