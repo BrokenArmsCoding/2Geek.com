@@ -8,6 +8,7 @@ import { PaginaInicioComponent } from './Components/pagina-inicio/pagina-inicio.
 import { PostComponent } from './Components/post/post.component';
 import { RegistroComponent } from './Components/registro/registro.component';
 import { PerfilComponent } from './Components/perfil/perfil.component';
+import { PerfilComunidadComponent } from './Components/comunidad/perfil-comunidad/perfil-comunidad.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'Login', component: LoginComponent},
   { path: 'Comentarios', component: ComentariosComponent},
   { path: 'Comunidades', component: ComunidadComponent},
+  { path: 'PerfCom', component: PerfilComunidadComponent},
   { path: 'Header', component: HeaderComponent},
   { path: 'PaginaInicio', component: PaginaInicioComponent},
   { path: 'Perfil', component: PerfilComponent},
