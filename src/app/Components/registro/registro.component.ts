@@ -37,7 +37,7 @@ export class RegistroComponent implements OnInit {
   }
 
   gotoLogin() {
-    this.router.navigate(['LOG']);
+    this.router.navigate(['Login']);
   }
 
   Data_Check(){
