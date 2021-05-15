@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
       nick: ['', Validators.required],
       password: ['', Validators.required]
     });
+    localStorage.clear();
   }
 
   get Data() {
@@ -48,6 +49,7 @@ export class LoginComponent implements OnInit {
           environment.vsession = this.user.nick;
           localStorage.setItem("User", environment.vsession);
           Swal.fire('Login correcto wachin', ' ');
+          this.router.navigate(['/Perfil']);
         }else{
           Swal.fire('Login erroneo wachin','');
         }
