@@ -33,9 +33,9 @@
         <input
           type="text"
           class="form-control rounded w-100 border border-dark mb-2 p-1"
-          formControlName="nombre_p"
+          formControlName="nombreComunidad"
           placeholder="Introduce el nombre de la comunidad"
-          [ngClass]="{'is-invalid': info.nombre_p.touched && info.nombre_p.errors}"/>
+          [ngClass]="{'is-invalid': info.nombreComunidad.touched && info.nombreComunidad.errors}"/>
       </div>
 
       <div class="form-group">
@@ -64,15 +64,15 @@
     </form>
 
     <!-- Bucle que busque segun lo selecionado, de predetermiando que salgan todas las comunidades -->
-    <div class="marco_claro mt-5">
+    <div class="marco_claro mt-5" *ngFor="let buscador of BuscadorComunidades">
       <div class="card border-dark">
         <div class="card-body ml-2">
           <div class="d-inline">
-            Comunidad: <a class="nodec ml-1"> {{ Nombre }} </a>
+            Comunidad: <a class="nodec ml-1"> {{ buscador.mensaje_comunidad }} </a>
             <a class="ml-5 mr-1 nodec">{{ Tag1 }} </a>-<a class="ml-1 nodec">
               {{ Tag2 }}</a
             >
-            <i class="nodec ml-5">{{ Descripcion }}</i>
+            <i class="nodec ml-5">{{ buscador.mensaje_comunidad }}</i>
           </div>
         </div>
       </div>
@@ -159,4 +159,3 @@
       </button>
     </form>
   </div>
-</div>
