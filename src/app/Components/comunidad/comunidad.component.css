@@ -4,19 +4,19 @@
   text-decoration: none;
 }
 
-.busqueda:hover{
+.busqueda:enabled:hover{
   color: #00ff84;
   background-color:#1d1f1e;
 }
 
-.sel:hover{
+.sp_btt:hover{
+  color: #00ff84;
   background-color:#1d1f1e;
-  color:white;
 }
 
-.sel:focus{
+.sp_btt:focus{
   background-color:#1d1f1e;
-  color:white;
+  color:#00ff84;
 }
 
 form.Busq{
