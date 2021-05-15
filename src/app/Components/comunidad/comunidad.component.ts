@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ServicesService } from 'src/app/Services/services.service';
-import { isThisTypeNode } from 'typescript';
+import Swal from 'sweetalert2';
+import { Comunidades } from '../../Models/Comunidades';
+
 
 @Component({
   selector: 'app-comunidad',
@@ -23,6 +25,13 @@ export class ComunidadComponent implements OnInit {
     nombreUsuario: String
   }
 
+  SelectComunidad: Object = {
+    id_comunidad: String,
+    mensajeComunidad: String,
+    nombreComunidad: String
+  }
+
+  Comunidad: Comunidades[] = [];
 
   constructor(private formBuilder: FormBuilder,  private BD: ServicesService) { }
 
@@ -41,6 +50,8 @@ export class ComunidadComponent implements OnInit {
 
     this.NombreUsuario = localStorage.getItem("User");
 
+    this.SelectComunidades();
+
   }
 
   get info() {
@@ -58,6 +69,17 @@ export class ComunidadComponent implements OnInit {
 
   }
 
+  SelectComunidades(){
+
+    this.BD.selectComunidades(this.NombreUsuario).subscribe(
+      result => this.SelectComunidad = result
+    );
+
+    this.Comunidad.push(this.SelectComunidad);
+
+
+  }
+
   CrearComunidad(){
 
     this.DatosComunidad.nombreUsuario = this.NombreUsuario;
@@ -66,7 +88,13 @@ export class ComunidadComponent implements OnInit {
     this.DatosComunidad.tagComunidad = this.data.tag.value;
 
     this.BD.createComunidad(this.DatosComunidad).subscribe(
-
+      datos => {
+        if(datos['response'] == 'OK'){
+          Swal.fire("Comunidad Creada ", '');
+        }else{
+          Swal.fire("Error al crear la comunidad ", '');
+        }
+      }
     )
   }
 

@@ -26,8 +26,11 @@ export class ServicesService {
   }
 
   createComunidad(DatosComunidad){
-    console.log(DatosComunidad);
     return this.http.post(`${environment.serverUrl}CreateComunidad.php`,JSON.stringify(DatosComunidad));
+  }
+
+  selectComunidades(NombreUsuario){
+    return this.http.post(`${environment.serverUrl}SelectComunidades.php`,JSON.stringify(NombreUsuario));
   }
 
 
