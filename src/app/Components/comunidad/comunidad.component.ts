@@ -37,8 +37,6 @@ export class ComunidadComponent implements OnInit {
 
   }
 
-
-
   constructor(private formBuilder: FormBuilder,  private BD: ServicesService) { }
 
   ngOnInit(): void {
@@ -82,8 +80,6 @@ export class ComunidadComponent implements OnInit {
       result => this.SelectComunidad = result
     );
 
-
-
   }
 
   buscarComunidades(){
@@ -93,7 +89,6 @@ export class ComunidadComponent implements OnInit {
     this.BD.buscadorComunidades(this.nombreComunidad).subscribe(
       result => this.BuscadorComunidades = result
     );
-
 
   }
 
