@@ -80,6 +80,10 @@ export class ComunidadComponent implements OnInit {
 
   }
 
+  buscarComunidades(){
+
+  }
+
   CrearComunidad(){
 
     this.DatosComunidad.nombreUsuario = this.NombreUsuario;

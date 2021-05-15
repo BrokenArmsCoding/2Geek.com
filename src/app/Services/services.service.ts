@@ -33,6 +33,10 @@ export class ServicesService {
     return this.http.post(`${environment.serverUrl}SelectComunidades.php`,JSON.stringify(NombreUsuario));
   }
 
+  buscadorComunidades(){
+    return this.http.post(`${environment.serverUrl}BuscadorComunidades.php`,JSON.stringify);
+  }
+
 
 
 }
