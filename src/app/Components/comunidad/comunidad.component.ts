@@ -113,6 +113,9 @@ export class ComunidadComponent implements OnInit {
         }
       }
     )
+    this.BD.crearTablaComunidad(this.DatosComunidad).subscribe(
+
+    )
   }
 
 
