@@ -17,6 +17,8 @@ export class ComunidadComponent implements OnInit {
   NuevaComunidad: FormGroup;
   NombreUsuario: String;
 
+  nombreComunidad: String;
+
 
   DatosComunidad: any = {
     nombreComunidad: String,
@@ -31,15 +33,19 @@ export class ComunidadComponent implements OnInit {
     nombreComunidad: String
   }
 
-  Comunidad: Comunidades[] = [];
+  BuscadorComunidades: any = {
+
+  }
+
+
 
   constructor(private formBuilder: FormBuilder,  private BD: ServicesService) { }
 
   ngOnInit(): void {
 
     this.Parametros = this.formBuilder.group({
-      nombre_p: ['', Validators.required],
-      tag_p: ['', Validators.required]
+      nombreComunidad: ['', Validators.required],
+      tag_p: ['',]
     });
 
     this.NuevaComunidad = this.formBuilder.group({
@@ -66,6 +72,7 @@ export class ComunidadComponent implements OnInit {
     this.Opcion_Selec = op;
     this.Parametros.reset();
     this.NuevaComunidad.reset();
+    this.BuscadorComunidades = [];
 
   }
 
@@ -75,12 +82,18 @@ export class ComunidadComponent implements OnInit {
       result => this.SelectComunidad = result
     );
 
-    this.Comunidad.push(this.SelectComunidad);
 
 
   }
 
   buscarComunidades(){
+
+    this.nombreComunidad = this.info.nombreComunidad.value;
+
+    this.BD.buscadorComunidades(this.nombreComunidad).subscribe(
+      result => this.BuscadorComunidades = result
+    );
+
 
   }
 
