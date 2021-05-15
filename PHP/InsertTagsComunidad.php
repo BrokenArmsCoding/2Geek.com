@@ -15,7 +15,7 @@ $con;
 $con=conexion();
 
 
-$resultado = mysqli_query($con, "INSERT INTO com-tags SET tag= '$params->nombreUsuario' ");
+$resultado = mysqli_query($con, "INSERT INTO `com-tags` SET tag='$params->tag', id_comunidad= '$params->nombreComunidad' ");
 
 
 class Result {}

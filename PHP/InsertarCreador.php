@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
@@ -15,24 +14,32 @@ $con;
 $con=conexion();
 
 
-$resultado = mysqli_query($con,"CREATE TABLE $params->nombreComunidad(
-                                IDUsuario VARCHAR (255) NOT NULL PRIMARY KEY,
-                                NickUsuario VARCHAR(255) NOT NULL,
-                                Permisos INTEGER(10) NOT NULL)");
+$nombreComunidad = strtolower($params->nombreComunidad);
+
+$resultado = mysqli_query($con, "INSERT INTO $nombreComunidad SET IDUsuario= '$params->nombreUsuario', NickUsuario= '$params->nombreUsuario', Permisos=1 ");
+
 
 class Result {}
 
+
 $response = new Result();
 
+
 if($resultado) {
-    
-    $response->response = 'OK';
+
+  $response->response = 'OK';
 
 } else {
 
-    $response->response = 'FAIL';
-    
+  $response->response = 'FAIL';
+
 }
 
+header('Content-Type: application/json');
 
-echo json_encode($response);
+  echo json_encode($response);
+
+
+
+
+?>
