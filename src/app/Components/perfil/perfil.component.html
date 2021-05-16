@@ -4,49 +4,63 @@
   <div class="marco pb-2 mb-3 mr-4 ml-4">
 
     <div class="btn-group btn-group-lg">
-      <button type="button" class="btn">Ajustes</button>
-      <button type="button" class="btn">Posts</button>
-      <button type="button" class="btn">Comentarios</button>
+      <button type="button" class="btn btn-dark" (click)='Cambiar_Opcion("Perfil")'>Ajustes</button>
+      <button type="button" class="btn btn-dark" (click)='Cambiar_Opcion("Post")'>Posts</button>
+      <button type="button" class="btn btn-dark" (click)='Cambiar_Opcion("Comentarios")'>Comentarios</button>
     </div>
 
-    <div class="row mb-3">
+    <div *ngIf='ModoCambio == "Perfil"'>
 
-      <div class="col-5 col-sm-5 col-md-5 col-lg-5">
-        <div class="sep_left">
-          <p class="sep_text"><strong>Nombre:</strong> {{usuario.nombre}} </p>
-          <p class="sep_text"><strong>Apellido:</strong> {{usuario.apellido}} </p>
-          <p class="sep_text"><strong>Correo:</strong> {{usuario.email}}</p>
-          <p class="sep_text"><strong>Contraseña:</strong> </p>
-          <p class="sep_text"><strong>Fecha de nacimiento:</strong> {{usuario.fecha_nacimiento}} </p>
+      <div class="row mb-3">
+
+        <div class="col-5 col-sm-5 col-md-5 col-lg-5">
+          <div class="sep_left">
+            <p class="sep_text"><strong>Nombre:</strong> {{usuario.nombre}} </p>
+            <p class="sep_text"><strong>Apellido:</strong> {{usuario.apellido}} </p>
+            <p class="sep_text"><strong>Correo:</strong> {{usuario.email}}</p>
+            <p class="sep_text"><strong>Contraseña:</strong> </p>
+            <p class="sep_text"><strong>Fecha de nacimiento:</strong> {{usuario.fecha_nacimiento}} </p>
+          </div>
         </div>
-      </div>
 
-      <div class="col-2 col-sm-2 col-md-2 col-lg-2">
-      </div>
+        <div class="col-2 col-sm-2 col-md-2 col-lg-2">
+        </div>
 
-      <div class="col-5 col-sm-5 col-md-5 col-lg-5">
+        <div class="col-5 col-sm-5 col-md-5 col-lg-5">
 
-        <div class="float-right sep_right">
+          <div class="float-right sep_right">
 
-          <div class="img_perfil mb-3" style="background-image: url(assets/images/full_logo.png)"></div>
+            <div class="img_perfil mb-3" style="background-image: url(assets/images/full_logo.png)"></div>
 
-          <div class="btn-group mt-4">
-            <button class="btn btn-dark">Editar</button>
-            <button class="btn btn-dark float-right">Eliminar</button>
+            <div class="btn-group mt-4">
+              <button class="btn btn-dark" disabled>Editar</button>
+              <button class="btn btn-dark float-right" disabled>Eliminar</button>
+            </div>
+
           </div>
 
         </div>
 
       </div>
 
-    </div>
-
-    <div class="row mb-3">
-      <div class="col perf">
-        <button class="btn btn-dark">Editar</button>
-        <button class="btn btn-dark ml-5">Guardar Cambios</button>
+      <div class="row mb-3">
+        <div class="col perf">
+          <button type="button" class="btn btn-dark" (click)='Cambiar_Opcion("Editar")'>Editar perfil</button>
+          <button type="button" class="btn btn-dark ml-4" (click)='Cambiar_Opcion("Contra")'>Cambiar Contraseña</button>
+        </div>
       </div>
     </div>
+
+    <div *ngIf='ModoCambio == "Editar"'>
+      <app-perfil-editar></app-perfil-editar>
+    </div>
+
+    <div *ngIf='ModoCambio == "Contra"'>
+      <app-perfil-contra></app-perfil-contra>
+    </div>
+
+    <div *ngIf='ModoCambio == "Post"'></div>
+    <div *ngIf='ModoCambio == "Comentarios"'></div>
 
   </div>
 

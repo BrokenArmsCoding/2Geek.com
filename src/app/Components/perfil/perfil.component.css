@@ -36,7 +36,7 @@
   color: white;
 }
 
-.btn:hover{
+.btn:enabled:hover{
   color:#00FF84;
 }
 

@@ -9,7 +9,6 @@ import { PostComponent } from './Components/post/post.component';
 import { RegistroComponent } from './Components/registro/registro.component';
 import { PerfilComponent } from './Components/perfil/perfil.component';
 
-
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'Login'},
   { path: 'Login', component: LoginComponent},

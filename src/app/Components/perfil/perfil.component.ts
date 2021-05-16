@@ -1,5 +1,3 @@
-
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ServicesService } from 'src/app/Services/services.service';
 
@@ -8,13 +6,14 @@ import { ServicesService } from 'src/app/Services/services.service';
   templateUrl: './perfil.component.html',
   styleUrls: ['./perfil.component.css']
 })
+
 export class PerfilComponent implements OnInit {
+
+  ModoCambio: String = "Perfil";
   usuario:any = {}
   nombreUsuario: String;
 
-
-
-  constructor(private DB: ServicesService ) { }
+  constructor(private DB: ServicesService) { }
 
   ngOnInit(): void {
   this.nombreUsuario = localStorage.getItem('User');
@@ -29,5 +28,8 @@ export class PerfilComponent implements OnInit {
     );
   }
 
+  Cambiar_Opcion(op: String): void {
+    this.ModoCambio = op;
+  }
 
 }
