@@ -22,7 +22,7 @@
           <div>
             <p class="card-text mt-3">Descripcion: {{ comunidades.mensaje_comunidad }}</p>
             <!-- Falta funcion para ir a la comunidad selecionada -->
-            <button class="btn btn-dark float-right busqueda" type="button">Ir a la comunidad</button>
+            <button class="btn btn-dark float-right busqueda" type="button" (click)="iraComunidad(comunidades.nombre_comunidad,comunidades.mensaje_comunidad)">Ir a la comunidad</button>
           </div>
         </div>
       </div>

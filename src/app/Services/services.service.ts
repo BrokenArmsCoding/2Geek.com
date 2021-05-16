@@ -8,6 +8,9 @@ import { environment } from 'src/environments/environment';
 })
 export class ServicesService {
 
+  nombreComunidad: String;
+  descripcionComunidad: String;
+
   constructor(private http: HttpClient) { }
 
   selectPrueba(usuario){
@@ -50,5 +53,16 @@ export class ServicesService {
   }
 
 
+  setDatosComunidad(descripcionComunidad,nombreComunidad){
+    this.nombreComunidad = nombreComunidad;
+    this.descripcionComunidad = descripcionComunidad;
+  }
+
+  getNombreComunidad(){
+    return this.nombreComunidad;
+  }
+  getDescripcionComunidad(){
+    return this.descripcionComunidad;
+  }
 
 }

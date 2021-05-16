@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ServicesService } from 'src/app/Services/services.service';
 import Swal from 'sweetalert2';
 import { Comunidades } from '../../Models/Comunidades';
@@ -38,7 +39,7 @@ export class ComunidadComponent implements OnInit {
 
   }
 
-  constructor(private formBuilder: FormBuilder,  private BD: ServicesService) { }
+  constructor(private formBuilder: FormBuilder,  private BD: ServicesService,public router: Router) { }
 
   ngOnInit(): void {
 
@@ -65,6 +66,11 @@ export class ComunidadComponent implements OnInit {
 
   get data() {
     return this.NuevaComunidad.controls;
+  }
+
+  iraComunidad(nombreComunidad: String, descripcionComunidad: String){
+    this.BD.setDatosComunidad(nombreComunidad,descripcionComunidad);
+    this.router.navigate(['/PerfilComponente']);
   }
 
   Cambiar_Opcion(op: String): void {

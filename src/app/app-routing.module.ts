@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'Login', component: LoginComponent},
   { path: 'Comentarios', component: ComentariosComponent},
   { path: 'Comunidades', component: ComunidadComponent},
-  { path: 'PerfCom', component: PerfilComunidadComponent},
+  { path: 'PerfilComponente', component: PerfilComunidadComponent},
   { path: 'Header', component: HeaderComponent},
   { path: 'PaginaInicio', component: PaginaInicioComponent},
   { path: 'Perfil', component: PerfilComponent},
