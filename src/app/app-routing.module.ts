@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ComentariosComponent } from './Components/comentarios/comentarios.component';
 import { ComunidadComponent } from './Components/comunidad/comunidad.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { LoginComponent } from './Components/login/login.component';
@@ -13,7 +12,6 @@ import { PerfilComponent } from './Components/perfil/perfil.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'Login'},
   { path: 'Login', component: LoginComponent},
-  { path: 'Comentarios', component: ComentariosComponent},
   { path: 'comunidad', component: ComunidadComponent},
   { path: 'header', component: HeaderComponent},
   { path: 'PaginaInicio', component: PaginaInicioComponent},
