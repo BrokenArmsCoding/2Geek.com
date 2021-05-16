@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ComentariosComponent } from './Components/comentarios/comentarios.component';
 import { ComunidadComponent } from './Components/comunidad/comunidad.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { LoginComponent } from './Components/login/login.component';
@@ -21,7 +20,6 @@ import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 @NgModule({
   declarations: [
     AppComponent,
-    ComentariosComponent,
     ComunidadComponent,
     HeaderComponent,
     LoginComponent,
