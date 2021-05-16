@@ -6,3 +6,11 @@
   height:100%;
   top:15%;
 }
+
+.border_v {
+  border: 2px solid #00ff84;
+  text-decoration: none;
+  text-decoration-color: white;
+  color: white;
+  border-radius: 5px;
+}
