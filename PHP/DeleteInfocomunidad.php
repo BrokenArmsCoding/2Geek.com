@@ -15,30 +15,22 @@ $con;
 $con=conexion();
 
 
-$resultado = mysqli_query($con, "INSERT INTO `com-tags` SET tag='$params->tag', nombreComunidad='$params->nombreComunidad'");
+$resultado = mysqli_query($con,"DELETE FROM `comunidad` WHERE nombre_comunidad = '$params'");
 
+ class Result {}
 
-class Result {}
+   $response = new Result();
 
+   if($resultado) {
+      $response->response = 'OK';
 
-$response = new Result();
+    } else {
+      $response->response = 'FAIL';
+    }
 
-
-if($resultado) {
-
-  $response->response = 'OK';
-
-} else {
-
-  $response->response = 'FAIL';
-
-}
-
-header('Content-Type: application/json');
+     header('Content-Type: application/json');
 
   echo json_encode($response);
-
-
 
 
 ?>

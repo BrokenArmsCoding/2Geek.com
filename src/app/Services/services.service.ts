@@ -33,6 +33,8 @@ export class ServicesService {
   }
 
   crearTablaComunidad(DatosComunidad){
+    console.log(DatosComunidad);
+
     return this.http.post(`${environment.serverUrl}CrearTablaComunidad.php`,JSON.stringify(DatosComunidad));
   }
 
@@ -79,6 +81,19 @@ export class ServicesService {
   }
   getDescripcionComunidad(){
     return this.descripcionComunidad;
+  }
+
+  DeleteTags(nombreComunidad){
+  return this.http.post(`${environment.serverUrl}DeleteTags.php`,JSON.stringify(nombreComunidad));
+
+  }
+  DeleteInfocomunidad(nombreComunidad){
+    return this.http.post(`${environment.serverUrl}DeleteInfocomunidad.php`,JSON.stringify(nombreComunidad));
+
+  }
+  DeleteTablaComunidad(nombreComunidad){
+    return this.http.post(`${environment.serverUrl}DeleteTablaComunidad.php`,JSON.stringify(nombreComunidad));
+
   }
 
 }
