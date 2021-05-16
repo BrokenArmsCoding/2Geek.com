@@ -31,7 +31,8 @@
           <!-- <div *ngIf=""></div>  Condicion solo para creador y moderador -->
           <div class="col pt-3">
             <button class="btn btn-light float-right" type="button">Gestionar Miembros</button>
-            <button class="btn btn-light float-right mt-4 pl-5 pr-5" type="button">Crear Post</button>
+            <button class="btn btn-light float-right mt-4 pl-5 pr-5" type="button"
+              (click)='Cambiar_Opcion("Crear")'>Crear Post</button>
           </div>
           <div class="col pt-3">
             <button class="btn btn-light" type="button">Modificar Comunidad</button>
@@ -44,7 +45,44 @@
     </div>
 
     <div class="col-8 mt-n3">
-      <app-post></app-post>
+      <div *ngIf='ModoCambio == "Posts"'>
+        <app-post></app-post>
+      </div>
+
+      <div *ngIf='ModoCambio == "Crear"'>
+
+        <form class="marco_oscuro mt-4 p-3 rounded" [formGroup]="NuevoPost" method="POST">
+
+          <div class="form-group mt-2">
+
+            <p class="text-light">Titulo</p>
+            <input type="text" placeholder="Entra un titulo para tu Post" formControlName="titulo" class="form-control"
+              [ngClass]="{'is-invalid': infopost.titulo.touched && infopost.titulo.errors}">
+
+            <div *ngIf="infopost.titulo.touched && infopost.titulo.errors" class="invalid-feedback">
+              <div *ngIf="infopost.titulo.errors.required">El campo Nick esta vacio!!</div>
+            </div>
+
+          </div>
+
+
+          <div class="form-group mt-2">
+
+            <p class="text-light">Texto</p>
+            <textarea class="form-control" formControlName="texto" rows="5"
+              [ngClass]="{'is-invalid': infopost.texto.touched && infopost.texto.errors}"></textarea>
+
+            <div *ngIf="infopost.texto.touched && infopost.texto.errors" class="invalid-feedback">
+              <div *ngIf="infopost.texto.errors.required">Necesitas escribir algo para tu post</div>
+            </div>
+
+          </div>
+
+          <button class="btn btn-light text-dark mt-3 mr-4" type="submit" [disabled]="NuevoPost.invalid">Subir
+            Post</button>
+          <button class="btn btn-light text-dark mt-3" type="button" (click)='Volver()'>Cancelar</button>
+        </form>
+      </div>
     </div>
 
   </div>
