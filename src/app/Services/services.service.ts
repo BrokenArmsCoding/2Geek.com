@@ -52,6 +52,22 @@ export class ServicesService {
     return this.http.post(`${environment.serverUrl}BuscadorComunidades.php`,JSON.stringify(buscarComunidad));
   }
 
+  insertPost(datosPost){
+    return this.http.post(`${environment.serverUrl}InsertPost.php`,JSON.stringify(datosPost));
+  }
+
+  selectPost(nombreComunidad){
+    return this.http.post(`${environment.serverUrl}SelectPost.php`,JSON.stringify(nombreComunidad));
+  }
+
+  insertComentario(comentariosPost){
+    return this.http.post(`${environment.serverUrl}InsertComentario.php`,JSON.stringify(comentariosPost));
+  }
+
+  selectComentarios(nombreComunidad){
+    return this.http.post(`${environment.serverUrl}SelectComentarios.php`,JSON.stringify(nombreComunidad));
+  }
+
 
   setDatosComunidad(descripcionComunidad,nombreComunidad){
     this.nombreComunidad = nombreComunidad;

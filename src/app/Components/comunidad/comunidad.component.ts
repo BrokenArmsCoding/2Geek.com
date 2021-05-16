@@ -17,8 +17,8 @@ export class ComunidadComponent implements OnInit {
   Parametros: FormGroup;
   NuevaComunidad: FormGroup;
   NombreUsuario: String;
-
   nombreComunidad: String;
+  pasarNombreComunidad: string;
 
 
   DatosComunidad: any = {
@@ -54,6 +54,8 @@ export class ComunidadComponent implements OnInit {
       tag: ['', Validators.required]
     });
 
+    localStorage.removeItem("NombreComunidad");
+    localStorage.removeItem("DescripcionComunidad");
     this.NombreUsuario = localStorage.getItem("User");
 
     this.SelectComunidades();
@@ -68,8 +70,11 @@ export class ComunidadComponent implements OnInit {
     return this.NuevaComunidad.controls;
   }
 
-  iraComunidad(nombreComunidad: String, descripcionComunidad: String){
+  iraComunidad(nombreComunidad: string, descripcionComunidad: string){
     this.BD.setDatosComunidad(nombreComunidad,descripcionComunidad);
+
+    localStorage.setItem("NombreComunidad",nombreComunidad);
+    localStorage.setItem("DescripcionComunidad",descripcionComunidad);
     this.router.navigate(['/PerfilComponente']);
   }
 
