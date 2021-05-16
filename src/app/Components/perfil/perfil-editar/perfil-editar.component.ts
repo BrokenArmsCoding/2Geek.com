@@ -9,10 +9,29 @@ import { ServicesService } from 'src/app/Services/services.service';
 
 export class PerfilEditarComponent implements OnInit {
 
+NombrePerfil: String;
+Apellido: String;
+Correo: String;
+Fecha:Date;
+nick: String;
+datos: any = {};
+
+
+DatosPerfil: any = {
+  NombrePerfil: null,
+  Correo: null,
+  Fecha: null,
+  Apellido: null,
+  nick: null
+}
+
+
   PerfilInfo: FormGroup;
   constructor(private formBuilder: FormBuilder, private DB: ServicesService) { }
 
   ngOnInit(): void {
+    this.nick = localStorage.getItem('User');
+
 
     this.PerfilInfo = this.formBuilder.group({
       nombre: ['', Validators.required],
@@ -20,6 +39,7 @@ export class PerfilEditarComponent implements OnInit {
       correo: ['', [Validators.required, Validators.email]],
       fecha: ['', Validators.required]
     });
+
 
   }
   get perfdata() {
@@ -32,6 +52,40 @@ export class PerfilEditarComponent implements OnInit {
 
   refresh(): void {
     window.location.reload();
+  }
+
+  updateDatos(){
+
+
+this.DatosPerfil.NombrePerfil = this.PerfilInfo.controls.nombre.value;
+this.DatosPerfil.Correo = this.PerfilInfo.controls.correo.value;
+this.DatosPerfil.Fecha = this.PerfilInfo.controls.fecha.value;
+this.DatosPerfil.Apellido = this.PerfilInfo.controls.apellido.value;
+this.DatosPerfil.nick = this.nick;
+
+
+    this.DB.UpdatePerfil(this.DatosPerfil).subscribe(
+
+    )
+
+
+
+  }
+
+  GetPerfil(){
+    this.DB.GetUsuario(this.nick).subscribe(
+      result => {
+        this.datos = result[0];
+        this.PerfilInfo.setValue({
+          'nombre': this.PerfilInfo['nombre'],
+          'apellido': this.PerfilInfo['apellido'],
+          'correo': this.PerfilInfo['email'],
+          'fecha': this.PerfilInfo['fecha_nacimiento']
+        });
+      }
+    );
+
+
   }
 
 

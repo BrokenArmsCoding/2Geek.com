@@ -42,6 +42,6 @@
     </div>
   </div>
 
-  <button class="btn btn-dark mt-2" type="submit" [disabled]="PerfilInfo.invalid" >Cambiar Datos</button>
+  <button class="btn btn-dark mt-2" type="submit"  (click)='updateDatos()' >Cambiar Datos</button>
   <button class="btn btn-dark mt-2 ml-3" type="button" (click)="UpdateCont()">Cancelar</button>
 </form>
