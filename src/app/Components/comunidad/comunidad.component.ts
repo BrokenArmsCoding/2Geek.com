@@ -115,22 +115,24 @@ console.log(this.DatosComunidad);
     this.BD.createComunidad(this.DatosComunidad).subscribe(
       datos => {
         if(datos['response'] == 'OK'){
+          this.BD.crearTablaComunidad(this.DatosComunidad).subscribe(
+
+            );
+            this.BD.insertCreadorTablaComunidad(this.DatosComunidad).subscribe(
+
+              );
+
+              this.BD.insertTags(this.DatosComunidad).subscribe(
+
+              )
           Swal.fire("Comunidad Creada ", '');
         }else{
           Swal.fire("Error al crear la comunidad ", '');
         }
       }
     )
-    this.BD.crearTablaComunidad(this.DatosComunidad).subscribe(
 
-    );
-    this.BD.insertCreadorTablaComunidad(this.DatosComunidad).subscribe(
 
-    );
-
-    this.BD.insertTags(this.DatosComunidad).subscribe(
-
-    )
 
 
   }

@@ -45,4 +45,20 @@ export class PerfilComunidadComponent implements OnInit {
     return this.NuevoPost.controls;
   }
 
+  BorrarComunidad(nombreComunidad){
+    this.BD.DeleteTags(nombreComunidad).subscribe();
+
+    this.DeleteInfocomunidad(nombreComunidad);
+  }
+
+  DeleteInfocomunidad(nombreComunidad){
+    this.BD.DeleteInfocomunidad(nombreComunidad).subscribe();
+    this.DeleteTablaComunidad(nombreComunidad);
+  }
+
+  DeleteTablaComunidad(nombreComunidad){
+    this.BD.DeleteTablaComunidad(nombreComunidad).subscribe();
+  }
+
+
 }
