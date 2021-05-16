@@ -51,6 +51,7 @@ export class ServicesService {
   }
 
   buscadorComunidades(buscarComunidad){
+    console.log("buscador comunidad")
     return this.http.post(`${environment.serverUrl}BuscadorComunidades.php`,JSON.stringify(buscarComunidad));
   }
 
@@ -78,6 +79,9 @@ export class ServicesService {
   DeleteTablaComunidad(nombreComunidad){
     return this.http.post(`${environment.serverUrl}DeleteTablaComunidad.php`,JSON.stringify(nombreComunidad));
 
+  }
+  buscadorComunidadesTag(Buscar){
+    return this.http.post(`${environment.serverUrl}BuscadorComunidadestag.php`,JSON.stringify(Buscar));
   }
 
 }

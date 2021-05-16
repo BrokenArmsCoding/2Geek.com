@@ -19,6 +19,7 @@ export class ComunidadComponent implements OnInit {
   NombreUsuario: String;
 
   nombreComunidad: String;
+  nombreTag: String;
 
 
   DatosComunidad: any = {
@@ -44,7 +45,7 @@ export class ComunidadComponent implements OnInit {
   ngOnInit(): void {
 
     this.Parametros = this.formBuilder.group({
-      nombreComunidad: ['', Validators.required],
+      nombreComunidad: ['', ],
       tag_p: ['',]
     });
 
@@ -92,12 +93,23 @@ export class ComunidadComponent implements OnInit {
   buscarComunidades(){
 
     this.nombreComunidad = this.info.nombreComunidad.value;
+    this.nombreTag = this.info.tag_p.value;
+
+    console.log(this.nombreTag);
+
+    // if(this.nombreTag = 'Accion' || 'Peliculas' || 'Comedia' || 'Peliculas' ||'Anime' ||'Videojuegos' ||'Deporte' ||'Futbol' ||'Badminton'  ||'Basquet'){
+    //   // console.log("asdasd")
+    //   this.BD.buscadorComunidadesTag(this.nombreTag).subscribe(
+    //     result => this.BuscadorComunidades = result
+    //   );
+    // }else{
 
     this.BD.buscadorComunidades(this.nombreComunidad).subscribe(
       result => this.BuscadorComunidades = result
     );
 
   }
+  // }
 
   CrearComunidad(){
 
