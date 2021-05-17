@@ -87,6 +87,9 @@
           <div *ngIf="data.nombre.errors.required">
             Tu comunidad no tiene nombre todavia!
           </div>
+          <div *ngIf="data.nombre.errors.pattern">
+            No se admiten espacios!
+          </div>
         </div>
       </div>
 

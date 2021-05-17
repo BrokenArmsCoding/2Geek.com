@@ -52,9 +52,9 @@ export class ComunidadComponent implements OnInit {
       nombreComunidad: ['', ],
       tag_p: ['',]
     });
-
+// /^\S{0,50}$/    /.*\S.*/
     this.NuevaComunidad = this.formBuilder.group({
-      nombre: ['', Validators.required],
+      nombre: ['', [Validators.required,Validators.pattern("[A-Za-z0-9]+")]],
       mensaje:['', Validators.required],
       tag: ['', Validators.required]
     });
@@ -130,7 +130,7 @@ export class ComunidadComponent implements OnInit {
     this.DatosComunidad.idComunidad;
 
 
-console.log(this.DatosComunidad);
+    console.log(this.DatosComunidad);
 
 
     this.BD.createComunidad(this.DatosComunidad).subscribe(

@@ -14,6 +14,8 @@ export class PerfilComunidadComponent implements OnInit {
 
   NuevoPost: FormGroup;
   PerfilCom: FormGroup;
+
+  Permisos:Number = 4;
   ModoCambio: String = "Posts";
   nombreComunidad: String;
   descripcionComunidad: String;
@@ -61,7 +63,6 @@ export class PerfilComunidadComponent implements OnInit {
 
   Volver(): void {
     this.NuevoPost.reset();
-    this.PerfilCom.reset();
     this.Cambiar_Opcion("Posts");
   }
 
@@ -69,9 +70,6 @@ export class PerfilComunidadComponent implements OnInit {
     return this.NuevoPost.controls;
   }
 
-  get perfildata() {
-    return this.PerfilCom.controls;
-  }
 
   crearPost(){
 
