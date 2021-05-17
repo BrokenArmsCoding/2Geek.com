@@ -102,7 +102,6 @@ export class ServicesService {
     return this.http.post(`${environment.serverUrl}insertTabalUserCreador.php`,JSON.stringify(unirseComunidadDatos));
   }
 
-
   selectUserComunidades(NombreUsuario){
     return this.http.post(`${environment.serverUrl}SelectUserComunidades.php`,JSON.stringify(NombreUsuario));
   }
@@ -125,6 +124,23 @@ export class ServicesService {
 
   selectCount(nombreComunidad){
     return this.http.post(`${environment.serverUrl}CountUsuarios.php`,JSON.stringify(nombreComunidad));
+  }
+
+  selectPermisosUsuario(selectPermisos){
+    return this.http.post(`${environment.serverUrl}SelectPermisosUsuario.php`,JSON.stringify(selectPermisos))
+  }
+
+  updateInfoComunidadUserCom(nuevosDatosComunidad){
+    return this.http.post(`${environment.serverUrl}updateInfoUserCom.php`,JSON.stringify(nuevosDatosComunidad));
+  }
+  updateInfoComunidad(nuevosDatosComunidad){
+    return this.http.post(`${environment.serverUrl}updateComunidad.php`,JSON.stringify(nuevosDatosComunidad));
+  }
+  updateInfoComunidadPost(nuevosDatosComunidad){
+    return this.http.post(`${environment.serverUrl}updatePost.php`,JSON.stringify(nuevosDatosComunidad));
+  }
+  updateInfoComunidadComentarios(nuevosDatosComunidad){
+    return this.http.post(`${environment.serverUrl}updateComentarios.php`,JSON.stringify(nuevosDatosComunidad));
   }
 
   setDatosComunidad(descripcionComunidad,nombreComunidad){

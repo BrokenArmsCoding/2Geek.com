@@ -10,6 +10,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ModificarPerfilComComponent implements OnInit {
 
   PerfilCom: FormGroup;
+
+  NombreUsuario: String;
+  nombreComunidadLS: String;
+  descripcionComunidadLS: String;
+
+  nuevosDatosComunidad: any = {}
+
   constructor(private formBuilder: FormBuilder, private BD: ServicesService) { }
 
   ngOnInit(): void {
@@ -18,6 +25,10 @@ export class ModificarPerfilComComponent implements OnInit {
       nombre: ['', Validators.required],
       mensaje: ['', Validators.required]
     });
+
+    this.NombreUsuario = localStorage.getItem("User");
+    this.nombreComunidadLS = localStorage.getItem("NombreComunidad");
+    this.descripcionComunidadLS = localStorage.getItem("DescripcionComunidad");
   }
   get perfildata() {
     return this.PerfilCom.controls;
@@ -25,6 +36,26 @@ export class ModificarPerfilComComponent implements OnInit {
 
   Volver(): void {
       window.location.reload();
+  }
+
+  updateComunidad(){
+
+    this.nuevosDatosComunidad.nombreviejoComunidad = this.nombreComunidadLS;
+    this.nuevosDatosComunidad.descripcionviejaComunidad = this.descripcionComunidadLS;
+    this.nuevosDatosComunidad.nombreComunidad = this.perfildata.nombre.value;
+    this.nuevosDatosComunidad.descripcionComunidad = this.perfildata.mensaje.value;
+
+    console.log(this.nuevosDatosComunidad);
+
+    this.BD.updateInfoComunidadUserCom(this.nuevosDatosComunidad).subscribe();
+
+    this.BD.updateInfoComunidad(this.nuevosDatosComunidad).subscribe();
+
+    this.BD.updateInfoComunidadPost(this.nuevosDatosComunidad).subscribe();
+
+    this.BD.updateInfoComunidadComentarios(this.nuevosDatosComunidad).subscribe();
+
+
   }
 
 }

@@ -15,7 +15,7 @@ export class PerfilComunidadComponent implements OnInit {
   NuevoPost: FormGroup;
   PerfilCom: FormGroup;
 
-  Permisos:Number = 1;
+  Permisos: Object;
   ModoCambio: String = "Posts";
   nombreComunidad: String;
   descripcionComunidad: String;
@@ -30,6 +30,8 @@ export class PerfilComunidadComponent implements OnInit {
     nombreUsuario: String
 
   }
+
+  SelectPermisos: any = {}
 
   constructor(private formBuilder: FormBuilder, private BD: ServicesService, public router: Router) { }
 
@@ -55,6 +57,7 @@ export class PerfilComunidadComponent implements OnInit {
     });
 
     this.countUsuarios();
+    this.selectPermisosUsuario();
   }
 
   Cambiar_Opcion(op: String): void {
@@ -116,6 +119,7 @@ export class PerfilComunidadComponent implements OnInit {
         this.DeleteInfocomunidad();
 
         this.router.navigate(['/Comunidades']);
+
       } else if (result.isDenied) {
 
       }
@@ -135,5 +139,14 @@ export class PerfilComunidadComponent implements OnInit {
     )
   }
 
+  selectPermisosUsuario(){
+
+    this.SelectPermisos.nombreUsuario = this.NombreUsuario;
+    this.SelectPermisos.nombreComunidad = this.nombreComunidadLS;
+
+    this.BD.selectPermisosUsuario(this.SelectPermisos).subscribe(
+      result => this.Permisos = result
+    );
+  }
 
 }
