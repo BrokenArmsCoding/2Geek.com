@@ -5,11 +5,21 @@
 
     <div class="col-8 col-sm-8 col-md-8 col-lg-8">
 
-      <div></div>
-      <!-- falta el bucle para mostrar los posts, necesito
-           estructura del objeto a usar -->
-      <!------------------------------------------------------------------------------>
-        <app-post></app-post>
+      <div class="card marco_claro mb-3" *ngFor="let post of Posts">
+        <div class="card-header">
+          <p class="card-text float-right">{{post.NomPerfil}}</p>
+
+          <p class="card-text">{{post.NombreComunidad}}</p>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{post.TituloPost}}</h5>
+
+          <p class="card-text">{{post.informacion}}</p>
+
+          <p class="card-text float-right">{{post.fecha_subida}}</p>
+
+        </div>
+      </div>
 
     </div>
 
