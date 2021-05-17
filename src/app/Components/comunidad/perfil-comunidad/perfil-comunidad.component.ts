@@ -33,6 +33,9 @@ export class PerfilComunidadComponent implements OnInit {
 
   selectUsuarios: any = {}
 
+  salirComunidad: any = {}
+
+
   SelectPermisos: any = {}
 
   ExpulsarUsuario: any = {}
@@ -136,6 +139,27 @@ export class PerfilComunidadComponent implements OnInit {
   DeleteInfocomunidad(){
     this.BD.DeleteInfocomunidad(this.nombreComunidadLS).subscribe();
     //this.DeleteTablaComunidad(nombreComunidad);
+  }
+  DejarComunidad(){
+    Swal.fire({
+      title: 'Seguro que salir de la comunidad?',
+      showDenyButton: true,
+      confirmButtonText: `Aceptar`,
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        this.salirComunidad.NombreComunidad = this.nombreComunidadLS;
+        this.salirComunidad.NombreUsuario = this.NombreUsuario;
+        this.BD.dejarComunidad(this.salirComunidad).subscribe();
+
+        this.router.navigate(['/Comunidades']);
+
+      } else if (result.isDenied) {
+
+      }
+    })
+
   }
 
   countUsuarios(){
