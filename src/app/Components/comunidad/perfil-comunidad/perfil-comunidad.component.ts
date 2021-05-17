@@ -14,7 +14,7 @@ export class PerfilComunidadComponent implements OnInit {
 
   NuevoPost: FormGroup;
 
-  Permisos:Number = 4;
+  Permisos:Number = 1;
   ModoCambio: String = "Posts";
   nombreComunidad: String;
   descripcionComunidad: String;
