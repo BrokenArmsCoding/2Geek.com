@@ -16,7 +16,7 @@ require('BD.php');
   $params = json_decode($json);
 
 
-  $resultado = mysqli_query($con, "UPDATE comunidad SET NombreComunidad='$params->nombreComunidad', DescripcionComunidad='$params->descripcionComunidad' WHERE NombreComunidad = '$params->nombreviejoComunidad' AND DescripcionComunidad = '$params->descripcionviejaComunidad'");
+  $resultado = mysqli_query($con, "UPDATE comunidad SET NombreComunidad='$params->nombreComunidad', DescripcionComunidad='$params->descripcionComunidad' WHERE NombreComunidad = '$params->nombreviejoComunidad'");
 
 
   class Result {}

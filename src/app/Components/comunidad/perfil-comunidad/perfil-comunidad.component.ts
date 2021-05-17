@@ -31,7 +31,11 @@ export class PerfilComunidadComponent implements OnInit {
 
   }
 
+  selectUsuarios: any = {}
+
   SelectPermisos: any = {}
+
+  ExpulsarUsuario: any = {}
 
   constructor(private formBuilder: FormBuilder, private BD: ServicesService, public router: Router) { }
 
@@ -57,6 +61,7 @@ export class PerfilComunidadComponent implements OnInit {
     });
 
     this.countUsuarios();
+    this.selectUsuariosGestion();
     this.selectPermisosUsuario();
   }
 
@@ -147,6 +152,33 @@ export class PerfilComunidadComponent implements OnInit {
     this.BD.selectPermisosUsuario(this.SelectPermisos).subscribe(
       result => this.Permisos = result
     );
+  }
+
+  selectUsuariosGestion(){
+    this.BD.selectUsuariosGestion(this.nombreComunidadLS).subscribe(
+      result => this.selectUsuarios = result
+    );
+  }
+
+  expulsarUsuario(nombreUsuario: String){
+
+    this.ExpulsarUsuario.nombreUsuario = nombreUsuario;
+    this.ExpulsarUsuario.nombreComunidad = this.nombreComunidadLS;
+
+    this.BD.expulsarUsuario(this.ExpulsarUsuario).subscribe(
+      datos => {
+        if(datos['response'] == 'OK'){
+          Swal.fire("Expulsado Correctamente a "+ this.ExpulsarUsuario.nombreUsuario);
+          this.refresh;
+        }else{
+          Swal.fire("Unido correctamente ", '');
+        }
+      }
+    )
+
+  }
+  refresh(): void {
+    window.location.reload();
   }
 
 }

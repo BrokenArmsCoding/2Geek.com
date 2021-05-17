@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicesService } from 'src/app/Services/services.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modificar-perfil-com',
@@ -17,7 +18,7 @@ export class ModificarPerfilComComponent implements OnInit {
 
   nuevosDatosComunidad: any = {}
 
-  constructor(private formBuilder: FormBuilder, private BD: ServicesService) { }
+  constructor(private formBuilder: FormBuilder, private BD: ServicesService,public router: Router) { }
 
   ngOnInit(): void {
 
@@ -55,7 +56,9 @@ export class ModificarPerfilComComponent implements OnInit {
 
     this.BD.updateInfoComunidadComentarios(this.nuevosDatosComunidad).subscribe();
 
-
+    this.router.navigate(['/Comunidades']);
   }
+
+
 
 }

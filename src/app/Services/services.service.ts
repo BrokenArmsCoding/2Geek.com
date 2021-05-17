@@ -134,13 +134,21 @@ export class ServicesService {
     return this.http.post(`${environment.serverUrl}updateInfoUserCom.php`,JSON.stringify(nuevosDatosComunidad));
   }
   updateInfoComunidad(nuevosDatosComunidad){
-    return this.http.post(`${environment.serverUrl}updateComunidad.php`,JSON.stringify(nuevosDatosComunidad));
+    return this.http.post(`${environment.serverUrl}UpdateComunidad.php`,JSON.stringify(nuevosDatosComunidad));
   }
   updateInfoComunidadPost(nuevosDatosComunidad){
-    return this.http.post(`${environment.serverUrl}updatePost.php`,JSON.stringify(nuevosDatosComunidad));
+    return this.http.post(`${environment.serverUrl}UpdatePost.php`,JSON.stringify(nuevosDatosComunidad));
   }
   updateInfoComunidadComentarios(nuevosDatosComunidad){
-    return this.http.post(`${environment.serverUrl}updateComentarios.php`,JSON.stringify(nuevosDatosComunidad));
+    return this.http.post(`${environment.serverUrl}UpdateComentarios.php`,JSON.stringify(nuevosDatosComunidad));
+  }
+
+  selectUsuariosGestion(nombreComunidad){
+    return this.http.post(`${environment.serverUrl}SelectUsuariosGestion.php`,JSON.stringify(nombreComunidad))
+  }
+
+  expulsarUsuario(nombreUsuario){
+    return this.http.post(`${environment.serverUrl}ExpulsarUsuario.php`,JSON.stringify(nombreUsuario));
   }
 
   setDatosComunidad(descripcionComunidad,nombreComunidad){
