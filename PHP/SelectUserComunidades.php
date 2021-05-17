@@ -16,7 +16,7 @@ $con=conexion();
 
 $vec = [];
 
-$resultado = mysqli_query($con, "SELECT id_comunidad,NombreComunidad,DescripcionComunidad FROM comunidad WHERE CreadorComunidad = '$params' ");
+$resultado = mysqli_query($con, "SELECT  NombreUsuario,NombreComunidad,DescripcionComunidad FROM `user-comunidad` WHERE NombreUsuario = '$params'");
 
 
 class Result {}

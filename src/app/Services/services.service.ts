@@ -89,6 +89,43 @@ export class ServicesService {
     return this.http.get(`${environment.serverUrl}SelectTodosPosts.php`);
   }
 
+  unirseaComunidad(DatosComunidad){
+    console.log(DatosComunidad);
+    return this.http.post(`${environment.serverUrl}UnirseaComunidad.php`,JSON.stringify(DatosComunidad));
+  }
+
+  insertTabalUserComunidad(unirseComunidadDatos){
+    return this.http.post(`${environment.serverUrl}insertTabalUserComunidad.php`,JSON.stringify(unirseComunidadDatos));
+  }
+
+  insertTabalUserCreador(unirseComunidadDatos){
+    return this.http.post(`${environment.serverUrl}insertTabalUserCreador.php`,JSON.stringify(unirseComunidadDatos));
+  }
+
+
+  selectUserComunidades(NombreUsuario){
+    return this.http.post(`${environment.serverUrl}SelectUserComunidades.php`,JSON.stringify(NombreUsuario));
+  }
+
+  deleteUserComunidades(nombreComunidad){
+    return this.http.post(`${environment.serverUrl}DeleteUserComunidad.php`,JSON.stringify(nombreComunidad));
+  }
+
+  deletePosts(nombreComunidad){
+    return this.http.post(`${environment.serverUrl}DeletePosts.php`,JSON.stringify(nombreComunidad));
+  }
+
+  deleteComentarios(nombreComunidad){
+    return this.http.post(`${environment.serverUrl}DeleteComentarios.php`,JSON.stringify(nombreComunidad));
+  }
+
+  comprobarUnirseComunidad(datoscomprobar){
+    return this.http.post(`${environment.serverUrl}ComprobarUnirseComunidad.php`,JSON.stringify(datoscomprobar));
+  }
+
+  selectCount(nombreComunidad){
+    return this.http.post(`${environment.serverUrl}CountUsuarios.php`,JSON.stringify(nombreComunidad));
+  }
 
   setDatosComunidad(descripcionComunidad,nombreComunidad){
     this.nombreComunidad = nombreComunidad;

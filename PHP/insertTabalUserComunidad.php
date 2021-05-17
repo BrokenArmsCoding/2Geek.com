@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
@@ -14,9 +13,8 @@ $params = json_decode($json);
 $con;
 $con=conexion();
 
-$vec = [];
 
-$resultado = mysqli_query($con, "SELECT id_comunidad,NombreComunidad,DescripcionComunidad FROM comunidad WHERE CreadorComunidad = '$params' ");
+$resultado = mysqli_query($con, "INSERT INTO `user-comunidad` SET NombreUsuario= '$params->nombreUsuario', NombreComunidad= '$params->nombreComunidad', DescripcionComunidad = '$params->descripcionComunidad', Permisos = 2  ");
 
 
 class Result {}
@@ -24,12 +22,19 @@ class Result {}
 
 $response = new Result();
 
-    while ($reg = mysqli_fetch_assoc($resultado)){
 
-    $vec[]=$reg;
+if($resultado) {
 
-  }
-    echo json_encode($vec);
+  $response->response = 'OK';
+
+} else {
+
+  $response->response = 'FAIL';
+
+}
+
+
+  echo json_encode($response);
 
 
 

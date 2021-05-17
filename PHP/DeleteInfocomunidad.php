@@ -15,7 +15,7 @@ $con;
 $con=conexion();
 
 
-$resultado = mysqli_query($con,"DELETE FROM `comunidad` WHERE nombre_comunidad = '$params'");
+$resultado = mysqli_query($con,"DELETE FROM `comunidad` WHERE NombreComunidad = '$params'");
 
  class Result {}
 

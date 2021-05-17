@@ -15,14 +15,14 @@
       <div class="card border-dark">
         <div class="card-body ml-2">
           <div>
-            <p class="card-text d-inline">Comunidad: {{ comunidades.nombre_comunidad }}</p>
+            <p class="card-text d-inline">Comunidad: {{ comunidades.NombreComunidad }}</p>
 
             <a class="card-text d-inline nodec ml-1">{{ Tag2 }}</a>
           </div>
           <div>
-            <p class="card-text mt-3">Descripcion: {{ comunidades.mensaje_comunidad }}</p>
+            <p class="card-text mt-3">Descripcion: {{ comunidades.DescripcionComunidad }}</p>
             <!-- Falta funcion para ir a la comunidad selecionada -->
-            <button class="btn btn-dark float-right busqueda" type="button" (click)="iraComunidad(comunidades.nombre_comunidad,comunidades.mensaje_comunidad)">Ir a la comunidad</button>
+            <button class="btn btn-dark float-right busqueda" type="button" (click)="iraComunidad(comunidades.NombreComunidad,comunidades.DescripcionComunidad)">Ir a la comunidad</button>
           </div>
         </div>
       </div>
@@ -64,12 +64,12 @@
       <div class="card border-dark">
         <div class="card-body ml-2">
           <div class="d-inline">
-            Comunidad: <a class="card-text nodec ml-1"> {{ buscador.nombreComunidad }} </a>
+            Comunidad: <a class="card-text nodec ml-1"> {{ buscador.NombreComunidad }} </a>
             <a class="ml-5 mr-1 nodec">{{ Tag1 }} </a>
-            <i class="card-text nodec ml-5 ">{{ buscador.mensaje_comunidad }}</i>
+            <i class="card-text nodec ml-5 ">{{ buscador.DescripcionComunidad }}</i>
           </div>
           <!-- Falta funcion para unirse a la comunidad selecionada -->
-          <button class="btn btn-dark float-right busqueda" type="button">Unirse a la comunidad</button>
+          <button class="btn btn-dark float-right busqueda" type="button" (click)="unirseComunidad(buscador.NombreComunidad,buscador.DescripcionComunidad)">Unirse a la comunidad</button>
         </div>
       </div>
     </div>

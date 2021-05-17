@@ -16,8 +16,7 @@ $con=conexion();
 
 
 $resultado = mysqli_query($con,"CREATE TABLE $params->nombreComunidad(
-                                IDUsuario VARCHAR (255) NOT NULL PRIMARY KEY,
-                                NickUsuario VARCHAR(255) NOT NULL,
+                                NickUsuario VARCHAR(255) NOT NULL PRIMARY KEY,
                                 Permisos INTEGER(10) NOT NULL)");
 
 class Result {}

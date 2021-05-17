@@ -1,4 +1,5 @@
-<?php 
+  
+<?php
 
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
@@ -7,7 +8,7 @@ header("Allow: GET, POST, OPTIONS, PUT, DELETE");
 
 require("BD.php");
 
-$json = file_get_contents("php://input"); 
+$json = file_get_contents("php://input"); // Esto es un objeto JSON en formato string
 
 $params = json_decode($json);
 
@@ -15,8 +16,8 @@ $con;
 $con=conexion();
 
 
-$resultado = mysqli_query($con, "INSERT INTO comunidad SET CreadorComunidad= '$params->nombreUsuario', NombreComunidad= '$params->nombreComunidad', DescripcionComunidad='$params->descripcionComunidad' ");
 
+$resultado = mysqli_query($con,"SELECT NombreUsuario,NombreComunidad FROM `user-comunidad` WHERE NombreUsuario= '$params->nombreUsuario' AND NombreComunidad = '$params->nombreComunidad'");
 
 class Result {}
 
@@ -24,21 +25,18 @@ class Result {}
 $response = new Result();
 
 
-if($resultado) {
+if($resultado->num_rows == 0 ) {
 
-  $response->response = 'OK';
+    $response->response = 'OK';
 
 } else {
 
-  $response->response = 'FAIL';
+    $response->response = 'FAIL';
 
 }
 
-header('Content-Type: application/json');
 
-  echo json_encode($response);
-
-
+    echo json_encode($response);
 
 
 ?>
