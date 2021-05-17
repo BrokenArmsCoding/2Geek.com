@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { swalProviderToken } from '@sweetalert2/ngx-sweetalert2/lib/di';
 import { ServicesService } from 'src/app/Services/services.service';
 import Swal from 'sweetalert2';
 
@@ -25,7 +27,7 @@ export class PerfilComunidadComponent implements OnInit {
 
   }
 
-  constructor(private formBuilder: FormBuilder, private BD: ServicesService) { }
+  constructor(private formBuilder: FormBuilder, private BD: ServicesService, public router: Router) { }
 
   ngOnInit(): void {
 
@@ -91,7 +93,17 @@ export class PerfilComunidadComponent implements OnInit {
   }
 
   DeleteTablaComunidad(nombreComunidad){
-    this.BD.DeleteTablaComunidad(nombreComunidad).subscribe();
+    this.BD.DeleteTablaComunidad(nombreComunidad).subscribe(
+      datos => {
+        if(datos['response'] == 'OK'){
+          Swal.fire('Eliminado correctamente');
+          this.router.navigate(['/Comunidades']);
+        }else{
+
+        }
+      }
+    );
+
   }
 
 

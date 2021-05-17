@@ -14,8 +14,9 @@ $params = json_decode($json);
 $con;
 $con=conexion();
 
+$vec = [];
 
-$resultado = mysqli_query($con, "INSERT INTO comentarios SET IDPost= '$params->idpost',NombreComunidad = '$params->nombreComunidad' ,Nombre_Post='$params->tituloPost', NombrePerfil= '$params->nombreUsuario', mensaje='$params->comentario' ");
+$resultado = mysqli_query($con, "SELECT NombreComunidad,NomPerfil,fecha_subida,TituloPost,informacion FROM posts ");
 
 
 class Result {}
@@ -23,18 +24,12 @@ class Result {}
 
 $response = new Result();
 
+    while ($reg = mysqli_fetch_assoc($resultado)){
 
-if($resultado) {
+    $vec[]=$reg;
 
-  $response->response = 'OK';
-
-} else {
-
-  $response->response = 'FAIL';
-
-}
-
-  echo json_encode($response);
+  }
+    echo json_encode($vec);
 
 
 

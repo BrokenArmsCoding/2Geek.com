@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
@@ -7,31 +7,29 @@ header("Allow: GET, POST, OPTIONS, PUT, DELETE");
 
 require("BD.php");
 
-$json = file_get_contents("php://input"); 
+$json = file_get_contents("php://input");
 
 $params = json_decode($json);
 
 $con;
 $con=conexion();
 
-$vec = [];
 
-$resultado = mysqli_query($con, "SELECT NombreComunidad,NomPerfil,fecha_subida,TituloPost,informacion,id_post FROM posts WHERE NombreComunidad = '$params' ");
+$resultado = mysqli_query($con,"DELETE FROM comentarios WHERE IDPost = 0");
 
+ class Result {}
 
-class Result {}
+   $response = new Result();
 
+   if($resultado) {
+      $response->response = 'OK';
 
-$response = new Result();
-
-    while ($reg = mysqli_fetch_assoc($resultado)){
-
-    $vec[]=$reg;
-
-  }
-    echo json_encode($vec);
+    } else {
+      $response->response = 'FAIL';
+    }
 
 
+  echo json_encode($response);
 
 
 ?>

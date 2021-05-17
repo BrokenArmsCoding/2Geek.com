@@ -15,7 +15,7 @@ $con;
 $con=conexion();
 
 
-$resultado = mysqli_query($con, "SELECT NombrePerfil,mensaje FROM comentarios WHERE NombreComunidad = '$params'");
+$resultado = mysqli_query($con, "SELECT NombrePerfil,mensaje,Nombre_Post,IDPost FROM comentarios WHERE NombreComunidad = '$params'");
 
 
 class Result {}

@@ -70,6 +70,18 @@ export class ServicesService {
     return this.http.post(`${environment.serverUrl}SelectComentarios.php`,JSON.stringify(nombreComunidad));
   }
 
+  selectIDPost(tituloPost){
+    return this.http.post(`${environment.serverUrl}SelectIDPost.php`,JSON.stringify(tituloPost));
+  }
+
+  deleteComentario0(){
+    return this.http.delete(`${environment.serverUrl}DeteleComentario0.php`);
+  }
+
+  selectTodosPosts(){
+    return this.http.get(`${environment.serverUrl}SelectTodosPosts.php`);
+  }
+
 
   setDatosComunidad(descripcionComunidad,nombreComunidad){
     this.nombreComunidad = nombreComunidad;

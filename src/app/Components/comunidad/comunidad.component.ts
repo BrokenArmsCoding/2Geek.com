@@ -130,16 +130,19 @@ console.log(this.DatosComunidad);
               this.BD.insertTags(this.DatosComunidad).subscribe(
 
               )
+
           Swal.fire("Comunidad Creada ", '');
+          this.refresh();
         }else{
           Swal.fire("Error al crear la comunidad ", '');
         }
       }
     )
 
+  }
 
-
-
+  refresh(): void {
+    window.location.reload();
   }
 
 

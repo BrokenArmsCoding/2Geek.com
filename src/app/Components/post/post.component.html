@@ -28,7 +28,7 @@
       <div class="input-group " [formGroup] = "comentario">
         <input type="text" class="form-control" formControlName="comentario">
         <div class="input-group-append" >
-          <button class="btn btn-dark" type="button" (click)="Comentar(post.TituloPost)">Comentar</button>
+          <button class="btn btn-dark" type="button" (click)='Comentar(post.TituloPost)'>Comentar</button>
         </div>
       </div>
     </div>
@@ -38,8 +38,8 @@
 
 
 <div class="card-body marco_2 mb-2" >
-  <div class="pr-4 pl-3 pre-scrollable" *ngFor="let comentarios of comentariosPost;">
-    <div class="marco_3 mt-2 p-2">
+  <div class="pr-4 pl-3 pre-scrol lable" *ngFor="let comentarios of SelectComentariosDB; ">
+    <div class="marco_3 mt-2 p-2" *ngIf ="comentarios.IDPost == post.id_post">
       <p class="mt-2">
         {{comentarios.NombrePerfil}}
         : {{comentarios.mensaje}}</p>
