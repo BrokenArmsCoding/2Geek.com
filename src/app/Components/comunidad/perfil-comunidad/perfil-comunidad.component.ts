@@ -12,11 +12,12 @@ import Swal from 'sweetalert2';
 })
 export class PerfilComunidadComponent implements OnInit {
 
+  NuevoPost: FormGroup;
+  PerfilCom: FormGroup;
   ModoCambio: String = "Posts";
   nombreComunidad: String;
   descripcionComunidad: String;
   NombreUsuario: String;
-  NuevoPost: FormGroup;
   nombreComunidadLS: String;
   descripcionComunidadLS: String;
 
@@ -45,6 +46,11 @@ export class PerfilComunidadComponent implements OnInit {
       texto: ['', Validators.required]
     });
 
+    this.PerfilCom = this.formBuilder.group({
+      nombre: ['', Validators.required],
+      mensaje: ['', Validators.required]
+    });
+
   }
 
   Cambiar_Opcion(op: String): void {
@@ -53,11 +59,16 @@ export class PerfilComunidadComponent implements OnInit {
 
   Volver(): void {
     this.NuevoPost.reset();
+    this.PerfilCom.reset();
     this.Cambiar_Opcion("Posts");
   }
 
   get infopost() {
     return this.NuevoPost.controls;
+  }
+
+  get perfildata() {
+    return this.PerfilCom.controls;
   }
 
   crearPost(){
@@ -82,9 +93,24 @@ export class PerfilComunidadComponent implements OnInit {
   }
 
   BorrarComunidad(nombreComunidad){
-    this.BD.DeleteTags(nombreComunidad).subscribe();
 
-    this.DeleteInfocomunidad(nombreComunidad);
+    Swal.fire({
+      title: 'Seguro que quieres eliminar la comunidad?',
+      showDenyButton: true,
+      confirmButtonText: `Borrar`,
+      denyButtonText: `No borrar`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.BD.DeleteTags(nombreComunidad).subscribe();
+
+        this.DeleteInfocomunidad(nombreComunidad);
+      } else if (result.isDenied) {
+
+      }
+    })
+
+
   }
 
   DeleteInfocomunidad(nombreComunidad){
