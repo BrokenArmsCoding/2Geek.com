@@ -40,6 +40,10 @@ export class ComunidadComponent implements OnInit {
 
   }
 
+  unirseComunidadDatos: any = {
+
+  }
+
   constructor(private formBuilder: FormBuilder,  private BD: ServicesService,public router: Router) { }
 
   ngOnInit(): void {
@@ -60,7 +64,7 @@ export class ComunidadComponent implements OnInit {
     this.NombreUsuario = localStorage.getItem("User");
 
     this.SelectComunidades();
-
+    this.selectUserComunidad();
   }
 
   get info() {
@@ -132,16 +136,14 @@ console.log(this.DatosComunidad);
     this.BD.createComunidad(this.DatosComunidad).subscribe(
       datos => {
         if(datos['response'] == 'OK'){
-          this.BD.crearTablaComunidad(this.DatosComunidad).subscribe(
-
-            );
             this.BD.insertCreadorTablaComunidad(this.DatosComunidad).subscribe(
 
               );
 
-              this.BD.insertTags(this.DatosComunidad).subscribe(
+              this.BD.insertTags(this.DatosComunidad).subscribe()
 
-              )
+              this.BD.insertTabalUserCreador(this.DatosComunidad).subscribe()
+
 
           Swal.fire("Comunidad Creada ", '');
           this.refresh();
@@ -157,7 +159,35 @@ console.log(this.DatosComunidad);
     window.location.reload();
   }
 
+  unirseComunidad(nombreComundad: String, DescripcionComunidad: String){
 
+    this.unirseComunidadDatos.nombreComunidad = nombreComundad;
+    this.unirseComunidadDatos.nombreUsuario = this.NombreUsuario;
+    this.unirseComunidadDatos.descripcionComunidad = DescripcionComunidad;
+
+    console.log(this.unirseComunidadDatos);
+
+    this.BD.comprobarUnirseComunidad(this.unirseComunidadDatos).subscribe(
+      datos => {
+        if(datos['response'] == 'FAIL'){
+          Swal.fire("Error al unirse a la comunidad ", '');
+        }else{
+          this.BD.insertTabalUserComunidad(this.unirseComunidadDatos).subscribe();
+          Swal.fire("Unido correctamente ", '');
+          //this.refresh();
+        }
+      }
+    );
+  }
+
+  selectUserComunidad(){
+    this.BD.selectUserComunidades(this.NombreUsuario).subscribe(
+      result => this.SelectComunidad = result
+    );
+  }
+  selectTodasComunidades(){
+
+  }
 
 
 }

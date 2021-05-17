@@ -20,6 +20,7 @@ export class PerfilComunidadComponent implements OnInit {
   NombreUsuario: String;
   nombreComunidadLS: String;
   descripcionComunidadLS: String;
+  numUsuarios: Object;
 
   datosPost: any ={
     titulo: String,
@@ -51,6 +52,7 @@ export class PerfilComunidadComponent implements OnInit {
       mensaje: ['', Validators.required]
     });
 
+    this.countUsuarios();
   }
 
   Cambiar_Opcion(op: String): void {
@@ -92,7 +94,7 @@ export class PerfilComunidadComponent implements OnInit {
 
   }
 
-  BorrarComunidad(nombreComunidad){
+  BorrarComunidad(){
 
     Swal.fire({
       title: 'Seguro que quieres eliminar la comunidad?',
@@ -102,9 +104,20 @@ export class PerfilComunidadComponent implements OnInit {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        this.BD.DeleteTags(nombreComunidad).subscribe();
 
-        this.DeleteInfocomunidad(nombreComunidad);
+        console.log(this.nombreComunidadLS);
+
+        this.BD.DeleteTags(this.nombreComunidadLS).subscribe();
+
+        this.BD.deleteUserComunidades(this.nombreComunidadLS).subscribe();
+
+        this.BD.deletePosts(this.nombreComunidadLS).subscribe();
+
+        this.BD.deleteComentarios(this.nombreComunidadLS).subscribe();
+
+        this.DeleteInfocomunidad();
+
+        this.router.navigate(['/Comunidades']);
       } else if (result.isDenied) {
 
       }
@@ -113,23 +126,15 @@ export class PerfilComunidadComponent implements OnInit {
 
   }
 
-  DeleteInfocomunidad(nombreComunidad){
-    this.BD.DeleteInfocomunidad(nombreComunidad).subscribe();
-    this.DeleteTablaComunidad(nombreComunidad);
+  DeleteInfocomunidad(){
+    this.BD.DeleteInfocomunidad(this.nombreComunidadLS).subscribe();
+    //this.DeleteTablaComunidad(nombreComunidad);
   }
 
-  DeleteTablaComunidad(nombreComunidad){
-    this.BD.DeleteTablaComunidad(nombreComunidad).subscribe(
-      datos => {
-        if(datos['response'] == 'OK'){
-          Swal.fire('Eliminado correctamente');
-          this.router.navigate(['/Comunidades']);
-        }else{
-
-        }
-      }
-    );
-
+  countUsuarios(){
+    this.BD.selectCount(this.nombreComunidadLS).subscribe(
+      result => this.numUsuarios = result[0]
+    )
   }
 
 

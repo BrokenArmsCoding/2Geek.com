@@ -16,7 +16,7 @@ $con=conexion();
 
 $vec = [];
 
-$resultado = mysqli_query($con, "SELECT nombre_comunidad,mensaje_comunidad FROM comunidad WHERE nombre_comunidad LIKE '%$params%'");
+$resultado = mysqli_query($con, "SELECT NombreComunidad,DescripcionComunidad FROM comunidad WHERE NombreComunidad LIKE '%$params%'");
 
 
 

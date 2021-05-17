@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
@@ -7,31 +7,30 @@ header("Allow: GET, POST, OPTIONS, PUT, DELETE");
 
 require("BD.php");
 
-$json = file_get_contents("php://input"); 
+$json = file_get_contents("php://input");
 
 $params = json_decode($json);
 
 $con;
 $con=conexion();
 
-$vec = [];
 
-$resultado = mysqli_query($con, "SELECT id_comunidad,NombreComunidad,DescripcionComunidad FROM comunidad WHERE CreadorComunidad = '$params' ");
+$resultado = mysqli_query($con,"DELETE FROM `user-comunidad` WHERE NombreComunidad = '$params'");
 
+ class Result {}
 
-class Result {}
+   $response = new Result();
 
+   if($resultado) {
+      $response->response = 'OK';
 
-$response = new Result();
+    } else {
+      $response->response = 'FAIL';
+    }
 
-    while ($reg = mysqli_fetch_assoc($resultado)){
+     header('Content-Type: application/json');
 
-    $vec[]=$reg;
-
-  }
-    echo json_encode($vec);
-
-
+  echo json_encode($response);
 
 
 ?>
