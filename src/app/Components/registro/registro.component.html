@@ -1,6 +1,6 @@
 <div class="container-fluid">
 
-  <form [formGroup]="Usuario" (ngSubmit)="Data_Check()" class="m-4 pt-3 pr-3 pl-3 pb-1 rounded">
+  <form [formGroup]="Usuario" (ngSubmit)="Crear_Perfil()" class="m-4 pt-3 pr-3 pl-3 pb-1 rounded">
 
     <!-- Nombre -->
     <div class="form-group">
@@ -24,14 +24,14 @@
       </div>
     </div>
 
-    <!-- Fecha Nazimiento -->
+    <!-- Fecha Nacimiento -->
     <div class="form-group">
-      <p>Fecha de Nazimiento</p>
-      <input type="date" formControlName="fecha_nazimiento" class="form-control"
-        [ngClass]="{'is-invalid': Data.fecha_nazimiento.touched && Data.fecha_nazimiento.errors}">
+      <p>Fecha de Nacimiento</p>
+      <input type="date" formControlName="fecha_nacimiento" class="form-control"
+        [ngClass]="{'is-invalid': Data.fecha_nacimiento.touched && Data.fecha_nacimiento.errors}">
 
-      <div *ngIf="Data.fecha_nazimiento.touched && Data.fecha_nazimiento.errors" class="invalid-feedback">
-        <div *ngIf="Data.fecha_nazimiento.errors.required">El campo Fecha esta vacio!!</div>
+      <div *ngIf="Data.fecha_nacimiento.touched && Data.fecha_nacimiento.errors" class="invalid-feedback">
+        <div *ngIf="Data.fecha_nacimiento.errors.required">El campo Fecha esta vacio!!</div>
       </div>
     </div>
 
@@ -50,12 +50,12 @@
     <!-- Correo -->
     <div class="form-group">
       <p>Correo</p>
-      <input type="email" placeholder="Entra tu correo" formControlName="correo" class="form-control"
-        [ngClass]="{'is-invalid': Data.correo.touched && Data.correo.errors}">
+      <input type="email" placeholder="Entra tu correo" formControlName="email" class="form-control"
+        [ngClass]="{'is-invalid': Data.email.touched && Data.email.errors}">
 
-      <div *ngIf="Data.correo.touched && Data.correo.errors" class="invalid-feedback">
-        <div *ngIf="Data.correo.errors.required">El campo Correo esta vacio!!</div>
-        <div *ngIf="Data.correo.errors.email">Escribe el formato adecuado de correo</div>
+      <div *ngIf="Data.email.touched && Data.email.errors" class="invalid-feedback">
+        <div *ngIf="Data.email.errors.required">El campo Correo esta vacio!!</div>
+        <div *ngIf="Data.email.errors.email">Escribe el formato adecuado de correo</div>
       </div>
     </div>
 

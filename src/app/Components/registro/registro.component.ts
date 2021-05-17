@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Comprobacion } from './Contra_Repetida';
 import { Router } from '@angular/router';
+import { ServicesService } from 'src/app/Services/services.service';
+import Swal from 'sweetalert2';
 //import Swal from 'sweetalert2';
 
 @Component({
@@ -14,16 +16,20 @@ export class RegistroComponent implements OnInit {
 
   Usuario: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,public router: Router) { }
+  DatosUsuario : {
+
+  }
+
+  constructor(private formBuilder: FormBuilder,public router: Router, private BD: ServicesService) { }
 
   ngOnInit(): void {
 
     this.Usuario = this.formBuilder.group({
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
-      fecha_nazimiento: ['', Validators.required],
+      fecha_nacimiento: ['', Validators.required],
       nick: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9_]+')]],
-      correo: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email]],
       cont: ['', Validators.required],
       rep_cont: ['', Validators.required]
     }, {
@@ -40,8 +46,38 @@ export class RegistroComponent implements OnInit {
     this.router.navigate(['Login']);
   }
 
-  Data_Check(){
 
+  Crear_Perfil(){
+
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "¡ Estos son los datos con los que crearas el perfil !",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#4a4a50',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, crear!'
+
+    }).then((result) => {
+
+      if (result.isConfirmed == true) {
+
+
+    this.BD.createPerfil(this.Usuario.getRawValue()).subscribe(
+
+      datos => {
+        console.log(this.Usuario);
+        if (datos['response'] == 'OK') {
+          Swal.fire('Creado', '');
+
+        } else if (datos['response'] == 'FAIL'){
+          Swal.fire('Usuario ya existe', '');
+        }
+      }
+    );
+      }
+    })
   }
-
 }
+
+

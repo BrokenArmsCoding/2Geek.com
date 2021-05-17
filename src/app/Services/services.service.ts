@@ -25,6 +25,4 @@ export class ServicesService {
     return this.http.post(`${environment.serverUrl}LoginUsuario.php`,JSON.stringify(usuario));
   }
 
-
-
 }
