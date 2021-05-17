@@ -24,5 +24,13 @@ export class ServicesService {
     console.log(usuario);
     return this.http.post(`${environment.serverUrl}LoginUsuario.php`,JSON.stringify(usuario));
   }
+  GetUsuario(NombreUsuario){
+    return this.http.post(`${environment.serverUrl}GetUsuario.php`, JSON.stringify(NombreUsuario));
+  }
+  UpdatePerfil(usuario){
+    console.log(usuario);
+    return this.http.post(`${environment.serverUrl}UpdatePerfil.php`,JSON.stringify(usuario))
+
+  }
 
 }

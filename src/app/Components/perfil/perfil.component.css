@@ -1,0 +1,50 @@
+.marco{
+  background-color: white;
+  margin-top: 100px;
+  border-radius: 4px;
+}
+
+.img_perfil{
+  padding: 15px;
+  height: 150px;
+  width: 150px;
+  border-radius: 95%;
+  background-size:contain;
+  background-origin:padding-box;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 5px solid #000000;
+}
+
+.sep_left{
+  margin-left: 30%;
+  margin-top: 5%;
+}
+
+.sep_right{
+  margin-right: 30%;
+  margin-top: 5%;
+}
+
+.sep_text{
+  padding-bottom:1rem;
+}
+
+.btn {
+  flex: 1;
+  background-color: #1D1F1E;
+  color: white;
+}
+
+.btn:enabled:hover{
+  color:#00FF84;
+}
+
+.btn-group {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.col.perf{
+  margin-left: 12%;
+}

@@ -12,6 +12,8 @@ import { PaginaInicioComponent } from './Components/pagina-inicio/pagina-inicio.
 import { PostComponent } from './Components/post/post.component';
 import { RegistroComponent } from './Components/registro/registro.component';
 import { PerfilComponent } from './Components/perfil/perfil.component';
+import { PerfilEditarComponent } from './Components/perfil/perfil-editar/perfil-editar.component';
+import { PerfilContraComponent } from './Components/perfil/perfil-contra/perfil-contra.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 
@@ -24,7 +26,9 @@ import { ShowHidePasswordModule } from 'ngx-show-hide-password';
     PaginaInicioComponent,
     PostComponent,
     RegistroComponent,
-    PerfilComponent
+    PerfilComponent,
+    PerfilEditarComponent,
+    PerfilContraComponent
   ],
   imports: [
     BrowserModule,

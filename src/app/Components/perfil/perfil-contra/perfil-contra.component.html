@@ -1,0 +1,84 @@
+<form class="form" [formGroup]="PerfilCont" (ngSubmit)="Cambiar_Contra()">
+
+  <div class="form-group pr-5 pl-5">
+
+    <p>Entra tu contraseña Actual</p>
+
+    <div class="input-group">
+
+      <input class="form-control" type="password" id="cont_act" formControlName="cont"
+        placeholder="Entra tu contraseña Actual"
+        [ngClass]="{'is-invalid': perfdata.cont.touched && perfdata.cont.errors}" showHideInput>
+
+      <div class="input-group-append ngx-show-hide-password">
+
+        <button class="btn btn-outline-dark" type="button" showHideTrigger="cont_act">
+          <i class="fa" [showHideStatus]="{show: 'fa-eye', hide: 'fa-eye-slash', id: 'cont_act'}"></i>
+        </button>
+
+      </div>
+
+      <div *ngIf="perfdata.cont.touched && perfdata.cont.errors" class="invalid-feedback">
+        <div *ngIf="perfdata.cont.errors.required">El campo esta vacio !!</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="form-group pr-5 pl-5">
+
+    <p>Entra tu Nueva contraseña</p>
+
+    <div class="input-group">
+
+      <input class="form-control" type="password" id="cont_new" formControlName="new_cont"
+        placeholder="Entra tu Nueva contraseña"
+        [ngClass]="{'is-invalid': perfdata.new_cont.touched && perfdata.new_cont.errors}" showHideInput>
+
+      <div class="input-group-append ngx-show-hide-password">
+
+        <button class="btn btn-outline-dark" type="button" showHideTrigger="cont_new">
+          <i class="fa" [showHideStatus]="{show: 'fa-eye', hide: 'fa-eye-slash', id: 'cont_new'}"></i>
+        </button>
+
+      </div>
+
+      <div *ngIf="perfdata.new_cont.touched && perfdata.new_cont.errors" class="invalid-feedback">
+        <div *ngIf="perfdata.new_cont.errors.required">El campo esta vacio !!</div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="form-group pr-5 pl-5">
+
+    <p>Repite tu nueva contraseña</p>
+
+    <div class="input-group">
+
+      <input class="form-control" type="password" id="rep_new_cont" formControlName="rep_cont"
+        placeholder="Repite tu contraseña"
+        [ngClass]="{'is-invalid': perfdata.rep_cont.touched && perfdata.rep_cont.errors}" showHideInput>
+
+      <div class="input-group-append ngx-show-hide-password">
+
+        <button class="btn btn-outline-dark" type="button" showHideTrigger="rep_new_cont">
+          <i class="fa" [showHideStatus]="{show: 'fa-eye', hide: 'fa-eye-slash', id: 'rep_new_cont'}"></i>
+        </button>
+
+      </div>
+
+      <div *ngIf="perfdata.rep_cont.touched && perfdata.rep_cont.errors" class="invalid-feedback">
+        <div *ngIf="perfdata.rep_cont.errors.required">El campo esta vacio !!</div>
+        <div *ngIf="perfdata.rep_cont.errors.Comprobacion"> La contraseña no coincide</div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <button class="btn btn-dark ml-5 mt-2 mb-3" type="submit" [disabled]="PerfilCont.invalid">Cambiar Contraseña</button>
+  <button class="btn btn-dark ml-5 mt-2 mb-3" type="button" (click)="UpdateCont()">Cancelar</button>
+
+</form>
