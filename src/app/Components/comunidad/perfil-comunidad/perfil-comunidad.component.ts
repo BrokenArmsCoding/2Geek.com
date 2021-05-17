@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 export class PerfilComunidadComponent implements OnInit {
 
   NuevoPost: FormGroup;
-  PerfilCom: FormGroup;
+
   ModoCambio: String = "Posts";
   nombreComunidad: String;
   descripcionComunidad: String;
@@ -46,11 +46,6 @@ export class PerfilComunidadComponent implements OnInit {
       texto: ['', Validators.required]
     });
 
-    this.PerfilCom = this.formBuilder.group({
-      nombre: ['', Validators.required],
-      mensaje: ['', Validators.required]
-    });
-
   }
 
   Cambiar_Opcion(op: String): void {
@@ -59,7 +54,6 @@ export class PerfilComunidadComponent implements OnInit {
 
   Volver(): void {
     this.NuevoPost.reset();
-    this.PerfilCom.reset();
     this.Cambiar_Opcion("Posts");
   }
 
@@ -67,9 +61,6 @@ export class PerfilComunidadComponent implements OnInit {
     return this.NuevoPost.controls;
   }
 
-  get perfildata() {
-    return this.PerfilCom.controls;
-  }
 
   crearPost(){
 

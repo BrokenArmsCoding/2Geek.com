@@ -126,7 +126,7 @@ export class ComunidadComponent implements OnInit {
     this.DatosComunidad.idComunidad;
 
 
-console.log(this.DatosComunidad);
+    console.log(this.DatosComunidad);
 
 
     this.BD.createComunidad(this.DatosComunidad).subscribe(
@@ -156,8 +156,5 @@ console.log(this.DatosComunidad);
   refresh(): void {
     window.location.reload();
   }
-
-
-
 
 }

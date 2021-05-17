@@ -1,0 +1,25 @@
+<form class="marco_oscuro mt-3 p-3 rounded" [formGroup]="PerfilCom" method="POST">
+
+  <div class="form-group mt-2">
+    <p class="text-light">Titulo</p>
+    <input type="text" formControlName="nombre" class="form-control"
+     [ngClass]="{'is-invalid': perfildata.nombre.touched && perfildata.nombre.errors}">
+
+    <div *ngIf="perfildata.nombre.touched && perfildata.nombre.errors" class="invalid-feedback">
+      <div *ngIf="perfildata.nombre.errors.required">El campo esta vacio!</div>
+    </div>
+  </div>
+
+  <div class="form-group mt-2">
+    <p class="text-light">Texto</p>
+    <textarea class="form-control" formControlName="mensaje" rows="3"
+      [ngClass]="{'is-invalid': perfildata.mensaje.touched && perfildata.mensaje.errors}"></textarea>
+
+    <div *ngIf="perfildata.mensaje.touched && perfildata.mensaje.errors" class="invalid-feedback">
+      <div *ngIf="perfildata.mensaje.errors.required">El campo esta vacio!</div>
+    </div>
+  </div>
+    <!-- Falta funcion para cambiar cosas de la comuniad -->
+  <button class="btn btn-light text-dark mt-3 mr-4" type="submit" [disabled]="PerfilCom.invalid">Subir Cambios</button>
+  <button class="btn btn-light text-dark mt-3" type="button" (click)='Volver()'>Cancelar</button>
+</form>
