@@ -20,13 +20,17 @@
         </div>
 
         <div class="row mt-3 mb-3">
-          <div *ngIf="Permisos == 3">
+          <div *ngIf="Permisos == 3 || Permisos == 4">
             <div class="col pt-3">
               <button class="btn btn-light mt-2" type="button" (click)='Cambiar_Opcion("VerLista")'>Ver Miembros</button>
-              <button class="btn btn-light float-right mt-2 ml-5" type="button" (click)='Cambiar_Opcion("Crear")'>Crear Post</button>
+              <div *ngIf="Permisos == 3">
+              <button  class="btn btn-light float-right mt-2 ml-5" type="button" (click)='Cambiar_Opcion("Crear")'>Crear Post</button>
             </div>
+          </div>
             <div class="col pt-3">
+              <div *ngIf="Permisos == 3">
               <button class="btn btn-light mt-2" type="button">Dejar Comunidad</button>
+            </div>
             </div>
           </div>
 
