@@ -7,12 +7,14 @@ import { PaginaInicioComponent } from './Components/pagina-inicio/pagina-inicio.
 import { PostComponent } from './Components/post/post.component';
 import { RegistroComponent } from './Components/registro/registro.component';
 import { PerfilComponent } from './Components/perfil/perfil.component';
+import { PerfilComunidadComponent } from './Components/comunidad/perfil-comunidad/perfil-comunidad.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'Login'},
   { path: 'Login', component: LoginComponent},
-  { path: 'comunidad', component: ComunidadComponent},
-  { path: 'header', component: HeaderComponent},
+  { path: 'Comunidades', component: ComunidadComponent},
+  { path: 'PerfilComponente', component: PerfilComunidadComponent},
+  { path: 'Header', component: HeaderComponent},
   { path: 'PaginaInicio', component: PaginaInicioComponent},
   { path: 'Perfil', component: PerfilComponent},
   { path: 'Post', component: PostComponent},

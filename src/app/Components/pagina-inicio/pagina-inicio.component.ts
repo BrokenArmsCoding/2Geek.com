@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServicesService } from 'src/app/Services/services.service';
 
 @Component({
   selector: 'app-pagina-inicio',
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaginaInicioComponent implements OnInit {
 
-  constructor() { }
+  Posts: any = {
+    nombrePost: String,
+    descipcionPost: String,
+    fechaPost: String,
+    UsuarioPost: String,
+    nombreUsuario: String,
+    idPost: String
+  }
+
+
+  constructor(private BD: ServicesService) { }
 
   ngOnInit(): void {
+    this.SelectPosts();
+  }
+
+  SelectPosts(){
+    this.BD.selectTodosPosts().subscribe(
+      result => this.Posts = result
+    );
+
   }
 
 }

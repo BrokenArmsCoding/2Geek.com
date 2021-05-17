@@ -1,0 +1,165 @@
+<app-header></app-header>
+<div class="container-fluid sep">
+
+  <div class="row ml-3">
+
+    <div class="col-4 rounded marco_oscuro sticky-top">
+
+      <div class="mt-3">
+        <p>{{nombreComunidadLS}}</p>
+
+        <p>{{descripcionComunidadLS}}</p>
+
+        <p>Miembros Comunidad ( 200 )</p>
+
+        <div class="border_v mt-4 mb-3 p-2">
+          <p><iframe src="https://discord.com/widget?id=772843749372985385&theme=dark" width="100%" height="450"
+              allowtransparency="true" frameborder="0"
+              sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+            </iframe></p>
+        </div>
+
+        <div class="row mt-3 mb-3">
+          <!-- <div *ngIf=""> Condicion solo usuarios normales -->
+
+          <!-- <div class="col pt-3">
+            <button class="btn btn-light" type="button" (click)='Cambiar_Opcion("VerLista")'>Ver Miembros</button>
+            <button class="btn btn-light mt-3" type="button" (click)='Cambiar_Opcion("Crear")'>Crear Post</button>
+            <button class="btn btn-light mt-3" type="button">Dejar Comunidad</button>
+          </div>
+          <div class="col pt-3">
+          </div> -->
+
+          <!-- <div *ngIf=""></div>  Condicion solo para creador y moderador -->
+          <div class="col pt-3">
+            <button class="btn btn-light float-right" type="button" (click)='Cambiar_Opcion("Gestionar")'>Gestionar
+              Miembros</button>
+            <button class="btn btn-light float-right mt-4 pl-5 pr-5" type="button"
+              (click)='Cambiar_Opcion("Crear")'>Crear Post</button>
+          </div>
+          <div class="col pt-3">
+            <button class="btn btn-light" type="button" (click)='Cambiar_Opcion("Modificar")'>Modificar
+              Comunidad</button>
+            <!-- <div *ngIf=""></div>  Condicion solo para creador -->
+            <button class="btn btn-light mt-4" type="button" (click)='BorrarComunidad(nombreComunidad)'>Eliminar
+              Comunidad</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-8 mt-n3">
+      <div *ngIf='ModoCambio == "Posts"'>
+        <app-post></app-post>
+      </div>
+
+      <!-- Esto es de los usuarios basicos para ver la lista de gente -->
+      <div *ngIf='ModoCambio == "VerLista"'>
+          <ul class="list-group mt-3"> <!--  Condicion *ngFor que le paseis la lista de usuarios -->
+            <li class="list-group-item">
+              <p class="d-inline ml-5">Nombre Usuario</p>
+            </li>
+          </ul>
+      </div>
+
+      <div *ngIf='ModoCambio == "Crear"'>
+
+        <form class="marco_oscuro mt-4 p-3 rounded" [formGroup]="NuevoPost" method="POST">
+
+          <div class="form-group mt-2">
+
+            <p class="text-light">Titulo</p>
+            <input type="text" placeholder="Entra un titulo para tu Post" formControlName="titulo" class="form-control"
+              [ngClass]="{'is-invalid': infopost.titulo.touched && infopost.titulo.errors}">
+
+            <div *ngIf="infopost.titulo.touched && infopost.titulo.errors" class="invalid-feedback">
+              <div *ngIf="infopost.titulo.errors.required">El campo Nick esta vacio!!</div>
+            </div>
+
+          </div>
+
+
+          <div class="form-group mt-2">
+
+            <p class="text-light">Texto</p>
+            <textarea class="form-control" formControlName="texto" rows="5"
+              [ngClass]="{'is-invalid': infopost.texto.touched && infopost.texto.errors}"></textarea>
+
+            <div *ngIf="infopost.texto.touched && infopost.texto.errors" class="invalid-feedback">
+              <div *ngIf="infopost.texto.errors.required">Necesitas escribir algo para tu post</div>
+            </div>
+
+          </div>
+
+          <button class="btn btn-light text-dark mt-3 mr-4" type="submit" [disabled]="NuevoPost.invalid"
+            (click)=" crearPost()">Subir
+            Post</button>
+          <button class="btn btn-light text-dark mt-3" type="button" (click)='Volver()'>Cancelar</button>
+        </form>
+      </div>
+
+      <div *ngIf='ModoCambio == "Modificar"'>
+
+        <form class="marco_oscuro mt-3 p-3 rounded" [formGroup]="PerfilCom" method="POST">
+
+          <div class="form-group mt-2">
+            <p class="text-light">Titulo</p>
+            <input type="text" formControlName="nombre" class="form-control"
+             [ngClass]="{'is-invalid': perfildata.nombre.touched && perfildata.nombre.errors}">
+
+            <div *ngIf="perfildata.nombre.touched && perfildata.nombre.errors" class="invalid-feedback">
+              <div *ngIf="perfildata.nombre.errors.required">El campo esta vacio!</div>
+            </div>
+          </div>
+
+          <div class="form-group mt-2">
+            <p class="text-light">Texto</p>
+            <textarea class="form-control" formControlName="mensaje" rows="3"
+              [ngClass]="{'is-invalid': perfildata.mensaje.touched && perfildata.mensaje.errors}"></textarea>
+
+            <div *ngIf="perfildata.mensaje.touched && perfildata.mensaje.errors" class="invalid-feedback">
+              <div *ngIf="perfildata.mensaje.errors.required">El campo esta vacio!</div>
+            </div>
+          </div>
+            <!-- Falta funcion para cambiar cosas de la comuniad -->
+          <button class="btn btn-light text-dark mt-3 mr-4" type="submit" [disabled]="PerfilCom.invalid">Subir Cambios</button>
+          <button class="btn btn-light text-dark mt-3" type="button" (click)='Volver()'>Cancelar</button>
+        </form>
+      </div>
+
+      <div *ngIf='ModoCambio == "Gestionar" || "Gestionar_P"'>
+
+        <div *ngIf='ModoCambio == "Gestionar"'>
+          <ul class="list-group mt-3"> <!--  Condicion *ngFor que le paseis la lista de usuarios -->
+            <li class="list-group-item">
+              <p class="d-inline ml-5">Nombre Usuario</p>
+              <button class="btn btn-dark d-inline sep mt-1" type="button"
+                (click)='Cambiar_Opcion("Gestionar_P")'>Permisos</button> <!-- Podeis poner mas de una funcion -->
+              <button class="btn btn-dark d-inline sep mt-1" type="button">Expulsar</button>
+            </li>
+          </ul>
+        </div>
+
+        <div *ngIf='ModoCambio == "Gestionar_P"'>
+          <!-- Neceitareis guardar el id usuario escogido o algo aqui-->
+          <ul class="list-group mt-3">
+            <li class="list-group-item">
+              <p class="">Nombre Usuario</p>
+              <!-- Añadid funcion para mas permisos y dejad la funcion de 'cambiar opcion' para volver atras  -->
+              <button class="btn btn-dark d-inline sep2 mt-1" type="button"
+                (click)='Cambiar_Opcion("Gestionar")'>Menos permisos</button>
+                <button class="btn btn-dark d-inline sep2 mt-1" type="button"
+                (click)='Cambiar_Opcion("Gestionar")'>Mas permisos</button>
+                 <!--Opcion solo para el lider -->
+              <button class="btn btn-dark d-inline sep2 mt-1" type="button"
+              (click)='Cambiar_Opcion("Gestionar")'>Ascender a Lider</button>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>

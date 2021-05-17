@@ -1,8 +1,129 @@
-
 <app-header></app-header>
+<div class="container-fluid sep">
+  <div class="btn-group d-flex border border-dark rounded">
 
-<div class="container-fluid">
+    <button type="button" class="btn btn-light w-100 sp_btt" (click)='Cambiar_Opcion("MisCom")'>Mis Comunidades</button>
+    <button type="button" class="btn btn-light w-100 sp_btt" (click)='Cambiar_Opcion("Busqueda")'>Buscar
+      Comunidad</button>
+    <button type="button" class="btn btn-light w-100 sp_btt" (click)='Cambiar_Opcion("CreaCom")'>Crear
+      Comunidad</button>
+  </div>
+
+  <div *ngIf="Opcion_Selec == 'MisCom'">
+    <!-- Bucle que muestre solo las comunidades en las que esta el usuario -->
+    <div class="marco_claro mt-5" *ngFor="let comunidades of SelectComunidad">
+      <div class="card border-dark">
+        <div class="card-body ml-2">
+          <div>
+            <p class="card-text d-inline">Comunidad: {{ comunidades.nombre_comunidad }}</p>
+
+            <a class="card-text d-inline nodec ml-1">{{ Tag2 }}</a>
+          </div>
+          <div>
+            <p class="card-text mt-3">Descripcion: {{ comunidades.mensaje_comunidad }}</p>
+            <!-- Falta funcion para ir a la comunidad selecionada -->
+            <button class="btn btn-dark float-right busqueda" type="button" (click)="iraComunidad(comunidades.nombre_comunidad,comunidades.mensaje_comunidad)">Ir a la comunidad</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
+  <div *ngIf="Opcion_Selec == 'Busqueda'">
+    <!-- Faltara funcion (click) para recojer los datos y enviarlos para el select -->
+    <form class="mt-4 p-3 rounded Busq" [formGroup]="Parametros" method="POST">
+      <div class="form-group">
+        <input type="text" class="form-control rounded w-100 border border-dark mb-2 p-1"
+          formControlName="nombreComunidad" placeholder="Introduce el nombre de la comunidad"
+          [ngClass]="{'is-invalid': info.nombreComunidad.touched && info.nombreComunidad.errors}" />
+      </div>
+
+      <div class="form-group">
+        <select class="custom-select form-control border border-dark" formControlName="tag_p"
+          [ngClass]="{ 'is-invalid': info.tag_p.touched && info.tag_p.errors }">
+          <option selected></option>
+          <option value="Accion">Accion</option>
+          <option value="Comedia">Comedia</option>
+          <option value="Peliculas">Peliculas</option>
+          <option value="Anime">Anime</option>
+          <option value="Videojuegos">Videojuegos</option>
+          <option value="Deporte">Deporte</option>
+          <option value="Futbol">Futbol</option>
+          <option value="Badminton">Badminton</option>
+          <option value="Basquet">Basquet</option>
+        </select>
+      </div>
+
+      <button type="submit" [disabled]="Parametros.invalid" class="btn btn-dark busqueda" (click)="buscarComunidades()">
+        Buscar</button>
+    </form>
+
+    <!-- Bucle que busque segun lo selecionado, de predetermiando que salgan todas las comunidades -->
+    <div class="marco_claro mt-5" *ngFor="let buscador of BuscadorComunidades">
+      <div class="card border-dark">
+        <div class="card-body ml-2">
+          <div class="d-inline">
+            Comunidad: <a class="card-text nodec ml-1"> {{ buscador.nombreComunidad }} </a>
+            <a class="ml-5 mr-1 nodec">{{ Tag1 }} </a>
+            <i class="card-text nodec ml-5 ">{{ buscador.mensaje_comunidad }}</i>
+          </div>
+          <!-- Falta funcion para unirse a la comunidad selecionada -->
+          <button class="btn btn-dark float-right busqueda" type="button">Unirse a la comunidad</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="Opcion_Selec == 'CreaCom'">
+    <!-- Faltara funcion (click) para recojer los datos y enviarlos para al insertar -->
+    <form class="mt-5 p-4 Crea rounded" [formGroup]="NuevaComunidad" method="POST">
+      <div class="form-group">
+        <lablel>Nombre Comunidad</lablel>
+        <input type="text" placeholder="Escribe un nombre para tu Comunidad" formControlName="nombre"
+          class="form-control border border-dark" [ngClass]="{'is-invalid': data.nombre.touched && data.nombre.errors}" />
+
+        <div *ngIf="data.nombre.touched && data.nombre.errors" class="invalid-feedback">
+          <div *ngIf="data.nombre.errors.required">
+            Tu comunidad no tiene nombre todavia!
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group mt-2">
+        <lablel>Mensaje Comunidad</lablel>
+        <input type="text" placeholder="Escribe un mensaje o descrpcion para tu comunidad" formControlName="mensaje"
+          class="form-control border border-dark"
+          [ngClass]="{'is-invalid': data.mensaje.touched && data.mensaje.errors}" />
+
+        <div *ngIf="data.mensaje.touched && data.mensaje.errors" class="invalid-feedback">
+          <div *ngIf="data.mensaje.errors.required">
+            Tu comunidad no tiene mensaje!
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <lablel>Selecciona un tag para tu comunidad</lablel>
+        <select class="custom-select form-control border border-dark" formControlName="tag"
+          [ngClass]="{ 'is-invalid': data.tag.touched && data.tag.errors }">
+          <option selected></option>
+          <option value="Accion">Accion</option>
+          <option value="Comedia">Comedia</option>
+          <option value="Peliculas">Peliculas</option>
+          <option value="Anime">Anime</option>
+          <option value="Videojuegos">Videojuegos</option>
+        </select>
+
+        <div *ngIf="data.tag.touched && data.tag.errors" class="invalid-feedback">
+          <div *ngIf="data.tag.errors.required">Tu comunidad no tiene tag!</div>
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="NuevaComunidad.invalid" (click)="CrearComunidad()"
+        class="btn btn-dark busqueda">
+        Crear Comunidad
+      </button>
+    </form>
+  </div>
 </div>
-

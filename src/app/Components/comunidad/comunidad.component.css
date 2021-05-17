@@ -1,1 +1,38 @@
+.sep { margin-top: 90px; }
 
+.nodec{
+  text-decoration: none;
+}
+
+.busqueda:enabled:hover{
+  color: #00ff84;
+  background-color:#1d1f1e;
+}
+
+.sp_btt:hover{
+  color: #00ff84;
+  background-color:#1d1f1e;
+}
+
+.sp_btt:focus{
+  background-color:#1d1f1e;
+  color:#00ff84;
+}
+
+form.Busq{
+  margin: auto;
+  border-style: double;
+  border-width: 5px;
+  background-color:white;
+  border-color:#1d1f1e;
+  max-width: 500px;
+}
+
+form.Crea{
+  background-color:white;
+  border-color:#1d1f1e;
+  margin: auto;
+  border-width: 2px;
+  border-style: solid;
+  border-color:#1d1f1e;
+}

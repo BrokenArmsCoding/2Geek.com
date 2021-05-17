@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
           environment.vsession = this.user.nick;
           localStorage.setItem("User", environment.vsession);
           Swal.fire('Login correcto wachin', ' ');
-          this.router.navigate(['/Perfil']);
+          this.router.navigate(['/Comunidades']);
         }else{
           Swal.fire('Login erroneo wachin','');
         }

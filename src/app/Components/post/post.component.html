@@ -2,7 +2,56 @@
 <!-- falta el bucle para mostrar los posts, necesito
            estructura del objeto a usar, con condicion para cada caso -->
 <!------------------------------------------------------------------------------>
-<div class="card marco_claro mt-3 mb-n2">
+<div class="card marco_claro mt-4 mb-n2" *ngFor="let post of Posts;">
+  <div class="card-header" >
+    <p class="card-text float-right">{{post.NomPerfil}}</p>
+
+    <p class="card-text">{{post.NombreComunidad}}</p>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{post.TituloPost}}</h5>
+
+    <p class="card-text">{{post.informacion}}</p>
+
+    <p class="card-text float-right">{{post.fecha_subida}}</p>
+
+  </div>
+  <div class="card-footer mt-2">
+    <button class="btn btn-dark" type="button">Reportar</button>
+  </div>
+  <hr>
+  <div class="mt-2">
+
+    <!-- Caja para comentar -->
+    <div class="pr-5 pl-5 mb-3">
+      <p>Comenta algo ...</p>
+      <div class="input-group " [formGroup] = "comentario">
+        <input type="text" class="form-control" formControlName="comentario">
+        <div class="input-group-append" >
+          <button class="btn btn-dark" type="button" (click)='Comentar(post.TituloPost)'>Comentar</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+<div class="card-body marco_2 mb-2" >
+  <div class="pr-4 pl-3 pre-scrol lable" *ngFor="let comentarios of SelectComentariosDB; ">
+    <div class="marco_3 mt-2 p-2" *ngIf ="comentarios.IDPost == post.id_post">
+      <p class="mt-2">
+        {{comentarios.NombrePerfil}}
+        : {{comentarios.mensaje}}</p>
+      <button class="btn btn-light mt-1"> Reportar</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 2nd Post para ver como se vera -->
+
+<!-- <div class="card marco_claro mt-4 mb-n2">
   <div class="card-header">
     <p class="card-text float-right">Marc Valdivia</p>
 
@@ -18,12 +67,11 @@
   </div>
   <div class="card-footer mt-2">
     <button class="btn btn-dark" type="button">Reportar</button>
-    <p class="card-text float-right">Likes 1 / Dislikes 999</p>
   </div>
   <hr>
   <div class="mt-2">
 
-    <!-- Caja para comentar -->
+
     <div class="pr-5 pl-5 mb-3">
       <p>Comenta algo ...</p>
       <div class="input-group ">
@@ -38,10 +86,10 @@
 
 </div>
 
-<div class="card-body marco_2 mb-n5">
+<div class="card-body marco_2 mb-2">
 
   <div class="pr-4 pl-3 pre-scrollable">
-      <!-- For para mostrar todos los comentarios del post -->
+
     <div class="marco_3 mt-2 p-2">
       <p class="mt-2">Nick : Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1 Comentario 1
         Comentario 1 Comentario 1</p>
@@ -50,4 +98,4 @@
 
   </div>
 
-</div>
+</div> -->
