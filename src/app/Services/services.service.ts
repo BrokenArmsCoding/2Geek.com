@@ -113,6 +113,10 @@ export class ServicesService {
   deletePosts(nombreComunidad){
     return this.http.post(`${environment.serverUrl}DeletePosts.php`,JSON.stringify(nombreComunidad));
   }
+  dejarComunidad(usuario){
+    return this.http.post(`${environment.serverUrl}DejarComunidad.php`,JSON.stringify(usuario));
+
+  }
 
   deleteComentarios(nombreComunidad){
     return this.http.post(`${environment.serverUrl}DeleteComentarios.php`,JSON.stringify(nombreComunidad));
