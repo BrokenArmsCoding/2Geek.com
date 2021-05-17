@@ -20,29 +20,31 @@
         </div>
 
         <div class="row mt-3 mb-3">
-          <!-- <div *ngIf=""> Condicion solo usuarios normales -->
-
-          <!-- <div class="col pt-3">
-            <button class="btn btn-light" type="button" (click)='Cambiar_Opcion("VerLista")'>Ver Miembros</button>
-            <button class="btn btn-light mt-3" type="button" (click)='Cambiar_Opcion("Crear")'>Crear Post</button>
-            <button class="btn btn-light mt-3" type="button">Dejar Comunidad</button>
+          <div *ngIf="Permisos == 3">
+            <div class="col pt-3">
+              <button class="btn btn-light mt-2" type="button" (click)='Cambiar_Opcion("VerLista")'>Ver Miembros</button>
+              <button class="btn btn-light float-right mt-2 ml-5" type="button" (click)='Cambiar_Opcion("Crear")'>Crear Post</button>
+            </div>
+            <div class="col pt-3">
+              <button class="btn btn-light mt-2" type="button">Dejar Comunidad</button>
+            </div>
           </div>
-          <div class="col pt-3">
-          </div> -->
 
-          <!-- <div *ngIf=""></div>  Condicion solo para creador y moderador -->
-          <div class="col pt-3">
-            <button class="btn btn-light float-right" type="button" (click)='Cambiar_Opcion("Gestionar")'>Gestionar
-              Miembros</button>
-            <button class="btn btn-light float-right mt-4 pl-5 pr-5" type="button"
-              (click)='Cambiar_Opcion("Crear")'>Crear Post</button>
-          </div>
-          <div class="col pt-3">
-            <button class="btn btn-light" type="button" (click)='Cambiar_Opcion("Modificar")'>Modificar
-              Comunidad</button>
-            <!-- <div *ngIf=""></div>  Condicion solo para creador -->
-            <button class="btn btn-light mt-4" type="button" (click)='BorrarComunidad(nombreComunidad)'>Eliminar
-              Comunidad</button>
+          <div *ngIf="Permisos == 1 || Permisos == 2"><!--  Condicion solo para creador y moderador -->
+            <div class="col pt-3">
+              <button class="btn btn-light float-right" type="button" (click)='Cambiar_Opcion("Gestionar")'>Gestionar
+                Miembros</button>
+              <button class="btn btn-light float-right mt-4 pl-5 pr-5" type="button"
+                (click)='Cambiar_Opcion("Crear")'>Crear Post</button>
+            </div>
+            <div class="col pt-3">
+              <button class="btn btn-light" type="button" (click)='Cambiar_Opcion("Modificar")'>Modificar
+                Comunidad</button>
+              <div *ngIf="Permisos == 1"><!--Condicion solo para creador -->
+                <button class="btn btn-light mt-4" type="button" (click)='BorrarComunidad(nombreComunidad)'>Eliminar
+                  Comunidad</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -56,11 +58,12 @@
 
       <!-- Esto es de los usuarios basicos para ver la lista de gente -->
       <div *ngIf='ModoCambio == "VerLista"'>
-          <ul class="list-group mt-3"> <!--  Condicion *ngFor que le paseis la lista de usuarios -->
-            <li class="list-group-item">
-              <p class="d-inline ml-5">Nombre Usuario</p>
-            </li>
-          </ul>
+        <ul class="list-group mt-3">
+          <!--  Condicion *ngFor que le paseis la lista de usuarios -->
+          <li class="list-group-item">
+            <p class="d-inline ml-5">Nombre Usuario</p>
+          </li>
+        </ul>
       </div>
 
       <div *ngIf='ModoCambio == "Crear"'>
@@ -78,7 +81,6 @@
             </div>
 
           </div>
-
 
           <div class="form-group mt-2">
 
@@ -106,7 +108,8 @@
       <div *ngIf='ModoCambio == "Gestionar" || "Gestionar_P"'>
 
         <div *ngIf='ModoCambio == "Gestionar"'>
-          <ul class="list-group mt-3"> <!--  Condicion *ngFor que le paseis la lista de usuarios -->
+          <ul class="list-group mt-3">
+            <!--  Condicion *ngFor que le paseis la lista de usuarios -->
             <li class="list-group-item">
               <p class="d-inline ml-5">Nombre Usuario</p>
               <button class="btn btn-dark d-inline sep mt-1" type="button"
@@ -122,13 +125,13 @@
             <li class="list-group-item">
               <p class="">Nombre Usuario</p>
               <!-- Añadid funcion para mas permisos y dejad la funcion de 'cambiar opcion' para volver atras  -->
+              <button class="btn btn-dark d-inline sep2 mt-1" type="button" (click)='Cambiar_Opcion("Gestionar")'>Menos
+                permisos</button>
+              <button class="btn btn-dark d-inline sep2 mt-1" type="button" (click)='Cambiar_Opcion("Gestionar")'>Mas
+                permisos</button>
+              <!--Opcion solo para el lider -->
               <button class="btn btn-dark d-inline sep2 mt-1" type="button"
-                (click)='Cambiar_Opcion("Gestionar")'>Menos permisos</button>
-                <button class="btn btn-dark d-inline sep2 mt-1" type="button"
-                (click)='Cambiar_Opcion("Gestionar")'>Mas permisos</button>
-                 <!--Opcion solo para el lider -->
-              <button class="btn btn-dark d-inline sep2 mt-1" type="button"
-              (click)='Cambiar_Opcion("Gestionar")'>Ascender a Lider</button>
+                (click)='Cambiar_Opcion("Gestionar")'>Ascender a Lider</button>
             </li>
           </ul>
         </div>
