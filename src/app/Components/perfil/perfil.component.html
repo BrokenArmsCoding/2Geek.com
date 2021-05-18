@@ -59,10 +59,14 @@
       <app-perfil-contra></app-perfil-contra>
     </div>
 
-    <div *ngIf='ModoCambio == "Post"'></div>
-    <div *ngIf='ModoCambio == "Comentarios"'></div>
+    <div *ngIf='ModoCambio == "Post"'>
+      <app-perfil-posts></app-perfil-posts>
+    </div>
+
+    <div *ngIf='ModoCambio == "Comentarios"'>
+      <app-perfil-comunidades></app-perfil-comunidades>
+    </div>
 
   </div>
-
 
 </div>

@@ -18,6 +18,8 @@ import { PerfilContraComponent } from './Components/perfil/perfil-contra/perfil-
 import { ModificarPerfilComComponent } from './Components/comunidad/perfil-comunidad/modificar-perfil-com/modificar-perfil-com.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
+import { PerfilPostsComponent } from './Components/perfil/perfil-posts/perfil-posts.component';
+import { PerfilComunidadesComponent } from './Components/perfil/perfil-comunidades/perfil-comunidades.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { ShowHidePasswordModule } from 'ngx-show-hide-password';
     PerfilEditarComponent,
     PerfilContraComponent,
     PerfilComunidadComponent,
-    ModificarPerfilComComponent
+    ModificarPerfilComComponent,
+    PerfilPostsComponent,
+    PerfilComunidadesComponent
   ],
   imports: [
     BrowserModule,

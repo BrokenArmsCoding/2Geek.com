@@ -193,7 +193,7 @@ export class PerfilComunidadComponent implements OnInit {
       datos => {
         if(datos['response'] == 'OK'){
           Swal.fire("Expulsado Correctamente a "+ this.ExpulsarUsuario.nombreUsuario);
-          this.refresh;
+          this.refresh();
         }else{
           Swal.fire("Unido correctamente ", '');
         }

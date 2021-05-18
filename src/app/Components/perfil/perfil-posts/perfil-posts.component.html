@@ -1,0 +1,17 @@
+<div class="container-fluid sep">
+
+  <div class="row row-cols-1">
+
+    <div class="col-8 col-sm-8 col-md-8 col-lg-8" >
+
+      <div class="card marco_claro mb-3" *ngFor="let post of Posts">
+          <h5 class="card-title">{{post.NombreComunidad}}</h5>
+
+          <p class="card-text">{{post.TituloPost}}</p>
+
+          <p class="card-text float-right">{{post.informacion}}</p>
+
+        </div>
+      </div>
+    </div>
+</div>

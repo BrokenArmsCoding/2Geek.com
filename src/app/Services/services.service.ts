@@ -155,6 +155,14 @@ export class ServicesService {
     return this.http.post(`${environment.serverUrl}ExpulsarUsuario.php`,JSON.stringify(nombreUsuario));
   }
 
+  selectPostsPerfil(NombreUsuario){
+    return this.http.post(`${environment.serverUrl}SelectPostsPerfil.php`,JSON.stringify(NombreUsuario));
+  }
+
+  selectComunidadesPerfil(NombreUsuario){
+    return this.http.post(`${environment.serverUrl}SelectComentariosPerfil.php`,JSON.stringify(NombreUsuario));
+  }
+
   setDatosComunidad(descripcionComunidad,nombreComunidad){
     this.nombreComunidad = nombreComunidad;
     this.descripcionComunidad = descripcionComunidad;
