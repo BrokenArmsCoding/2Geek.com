@@ -102,7 +102,6 @@ export class ServicesService {
     return this.http.post(`${environment.serverUrl}insertTabalUserCreador.php`,JSON.stringify(unirseComunidadDatos));
   }
 
-
   selectUserComunidades(NombreUsuario){
     return this.http.post(`${environment.serverUrl}SelectUserComunidades.php`,JSON.stringify(NombreUsuario));
   }
@@ -113,6 +112,10 @@ export class ServicesService {
 
   deletePosts(nombreComunidad){
     return this.http.post(`${environment.serverUrl}DeletePosts.php`,JSON.stringify(nombreComunidad));
+  }
+  dejarComunidad(usuario){
+    return this.http.post(`${environment.serverUrl}DejarComunidad.php`,JSON.stringify(usuario));
+
   }
 
   deleteComentarios(nombreComunidad){
@@ -125,6 +128,39 @@ export class ServicesService {
 
   selectCount(nombreComunidad){
     return this.http.post(`${environment.serverUrl}CountUsuarios.php`,JSON.stringify(nombreComunidad));
+  }
+
+  selectPermisosUsuario(selectPermisos){
+    return this.http.post(`${environment.serverUrl}SelectPermisosUsuario.php`,JSON.stringify(selectPermisos))
+  }
+
+  updateInfoComunidadUserCom(nuevosDatosComunidad){
+    return this.http.post(`${environment.serverUrl}updateInfoUserCom.php`,JSON.stringify(nuevosDatosComunidad));
+  }
+  updateInfoComunidad(nuevosDatosComunidad){
+    return this.http.post(`${environment.serverUrl}UpdateComunidad.php`,JSON.stringify(nuevosDatosComunidad));
+  }
+  updateInfoComunidadPost(nuevosDatosComunidad){
+    return this.http.post(`${environment.serverUrl}UpdatePost.php`,JSON.stringify(nuevosDatosComunidad));
+  }
+  updateInfoComunidadComentarios(nuevosDatosComunidad){
+    return this.http.post(`${environment.serverUrl}UpdateComentarios.php`,JSON.stringify(nuevosDatosComunidad));
+  }
+
+  selectUsuariosGestion(nombreComunidad){
+    return this.http.post(`${environment.serverUrl}SelectUsuariosGestion.php`,JSON.stringify(nombreComunidad))
+  }
+
+  expulsarUsuario(nombreUsuario){
+    return this.http.post(`${environment.serverUrl}ExpulsarUsuario.php`,JSON.stringify(nombreUsuario));
+  }
+
+  selectPostsPerfil(NombreUsuario){
+    return this.http.post(`${environment.serverUrl}SelectPostsPerfil.php`,JSON.stringify(NombreUsuario));
+  }
+
+  selectComunidadesPerfil(NombreUsuario){
+    return this.http.post(`${environment.serverUrl}SelectComentariosPerfil.php`,JSON.stringify(NombreUsuario));
   }
 
   setDatosComunidad(descripcionComunidad,nombreComunidad){

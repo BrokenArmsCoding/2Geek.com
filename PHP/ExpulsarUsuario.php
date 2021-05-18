@@ -1,4 +1,5 @@
 <?php
+
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
@@ -6,7 +7,7 @@ header("Allow: GET, POST, OPTIONS, PUT, DELETE");
 
 require("BD.php");
 
-$json = file_get_contents("php://input"); 
+$json = file_get_contents("php://input");
 
 $params = json_decode($json);
 
@@ -14,29 +15,22 @@ $con;
 $con=conexion();
 
 
-$resultado = mysqli_query($con, "INSERT INTO `user-comunidad` SET NombreUsuario= '$params->nombreUsuario', NombreComunidad= '$params->nombreComunidad', DescripcionComunidad = '$params->descripcionComunidad', Permisos = 3  ");
+$resultado = mysqli_query($con,"DELETE FROM `user-comunidad` WHERE NombreComunidad = '$params->nombreComunidad' AND NombreUsuario = '$params->nombreUsuario'");
 
+ class Result {}
 
-class Result {}
+   $response = new Result();
 
+   if($resultado) {
+      $response->response = 'OK';
 
-$response = new Result();
+    } else {
+      $response->response = 'FAIL';
+    }
 
-
-if($resultado) {
-
-  $response->response = 'OK';
-
-} else {
-
-  $response->response = 'FAIL';
-
-}
-
+     header('Content-Type: application/json');
 
   echo json_encode($response);
-
-
 
 
 ?>

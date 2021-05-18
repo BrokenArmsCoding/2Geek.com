@@ -26,7 +26,7 @@
               <button class="btn btn-light mt-2" type="button" (click)='Cambiar_Opcion("VerLista")'>Ver
                 Miembros</button>
               <div *ngIf="Permisos == 3">
-                <button class="btn btn-light mt-2" type="button">Dejar Comunidad</button>
+                <button class="btn btn-light mt-2" type="button" (click)='DejarComunidad()'>Dejar Comunidad</button>
               </div>
             </div>
             <div class="col pt-3" *ngIf="Permisos == 3 || Permisos == 4">
@@ -65,11 +65,14 @@
 
       <!-- Esto es de los usuarios basicos para ver la lista de gente -->
       <div *ngIf='ModoCambio == "VerLista"'>
-        <ul class="list-group mt-3">
+        <ul class="list-group mt-3" *ngFor="let usuarios of selectUsuarios">
           <!--  Condicion *ngFor que le paseis la lista de usuarios -->
-          <li class="list-group-item">
-            <p class="d-inline ml-5">Nombre Usuario</p>
+          <li class="list-group-item" *ngIf ="usuarios.Permisos == 1" >
+            <p class="d-inline ml-5">{{usuarios.NombreUsuario}} : El capo</p>
           </li>
+          <li class="list-group-item" *ngIf ="usuarios.Permisos != 1">
+          <p class="d-inline ml-5">{{usuarios.NombreUsuario}}</p>
+        </li>
         </ul>
       </div>
 
@@ -115,13 +118,12 @@
       <div *ngIf='ModoCambio == "Gestionar" || "Gestionar_P"'>
 
         <div *ngIf='ModoCambio == "Gestionar"'>
-          <ul class="list-group mt-3">
-            <!--  Condicion *ngFor que le paseis la lista de usuarios -->
-            <li class="list-group-item">
-              <p class="d-inline ml-5">Nombre Usuario</p>
+          <ul class="list-group mt-3" *ngFor="let usuarios of selectUsuarios">
+            <li class="list-group-item" *ngIf ="usuarios.NombreUsuario != NombreUsuario">
+              <p class="d-inline ml-5" >{{usuarios.NombreUsuario}}</p>
               <button class="btn btn-dark d-inline sep mt-1" type="button"
                 (click)='Cambiar_Opcion("Gestionar_P")'>Permisos</button> <!-- Podeis poner mas de una funcion -->
-              <button class="btn btn-dark d-inline sep mt-1" type="button">Expulsar</button>
+              <button class="btn btn-dark d-inline sep mt-1" type="button" (click)="expulsarUsuario(usuarios.NombreUsuario)">Expulsar</button>
             </li>
           </ul>
         </div>

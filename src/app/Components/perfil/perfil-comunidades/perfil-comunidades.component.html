@@ -1,0 +1,13 @@
+
+    <div class="marco_claro mt-5" >
+      <div class="card border-dark" *ngFor="let comentario of SelectComentarios">
+        <div class="card-body ml-2">
+          <div>
+            <p class="card-text d-inline">Titulo Comentario: {{comentario.Nombre_Post}}</p>
+          </div>
+          <div>
+            <p class="card-text mt-3">Comentario: {{comentario.mensaje}}</p>
+          </div>
+        </div>
+      </div>
+    </div>

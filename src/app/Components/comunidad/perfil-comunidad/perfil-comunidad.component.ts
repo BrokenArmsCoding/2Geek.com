@@ -15,7 +15,7 @@ export class PerfilComunidadComponent implements OnInit {
   NuevoPost: FormGroup;
   PerfilCom: FormGroup;
 
-  Permisos:Number = 1;
+  Permisos: Object;
   ModoCambio: String = "Posts";
   nombreComunidad: String;
   descripcionComunidad: String;
@@ -30,6 +30,15 @@ export class PerfilComunidadComponent implements OnInit {
     nombreUsuario: String
 
   }
+
+  selectUsuarios: any = {}
+
+  salirComunidad: any = {}
+
+
+  SelectPermisos: any = {}
+
+  ExpulsarUsuario: any = {}
 
   constructor(private formBuilder: FormBuilder, private BD: ServicesService, public router: Router) { }
 
@@ -55,6 +64,8 @@ export class PerfilComunidadComponent implements OnInit {
     });
 
     this.countUsuarios();
+    this.selectUsuariosGestion();
+    this.selectPermisosUsuario();
   }
 
   Cambiar_Opcion(op: String): void {
@@ -116,6 +127,7 @@ export class PerfilComunidadComponent implements OnInit {
         this.DeleteInfocomunidad();
 
         this.router.navigate(['/Comunidades']);
+
       } else if (result.isDenied) {
 
       }
@@ -128,6 +140,27 @@ export class PerfilComunidadComponent implements OnInit {
     this.BD.DeleteInfocomunidad(this.nombreComunidadLS).subscribe();
     //this.DeleteTablaComunidad(nombreComunidad);
   }
+  DejarComunidad(){
+    Swal.fire({
+      title: 'Seguro que salir de la comunidad?',
+      showDenyButton: true,
+      confirmButtonText: `Aceptar`,
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        this.salirComunidad.NombreComunidad = this.nombreComunidadLS;
+        this.salirComunidad.NombreUsuario = this.NombreUsuario;
+        this.BD.dejarComunidad(this.salirComunidad).subscribe();
+
+        this.router.navigate(['/Comunidades']);
+
+      } else if (result.isDenied) {
+
+      }
+    })
+
+  }
 
   countUsuarios(){
     this.BD.selectCount(this.nombreComunidadLS).subscribe(
@@ -135,5 +168,41 @@ export class PerfilComunidadComponent implements OnInit {
     )
   }
 
+  selectPermisosUsuario(){
+
+    this.SelectPermisos.nombreUsuario = this.NombreUsuario;
+    this.SelectPermisos.nombreComunidad = this.nombreComunidadLS;
+
+    this.BD.selectPermisosUsuario(this.SelectPermisos).subscribe(
+      result => this.Permisos = result
+    );
+  }
+
+  selectUsuariosGestion(){
+    this.BD.selectUsuariosGestion(this.nombreComunidadLS).subscribe(
+      result => this.selectUsuarios = result
+    );
+  }
+
+  expulsarUsuario(nombreUsuario: String){
+
+    this.ExpulsarUsuario.nombreUsuario = nombreUsuario;
+    this.ExpulsarUsuario.nombreComunidad = this.nombreComunidadLS;
+
+    this.BD.expulsarUsuario(this.ExpulsarUsuario).subscribe(
+      datos => {
+        if(datos['response'] == 'OK'){
+          Swal.fire("Expulsado Correctamente a "+ this.ExpulsarUsuario.nombreUsuario);
+          this.refresh();
+        }else{
+          Swal.fire("Unido correctamente ", '');
+        }
+      }
+    )
+
+  }
+  refresh(): void {
+    window.location.reload();
+  }
 
 }

@@ -174,7 +174,7 @@ export class ComunidadComponent implements OnInit {
         }else{
           this.BD.insertTabalUserComunidad(this.unirseComunidadDatos).subscribe();
           Swal.fire("Unido correctamente ", '');
-          //this.refresh();
+          this.refresh();
         }
       }
     );
