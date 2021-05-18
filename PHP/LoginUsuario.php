@@ -14,10 +14,7 @@ $params = json_decode($json);
 $con;
 $con=conexion();
 
-$passwowrd = $params->password;
-$passoword_codificada = md5($passwowrd);
-
-$resultado = mysqli_query($con, "SELECT nick,contrasena FROM usuarios WHERE nick='$params->nick' AND contrasena='$passoword_codificada'");
+$resultado = mysqli_query($con, "SELECT nick,contrasena FROM usuarios WHERE nick='$params->nick' AND contrasena='$params->password'");
 
 
 class Result {}

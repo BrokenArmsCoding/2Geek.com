@@ -10,19 +10,22 @@ import { ServicesService } from 'src/app/Services/services.service';
 export class PerfilComponent implements OnInit {
 
   ModoCambio: String = "Perfil";
-  usuario:any = {}
   nombreUsuario: String;
+
+  usuario:any = {}
 
   constructor(private DB: ServicesService) { }
 
   ngOnInit(): void {
   this.nombreUsuario = localStorage.getItem('User');
-
+  localStorage.removeItem("NombreComunidad");
+  localStorage.removeItem("DescripcionComunidad");
   this.GetUsuario();
 
   }
 
   GetUsuario(){
+    console.log(this.nombreUsuario);
     this.DB.GetUsuario(this.nombreUsuario).subscribe(
       result => this.usuario = result[0]
     );

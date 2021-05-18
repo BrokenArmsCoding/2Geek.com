@@ -14,7 +14,6 @@ export class ServicesService {
   constructor(private http: HttpClient) { }
 
   selectPrueba(usuario){
-    console.log(usuario);
     return this.http.post(`${environment.serverUrl}InsertUsuario.php`, JSON.stringify(usuario));
   }
 
@@ -57,7 +56,6 @@ export class ServicesService {
   }
 
   buscadorComunidades(buscarComunidad){
-    console.log("buscador comunidad")
     return this.http.post(`${environment.serverUrl}BuscadorComunidades.php`,JSON.stringify(buscarComunidad));
   }
 
@@ -167,6 +165,15 @@ export class ServicesService {
     return this.http.post(`${environment.serverUrl}SelectComentariosPerfil.php`,JSON.stringify(NombreUsuario));
   }
 
+  menosPermisos(datosUsuario){
+    return this.http.post(`${environment.serverUrl}MenosPermisos.php`,JSON.stringify(datosUsuario));
+  }
+  MasPermisos(datosUsuario){
+    return this.http.post(`${environment.serverUrl}MasPermisos.php`,JSON.stringify(datosUsuario));
+  }
+  ascenderaCapo(datosUsuario){
+    return this.http.post(`${environment.serverUrl}AscenderaCapo.php`,JSON.stringify(datosUsuario));
+  }
   setDatosComunidad(descripcionComunidad,nombreComunidad){
     this.nombreComunidad = nombreComunidad;
     this.descripcionComunidad = descripcionComunidad;

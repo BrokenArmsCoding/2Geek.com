@@ -14,11 +14,10 @@ $params = json_decode($json);
 $con;
 $con=conexion();
 
-$passwowrd = $params->cont;
-$passoword_codificada = md5($passwowrd);
 
 
-$resultado = mysqli_query($con,"INSERT INTO usuarios (id_usuario,nombre,nick,apellido,email,descripcion,contrasena,fecha_nacimiento) VALUES ('','$params->nombre','$params->nick','$params->apellido','$params->email','','$passoword_codificada','$params->fecha_nacimiento')");
+
+$resultado = mysqli_query($con,"INSERT INTO usuarios (id_usuario,nombre,nick,apellido,email,descripcion,contrasena,fecha_nacimiento) VALUES ('','$params->nombre','$params->nick','$params->apellido','$params->email','','$params->cont','$params->fecha_nacimiento')");
 
 class Result {}
 

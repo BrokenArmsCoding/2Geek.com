@@ -40,6 +40,9 @@ export class PerfilComunidadComponent implements OnInit {
 
   ExpulsarUsuario: any = {}
 
+  DatosPermisos: any = {}
+
+
   constructor(private formBuilder: FormBuilder, private BD: ServicesService, public router: Router) { }
 
   ngOnInit(): void {
@@ -51,7 +54,6 @@ export class PerfilComunidadComponent implements OnInit {
     this.nombreComunidadLS = localStorage.getItem("NombreComunidad");
     this.descripcionComunidadLS = localStorage.getItem("DescripcionComunidad");
 
-    console.log(this.nombreComunidadLS,this.descripcionComunidad);
 
     this.NuevoPost = this.formBuilder.group({
       titulo: ['', Validators.required],
@@ -192,8 +194,8 @@ export class PerfilComunidadComponent implements OnInit {
     this.BD.expulsarUsuario(this.ExpulsarUsuario).subscribe(
       datos => {
         if(datos['response'] == 'OK'){
-          Swal.fire("Expulsado Correctamente a "+ this.ExpulsarUsuario.nombreUsuario);
-          this.refresh();
+          Swal.fire("Expulsado Correctamente a "+   this.ExpulsarUsuario.nombreUsuario);
+
         }else{
           Swal.fire("Unido correctamente ", '');
         }
@@ -201,6 +203,65 @@ export class PerfilComunidadComponent implements OnInit {
     )
 
   }
+
+  menosPermisos(usuario: String){
+
+    this.DatosPermisos.nombreUsuario = usuario;
+    this.DatosPermisos.nombreComunidad = this.nombreComunidadLS;
+
+    console.log(this.DatosPermisos);
+
+    this.BD.menosPermisos(this.DatosPermisos).subscribe(
+      datos => {
+        if(datos['response'] == 'OK'){
+          Swal.fire("Permisos actualizados correctamente a  "+  this.DatosPermisos.nombreUsuario);
+
+        }else{
+          Swal.fire("Error al actualizar permisos ", '');
+        }
+      }
+
+    )
+  }
+
+  masPermisos(usuario: String){
+
+    this.DatosPermisos.nombreUsuario = usuario;
+    this.DatosPermisos.nombreComunidad = this.nombreComunidadLS;
+
+    console.log(this.DatosPermisos);
+
+    this.BD.MasPermisos(this.DatosPermisos).subscribe(
+      datos => {
+        if(datos['response'] == 'OK'){
+          Swal.fire("Permisos actualizados correctamente a  "+  this.DatosPermisos.nombreUsuario);
+
+        }else{
+          Swal.fire("Error al actualizar permisos ", '');
+        }
+      }
+    )
+  }
+
+  ascenderaCapo(usuario: String){
+
+    this.DatosPermisos.nombreUsuario = usuario;
+    this.DatosPermisos.nombreComunidad = this.nombreComunidadLS;
+
+    console.log(this.DatosPermisos);
+
+    this.BD.ascenderaCapo(this.DatosPermisos).subscribe(
+      datos => {
+        if(datos['response'] == 'OK'){
+          Swal.fire("Permisos actualizados correctamente a  "+ this.DatosPermisos.nombreUsuario);
+          this.refresh();
+        }else{
+          Swal.fire("Error al actualizar permisos ", '');
+        }
+      }
+    )
+  }
+
   refresh(): void {
     window.location.reload();
   }

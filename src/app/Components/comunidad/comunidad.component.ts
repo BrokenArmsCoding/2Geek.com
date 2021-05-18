@@ -104,7 +104,6 @@ export class ComunidadComponent implements OnInit {
     this.nombreComunidad = this.info.nombreComunidad.value;
     this.nombreTag = this.info.tag_p.value;
 
-    console.log(this.nombreTag);
 
     // if(this.nombreTag = 'Accion' || 'Peliculas' || 'Comedia' || 'Peliculas' ||'Anime' ||'Videojuegos' ||'Deporte' ||'Futbol' ||'Badminton'  ||'Basquet'){
     //   // console.log("asdasd")

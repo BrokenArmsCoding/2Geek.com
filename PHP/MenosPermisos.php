@@ -14,10 +14,9 @@ require('BD.php');
   $json = file_get_contents("php://input");
 
   $params = json_decode($json);
-  $passwowrd = $params->password;
-  $passoword_codificada = md5($passwowrd);
 
-  $resultado = mysqli_query($con, "UPDATE usuarios SET  contrasena='$passoword_codificada' WHERE nick = '$params->nick'");
+
+  $resultado = mysqli_query($con, "UPDATE `user-comunidad` SET Permisos = 3 WHERE NombreComunidad = '$params->nombreComunidad' AND NombreUsuario = '$params->nombreUsuario'");
 
 
   class Result {}

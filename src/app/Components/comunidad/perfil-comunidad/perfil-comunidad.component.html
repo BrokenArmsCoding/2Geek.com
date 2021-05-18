@@ -130,17 +130,17 @@
 
         <div *ngIf='ModoCambio == "Gestionar_P"'>
           <!-- Neceitareis guardar el id usuario escogido o algo aqui-->
-          <ul class="list-group mt-3">
-            <li class="list-group-item">
-              <p class="">Nombre Usuario</p>
+          <ul class="list-group mt-3" *ngFor="let usuarios of selectUsuarios">
+            <li class="list-group-item" *ngIf ="usuarios.NombreUsuario != NombreUsuario">
+              <p class="">{{usuarios.NombreUsuario}}</p>
               <!-- Añadid funcion para mas permisos y dejad la funcion de 'cambiar opcion' para volver atras  -->
-              <button class="btn btn-dark d-inline sep2 mt-1" type="button" (click)='Cambiar_Opcion("Gestionar")'>Menos
+              <button class="btn btn-dark d-inline sep2 mt-1" type="button" (click)='menosPermisos(usuarios.NombreUsuario)' (click)='Cambiar_Opcion("Gestionar")'>Menos
                 permisos</button>
-              <button class="btn btn-dark d-inline sep2 mt-1" type="button" (click)='Cambiar_Opcion("Gestionar")'>Mas
+              <button class="btn btn-dark d-inline sep2 mt-1" type="button" (click)="masPermisos(usuarios.NombreUsuario)" (click)='Cambiar_Opcion("Gestionar")'>Mas
                 permisos</button>
               <!--Opcion solo para el lider -->
               <button class="btn btn-dark d-inline sep2 mt-1" type="button"
-                (click)='Cambiar_Opcion("Gestionar")'>Ascender a Lider</button>
+              (click)="ascenderaCapo(usuarios.NombreUsuario)" (click)='Cambiar_Opcion("Gestionar")'>Ascender a Lider</button>
             </li>
           </ul>
         </div>

@@ -7,7 +7,7 @@ header("Allow: GET, POST, OPTIONS, PUT, DELETE");
 
 require("BD.php");
 
-$json = file_get_contents("php://input"); // Esto es un objeto JSON en formato string
+$json = file_get_contents("php://input"); 
 
 $params = json_decode($json);
 
@@ -31,9 +31,9 @@ $resultado = mysqli_query($con,"SELECT * FROM usuarios WHERE nick='$params'");
 
       $vec[]=$reg;
 
-      print json_encode($vec);
+    
     }
-
+      echo json_encode($vec);
 
 
 ?>
