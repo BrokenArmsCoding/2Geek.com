@@ -1,9 +1,9 @@
 
-    <div class="marco_claro mt-5" >
-      <div class="card border-dark" *ngFor="let comentario of SelectComentarios">
+    <div class="marco_claro mt-4" *ngFor="let comentario of SelectComentarios">
+      <div class="card cardo mr-3 ml-3 mb-3" >
         <div class="card-body ml-2">
           <div>
-            <p class="card-text d-inline">Titulo Comentario: {{comentario.Nombre_Post}}</p>
+            <p class="card-text">Titulo Comentario: {{comentario.Nombre_Post}}</p>
           </div>
           <div>
             <p class="card-text mt-3">Comentario: {{comentario.mensaje}}</p>
