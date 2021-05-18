@@ -69,7 +69,7 @@ export class RegistroComponent implements OnInit {
         console.log(this.Usuario);
         if (datos['response'] == 'OK') {
           Swal.fire('Creado', '');
-
+          this.router.navigate(['/Login']);
         } else if (datos['response'] == 'FAIL'){
           Swal.fire('Usuario ya existe', '');
         }

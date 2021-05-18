@@ -84,7 +84,7 @@ export class PostComponent implements OnInit {
           Swal.fire('No podes wachin','');
 
         }else{
-           Swal.fire('Entraste wachin ', '');
+           //Swal.fire('Entraste wachin ', '');
            window.location.reload();
         }
       }

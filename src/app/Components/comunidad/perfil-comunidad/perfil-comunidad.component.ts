@@ -116,8 +116,6 @@ export class PerfilComunidadComponent implements OnInit {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
 
-        console.log(this.nombreComunidadLS);
-
         this.BD.DeleteTags(this.nombreComunidadLS).subscribe();
 
         this.BD.deleteUserComunidades(this.nombreComunidadLS).subscribe();

@@ -102,7 +102,6 @@ export class ComunidadComponent implements OnInit {
   buscarComunidades(){
 
     this.nombreComunidad = this.info.nombreComunidad.value;
-    this.nombreTag = this.info.tag_p.value;
 
 
     // if(this.nombreTag = 'Accion' || 'Peliculas' || 'Comedia' || 'Peliculas' ||'Anime' ||'Videojuegos' ||'Deporte' ||'Futbol' ||'Badminton'  ||'Basquet'){
