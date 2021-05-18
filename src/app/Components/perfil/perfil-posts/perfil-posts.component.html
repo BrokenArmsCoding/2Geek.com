@@ -1,7 +1,9 @@
-<div class="col" *ngFor="let post of Posts">
-    <div class="card mr-4 ml-4 mb-3 p-2">
-        <h5 class="card-title">{{post.NombreComunidad}}</h5>
-        <p class="card-text mt-3">{{post.TituloPost}}</p>
+<div class="col mr-4 ml-4" *ngFor="let post of Posts">
+    <div class="card mb-3 p-2">
+      <div>
+        <h5 class="card-title d-inline">{{post.NombreComunidad}} -</h5>
+        <p class="card-text d-inline mt-3">{{post.TituloPost}}</p>
+      </div>
         <p class="card-text mt-3">{{post.informacion}}</p>
     </div>
-  </div>
+</div>
