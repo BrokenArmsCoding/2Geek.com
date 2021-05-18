@@ -1,6 +1,7 @@
-
-    <div class="mt-4" *ngFor="let comentario of SelectComentarios">
-      <div class="card cardo mr-3 ml-3 mb-3" >
+<div class="row">
+  <div class="col" *ngFor="let comentario of SelectComentarios">
+    <div class="mt-4">
+      <div class="card cardo mr-3 ml-3 mb-3">
         <div class="card-body ml-2">
           <div>
             <p class="card-text">Titulo Comentario: {{comentario.Nombre_Post}}</p>
@@ -11,3 +12,6 @@
         </div>
       </div>
     </div>
+
+  </div>
+</div>
