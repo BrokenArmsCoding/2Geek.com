@@ -10,6 +10,15 @@ import { Comprobacion } from './Comprobador';
 })
 
 export class PerfilContraComponent implements OnInit {
+
+  nick = localStorage.getItem('User');
+
+  updateContrasena: any = {
+    nick: null,
+    password: null
+  }
+
+
   PerfilCont: FormGroup;
   constructor(private formBuilder: FormBuilder, private DB: ServicesService) { }
 
@@ -26,7 +35,12 @@ export class PerfilContraComponent implements OnInit {
     return this.PerfilCont.controls;
   }
 
-  Cambiar_Contra(){}
+  Cambiar_Contra(){
+    this.updateContrasena.nick = this.nick;
+    this.updateContrasena.password = this.PerfilCont.controls.new_cont.value;
+
+    this.DB.UpdateContrasena(this.updateContrasena).subscribe();
+  }
 
   UpdateCont() {
     this.refresh();

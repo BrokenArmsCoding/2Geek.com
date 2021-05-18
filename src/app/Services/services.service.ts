@@ -93,6 +93,10 @@ export class ServicesService {
     console.log(DatosComunidad);
     return this.http.post(`${environment.serverUrl}UnirseaComunidad.php`,JSON.stringify(DatosComunidad));
   }
+  UpdateContrasena(updateContrasena){
+    return this.http.post(`${environment.serverUrl}UpdateContrasena.php`,JSON.stringify(updateContrasena));
+
+  }
 
   insertTabalUserComunidad(unirseComunidadDatos){
     return this.http.post(`${environment.serverUrl}insertTabalUserComunidad.php`,JSON.stringify(unirseComunidadDatos));
