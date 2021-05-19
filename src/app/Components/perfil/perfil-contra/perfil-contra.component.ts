@@ -30,8 +30,10 @@ export class PerfilContraComponent implements OnInit {
       rep_cont: ['', Validators.required],
     },
     { validator: Comprobacion('new_cont', 'rep_cont')});
+  }
 
-    this.Idioma =localStorage.getItem("Idioma");
+  ngAfterContentInit(): void{
+    this.Idioma = sessionStorage.getItem("Idioma");
   }
 
   get perfdata() {

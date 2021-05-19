@@ -26,11 +26,12 @@ export class PerfilPostsComponent implements OnInit {
   ngOnInit(): void {
 
     this.NombreUsuario = localStorage.getItem("User");
-    this.Idioma =localStorage.getItem("Idioma");
-
     this.SelectPosts();
   }
 
+  ngAfterContentInit(): void{
+    this.Idioma = sessionStorage.getItem("Idioma");
+  }
 
   SelectPosts(){
     this.BD.selectPostsPerfil(this.NombreUsuario).subscribe(

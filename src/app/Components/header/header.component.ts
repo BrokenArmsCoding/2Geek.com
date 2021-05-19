@@ -13,19 +13,19 @@ export class HeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.idioma =localStorage.getItem("Idioma");
+    this.idioma = sessionStorage.getItem("Idioma");
   }
 
   cambio_idioma(op:string):void {
 
     if(op == "SP"){
       this.idioma= "SP";
-      localStorage.setItem("Idioma", op);
+      sessionStorage.setItem("Idioma", op);
       window.location.reload();
     }
     if(op == "EN") {
       this.idioma= "EN";
-      localStorage.setItem("Idioma", op);
+      sessionStorage.setItem("Idioma", op);
       window.location.reload();
     }
   }

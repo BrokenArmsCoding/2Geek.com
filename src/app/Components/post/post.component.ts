@@ -25,7 +25,7 @@ export class PostComponent implements OnInit {
     idPost: String
   }
 
-  comentariosPost: any ={
+  comentariosPost: any = {
     comentario: String,
     nombreUsuario: String,
     tituloPost: String,
@@ -38,37 +38,39 @@ export class PostComponent implements OnInit {
     Nombre_Post: String
   }
 
-
-
-  constructor(private BD: ServicesService,private formBuilder: FormBuilder) { }
+  constructor(private BD: ServicesService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
 
     this.nombreComunidadLS = localStorage.getItem("NombreComunidad");
     this.NombreUsuario = localStorage.getItem("User");
-    this.Idioma =localStorage.getItem("Idioma");
     this.SelectPosts();
 
     this.comentario = this.formBuilder.group({
       comentario: ['', Validators.required]
     });
+
     this.SelectComentarios();
+  }
+
+  ngAfterContentInit(): void {
+    this.Idioma = sessionStorage.getItem("Idioma");
   }
 
   get infocomentario() {
     return this.comentario.controls;
   }
 
-  SelectPosts(){
+  SelectPosts() {
     this.BD.selectPost(this.nombreComunidadLS).subscribe(
       result => this.Posts = result
     );
 
   }
 
-  Comentar(tituloPost: String){
+  Comentar(tituloPost: String) {
 
-   this.comentariosPost.comentario = this.infocomentario.comentario.value;
+    this.comentariosPost.comentario = this.infocomentario.comentario.value;
     this.comentariosPost.tituloPost = tituloPost;
     this.comentariosPost.nombreUsuario = this.NombreUsuario;
     this.comentariosPost.nombreComunidad = this.nombreComunidadLS;
@@ -81,22 +83,20 @@ export class PostComponent implements OnInit {
 
     this.BD.insertComentario(this.comentariosPost).subscribe(
       datos => {
-        if (datos['response'] == 'FAIL'){
+        if (datos['response'] == 'FAIL') {
 
-          Swal.fire('No podes wachin','');
+          Swal.fire('No Puedes', '');
 
-        }else{
-           //Swal.fire('Entraste wachin ', '');
-           window.location.reload();
+        } else {
+          //Swal.fire('Si Puedes ', '');
+          window.location.reload();
         }
       }
     );
 
-
-
   }
 
-  SelectComentarios(){
+  SelectComentarios() {
 
     this.BD.selectComentarios(this.nombreComunidadLS).subscribe(
       result => this.SelectComentariosDB = result

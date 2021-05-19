@@ -31,8 +31,12 @@ export class ModificarPerfilComComponent implements OnInit {
     this.NombreUsuario = localStorage.getItem("User");
     this.nombreComunidadLS = localStorage.getItem("NombreComunidad");
     this.descripcionComunidadLS = localStorage.getItem("DescripcionComunidad");
-    this.Idioma =localStorage.getItem("Idioma");
   }
+
+  ngAfterContentInit(): void{
+    this.Idioma = sessionStorage.getItem("Idioma");
+  }
+
   get perfildata() {
     return this.PerfilCom.controls;
   }

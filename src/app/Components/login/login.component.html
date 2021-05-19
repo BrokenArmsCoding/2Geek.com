@@ -7,13 +7,16 @@
       <img class="logo mt-5 mb-5" src="assets/images/full_logo.png" alt="logo">
       <div class="col">
         <div class="row">
-          <p class="lema l1 mt-5">CONECTA</p>
+          <p *ngIf='Idioma == "SP"' class="lema l1 mt-5">CONECTA</p>
+          <p *ngIf='Idioma == "EN"' class="lema l1 mt-5">CONNECT</p>
         </div>
         <div class="row">
-          <p class="lema l2 mt-5 mb-5">CREA</p>
+          <p *ngIf='Idioma == "SP"' class="lema l2 mt-5 mb-5">CREA</p>
+          <p *ngIf='Idioma == "EN"' class="lema l2 mt-5 mb-5">CREATE</p>
         </div>
         <div class="row">
-          <p class="lema l3">COMPARTE</p>
+          <p *ngIf='Idioma == "SP"' class="lema l3">COMPARTE</p>
+          <p *ngIf='Idioma == "EN"' class="lema l3">SHARE</p>
         </div>
       </div>
     </div>
@@ -21,25 +24,46 @@
     <!-- Columna Derecha -->
     <div class="col-12 col-sm-12 col-md-6 col-lg-6">
 
+      <div class="dropdown dropleft float-right mt-4">
+        <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+          <div class="d-inline" *ngIf='Idioma == "SP"'>Idioma</div>
+          <div class="d-inline" *ngIf='Idioma == "EN"'>Language</div>
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" (click)='cambio_idioma("SP")'>
+            <div class="d-inline" *ngIf='Idioma == "SP"'>Español</div>
+            <div class="d-inline" *ngIf='Idioma == "EN"'>Spanish</div>
+            <img class="d-inline" class="ml-3 flags" src="assets\images\SPN.png">
+          </a>
+          <a class="dropdown-item" (click)='cambio_idioma("EN")'>
+            <div class="d-inline" *ngIf='Idioma == "SP"'>Ingles</div>
+            <div class="d-inline" *ngIf='Idioma == "EN"'>English</div>
+            <img class="ml-3 flags" src="assets\images\USA.png">
+          </a>
+        </div>
+      </div>
+
       <form [formGroup]="Usuario" class="mr-3 p-3 rounded" (ngSubmit)="LoginUsuario()">
 
         <div class="form-group">
 
-          <p>Nick</p>
-          <input type="text" placeholder="Entra tu nick" formControlName="nick" class="form-control"
+          <label>Nick</label>
+          <input type="text" formControlName="nick" class="form-control"
             [ngClass]="{'is-invalid': Data.nick.touched && Data.nick.errors}">
 
           <div *ngIf="Data.nick.touched && Data.nick.errors" class="invalid-feedback">
-            <div *ngIf="Data.nick.errors.required">El campo Nick esta vacio!!</div>
+            <div *ngIf='Data.nick.errors.required && Idioma == "SP"'>El campo Nick esta vacio!!</div>
+            <div *ngIf='Data.nick.errors.required && Idioma == "EN"'>Nick field is empty !!</div>
           </div>
         </div>
 
         <div class="form-group">
-          <label>Contraseña</label>
+          <label *ngIf='Idioma == "SP"'>Contraseña</label>
+          <label *ngIf='Idioma == "EN"'>Password</label>
 
           <div class="input-group">
 
-            <input type="password" placeholder="Entra tu contraseña" formControlName="password" id="contra"
+            <input type="password" formControlName="password" id="contra"
               class="form-control" [ngClass]="{'is-invalid':Data.password.touched && Data.password.errors}"
               showHideInput>
 
@@ -50,23 +74,31 @@
             </div>
 
             <div *ngIf="Data.password.touched && Data.password.errors" class="invalid-feedback">
-              <div *ngIf="Data.password.errors.required">El campo Contraseña esta vacio!!</div>
+              <div *ngIf='Data.password.errors.required && Idioma == "SP"'>El campo Contraseña esta vacio!!</div>
+              <div *ngIf='Data.password.errors.required && Idioma == "EN"'>The Password field is empty !!</div>
             </div>
 
           </div>
 
           <div class="mt-3 mb-4">
-            <p class="d-inline"><a [routerLink]="['/Registro']">Registrate</a></p>
-            <p class="ml-5 d-inline"><a [routerLink]="['/Feed']">Entrar como invitado</a></p>
+            <p *ngIf='Idioma == "SP"' class="d-inline"><a [routerLink]="['/Registro']">Registrate</a></p>
+            <p *ngIf='Idioma == "EN"' class="d-inline"><a [routerLink]="['/Registro']">Sign up</a></p>
+
+            <p *ngIf='Idioma == "SP"' class="ml-5 d-inline"><a [routerLink]="['/Feed']">Entrar como invitado</a></p>
+            <p *ngIf='Idioma == "EN"' class="ml-5 d-inline"><a [routerLink]="['/Feed']">Login as guest</a></p>
           </div>
 
         </div>
 
-        <button type="submit" [disabled]="Usuario.invalid" class="btn btn-dark mr-4">Iniciar Sesión</button>
+        <button type="submit" [disabled]="Usuario.invalid" class="btn btn-dark mr-4">
+          <div *ngIf='Idioma == "SP"'>Iniciar Sesión</div>
+          <div *ngIf='Idioma == "EN"'>Log In</div>
+        </button>
 
       </form>
 
     </div>
+
   </div>
 
 </div>

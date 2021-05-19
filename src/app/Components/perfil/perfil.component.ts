@@ -21,9 +21,11 @@ export class PerfilComponent implements OnInit {
   this.nombreUsuario = localStorage.getItem('User');
   localStorage.removeItem("NombreComunidad");
   localStorage.removeItem("DescripcionComunidad");
-  this.Idioma =localStorage.getItem("Idioma");
   this.GetUsuario();
+  }
 
+  ngAfterContentInit(): void{
+    this.Idioma = sessionStorage.getItem("Idioma");
   }
 
   GetUsuario(){

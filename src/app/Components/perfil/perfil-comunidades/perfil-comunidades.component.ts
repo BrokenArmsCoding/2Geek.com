@@ -18,8 +18,11 @@ export class PerfilComunidadesComponent implements OnInit {
   ngOnInit(): void {
 
     this.NombreUsuario = localStorage.getItem("User");
-    this.Idioma =localStorage.getItem("Idioma");
     this.selectComunidades();
+  }
+
+  ngAfterContentInit(): void{
+    this.Idioma = sessionStorage.getItem("Idioma");
   }
 
   selectComunidades(){

@@ -1,7 +1,3 @@
-<div></div>
-<!-- falta el bucle para mostrar los posts, necesito
-           estructura del objeto a usar, con condicion para cada caso -->
-<!------------------------------------------------------------------------------>
 <div class="card marco_claro mt-4 mb-n2" *ngFor="let post of Posts;">
   <div class="card-header">
     <p class="card-text float-right">{{post.NomPerfil}}</p>
@@ -34,15 +30,13 @@
         <div class="input-group-append">
           <button class="btn btn-dark" type="button" (click)='Comentar(post.TituloPost)'>
             <div class="d-inline" *ngIf='Idioma == "SP"'>Comentar</div>
-            <div class="d-inline" *ngIf='Idioma == "EN"'>Report</div>
+            <div class="d-inline" *ngIf='Idioma == "EN"'>Comment</div>
           </button>
         </div>
       </div>
     </div>
 
   </div>
-
-
 
   <div class="card-body marco_2 mt-1">
     <div class="pr-4 pl-3" *ngFor="let comentarios of SelectComentariosDB; ">

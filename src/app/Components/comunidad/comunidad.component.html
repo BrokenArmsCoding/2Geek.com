@@ -82,7 +82,7 @@
       <div class="form-group">
         <lablel *ngIf='Idioma == "SP"'>Nombre Comunidad</lablel>
         <lablel *ngIf='Idioma == "EN"'>Community Name</lablel>
-        <input type="text" placeholder="Escribe un nombre para tu Comunidad" formControlName="nombre"
+        <input type="text" formControlName="nombre"
           class="form-control border border-dark"
           [ngClass]="{'is-invalid': data.nombre.touched && data.nombre.errors}" />
 
@@ -105,7 +105,7 @@
       <div class="form-group mt-2">
         <lablel *ngIf='Idioma == "SP"'>Mensaje Comunidad</lablel>
         <lablel *ngIf='Idioma == "EN"'>Community Message </lablel>
-        <input type="text" placeholder="Escribe un mensaje o descrpcion para tu comunidad" formControlName="mensaje"
+        <input type="text" formControlName="mensaje"
           class="form-control border border-dark"
           [ngClass]="{'is-invalid': data.mensaje.touched && data.mensaje.errors}" />
 

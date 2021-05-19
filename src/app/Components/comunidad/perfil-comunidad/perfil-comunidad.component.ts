@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { swalProviderToken } from '@sweetalert2/ngx-sweetalert2/lib/di';
 import { ServicesService } from 'src/app/Services/services.service';
 import Swal from 'sweetalert2';
 
@@ -54,8 +53,6 @@ export class PerfilComunidadComponent implements OnInit {
     this.NombreUsuario = localStorage.getItem("User");
     this.nombreComunidadLS = localStorage.getItem("NombreComunidad");
     this.descripcionComunidadLS = localStorage.getItem("DescripcionComunidad");
-    this.Idioma =localStorage.getItem("Idioma");
-
 
     this.NuevoPost = this.formBuilder.group({
       titulo: ['', Validators.required],
@@ -70,6 +67,10 @@ export class PerfilComunidadComponent implements OnInit {
     this.countUsuarios();
     this.selectUsuariosGestion();
     this.selectPermisosUsuario();
+  }
+
+  ngAfterContentInit(): void{
+    this.Idioma = sessionStorage.getItem("Idioma");
   }
 
   Cambiar_Opcion(op: String): void {
@@ -142,6 +143,7 @@ export class PerfilComunidadComponent implements OnInit {
     this.BD.DeleteInfocomunidad(this.nombreComunidadLS).subscribe();
     //this.DeleteTablaComunidad(nombreComunidad);
   }
+
   DejarComunidad(){
     Swal.fire({
       title: 'Seguro que salir de la comunidad?',

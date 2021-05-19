@@ -4,8 +4,6 @@ import { Comprobacion } from './Contra_Repetida';
 import { Router } from '@angular/router';
 import { ServicesService } from 'src/app/Services/services.service';
 import Swal from 'sweetalert2';
-//import Swal from 'sweetalert2';
-
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -16,9 +14,7 @@ export class RegistroComponent implements OnInit {
 
   Usuario: FormGroup;
   Idioma: String;
-  DatosUsuario : {
-
-  }
+  DatosUsuario : { }
 
   constructor(private formBuilder: FormBuilder,public router: Router, private BD: ServicesService) { }
 
@@ -36,8 +32,11 @@ export class RegistroComponent implements OnInit {
       validator: Comprobacion('cont', 'rep_cont')
     });
 
-    this.Idioma =localStorage.getItem("Idioma");
+  }
 
+  ngAfterContentInit(): void{
+    this.Idioma = sessionStorage.getItem("Idioma");
+    sessionStorage.setItem("switch", "switch");
   }
 
   get Data() {

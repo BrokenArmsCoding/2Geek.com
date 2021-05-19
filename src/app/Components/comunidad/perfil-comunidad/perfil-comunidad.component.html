@@ -55,19 +55,19 @@
               (click)='Cambiar_Opcion("Crear")'>Crear Post
             </button>
 
-            <button *ngIf='Idioma == "EN"' class="btn btn-light mt-4 ml-3" type="button"
+            <button *ngIf='Idioma == "EN"' class="btn btn-light mt-4 float-right" type="button"
               (click)='Cambiar_Opcion("Crear")'>Create Post
             </button>
 
           </div>
 
+          <!--  Condicion solo para creador y moderador -->
           <div class="col pt-3" *ngIf="Permisos == 1 || Permisos == 2">
             <button class="btn btn-light" type="button" (click)='Cambiar_Opcion("Modificar")'>
               <div *ngIf='Idioma == "SP"'>Modificar Comunidad</div>
               <div *ngIf='Idioma == "EN"'>Modify Community </div>
             </button>
             <div *ngIf="Permisos == 1">
-              <!--Condicion solo para creador -->
               <button class="btn btn-light mt-4" type="button" (click)='BorrarComunidad(nombreComunidad)'>
                 <div *ngIf='Idioma == "SP"'>Eliminar Comunidad</div>
                 <div *ngIf='Idioma == "EN"'>Delete Community </div>
@@ -88,7 +88,6 @@
       <!-- Esto es de los usuarios basicos para ver la lista de gente -->
       <div *ngIf='ModoCambio == "VerLista"'>
         <ul class="list-group mt-3" *ngFor="let usuarios of selectUsuarios">
-          <!--  Condicion *ngFor que le paseis la lista de usuarios -->
           <li class="list-group-item" *ngIf="usuarios.Permisos == 1">
             <p *ngIf='Idioma == "SP"' class="d-inline ml-5">{{usuarios.NombreUsuario}} : El capo</p>
             <p *ngIf='Idioma == "EN"' class="d-inline ml-5">{{usuarios.NombreUsuario}} : The capo</p>
@@ -108,7 +107,7 @@
             <p *ngIf='Idioma == "SP"' class="text-light">Titulo</p>
             <p *ngIf='Idioma == "EN"' class="text-light">Title</p>
 
-            <input type="text" placeholder="Entra un titulo para tu Post" formControlName="titulo" class="form-control"
+            <input type="text" formControlName="titulo" class="form-control"
               [ngClass]="{'is-invalid': infopost.titulo.touched && infopost.titulo.errors}">
 
             <div *ngIf="infopost.titulo.touched && infopost.titulo.errors" class="invalid-feedback">
@@ -172,7 +171,6 @@
           <ul class="list-group mt-3" *ngFor="let usuarios of selectUsuarios">
             <li class="list-group-item" *ngIf="usuarios.NombreUsuario != NombreUsuario">
               <p class="">{{usuarios.NombreUsuario}}</p>
-              <!-- Añadid funcion para mas permisos y dejad la funcion de 'cambiar opcion' para volver atras  -->
               <button class="btn btn-dark d-inline sep2 mt-1" type="button"
                 (click)='menosPermisos(usuarios.NombreUsuario)' (click)='Cambiar_Opcion("Gestionar")'>
                 <div *ngIf='Idioma == "SP"'>Menos permisos</div>

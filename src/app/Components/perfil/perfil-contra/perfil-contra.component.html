@@ -8,7 +8,6 @@
     <div class="input-group">
 
       <input class="form-control" type="password" id="cont_act" formControlName="cont"
-        placeholder="Entra tu contraseña Actual"
         [ngClass]="{'is-invalid': perfdata.cont.touched && perfdata.cont.errors}" showHideInput>
 
       <div class="input-group-append ngx-show-hide-password">
@@ -35,7 +34,6 @@
     <div class="input-group">
 
       <input class="form-control" type="password" id="cont_new" formControlName="new_cont"
-        placeholder="Entra tu Nueva contraseña"
         [ngClass]="{'is-invalid': perfdata.new_cont.touched && perfdata.new_cont.errors}" showHideInput>
 
       <div class="input-group-append ngx-show-hide-password">
@@ -63,7 +61,6 @@
     <div class="input-group">
 
       <input class="form-control" type="password" id="rep_new_cont" formControlName="rep_cont"
-        placeholder="Repite tu contraseña"
         [ngClass]="{'is-invalid': perfdata.rep_cont.touched && perfdata.rep_cont.errors}" showHideInput>
 
       <div class="input-group-append ngx-show-hide-password">

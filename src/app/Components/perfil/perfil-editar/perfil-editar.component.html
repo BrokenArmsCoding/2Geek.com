@@ -25,7 +25,7 @@
 
   <div class="form-group">
     <p *ngIf='Idioma == "SP"'>Correo</p>
-    <p *ngIf='Idioma == "EN"'>Mail</p>
+    <p *ngIf='Idioma == "EN"'>Email</p>
     <input class="form-control" type="text" formControlName="correo"
       [ngClass]="{'is-invalid': perfdata.correo.dirty && perfdata.correo.errors}">
 

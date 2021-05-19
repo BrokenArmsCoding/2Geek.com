@@ -22,8 +22,11 @@ export class PaginaInicioComponent implements OnInit {
   constructor(private BD: ServicesService) { }
 
   ngOnInit(): void {
-    this.Idioma =localStorage.getItem("Idioma");
     this.SelectPosts();
+  }
+
+  ngAfterContentInit(): void{
+    this.Idioma = sessionStorage.getItem("Idioma");
   }
 
   SelectPosts(){

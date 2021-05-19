@@ -3,8 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ServicesService } from 'src/app/Services/services.service';
 import Swal from 'sweetalert2';
-import { Comunidades } from '../../Models/Comunidades';
-
 
 @Component({
   selector: 'app-comunidad',
@@ -53,7 +51,7 @@ export class ComunidadComponent implements OnInit {
       nombreComunidad: ['', ],
       tag_p: ['',]
     });
-// /^\S{0,50}$/    /.*\S.*/
+
     this.NuevaComunidad = this.formBuilder.group({
       nombre: ['', [Validators.required,Validators.pattern("[A-Za-z0-9]+")]],
       mensaje:['', Validators.required],
@@ -62,11 +60,15 @@ export class ComunidadComponent implements OnInit {
 
     localStorage.removeItem("NombreComunidad");
     localStorage.removeItem("DescripcionComunidad");
-    this.Idioma =localStorage.getItem("Idioma");
     this.NombreUsuario = localStorage.getItem("User");
 
     this.SelectComunidades();
     this.selectUserComunidad();
+  }
+
+  ngAfterContentInit(): void{
+    this.Idioma = sessionStorage.getItem("Idioma");
+    sessionStorage.setItem("switch", "switch");
   }
 
   get info() {
@@ -102,12 +104,10 @@ export class ComunidadComponent implements OnInit {
   }
 
   buscarComunidades(){
-
     this.nombreComunidad = this.info.nombreComunidad.value;
 
-
     // if(this.nombreTag = 'Accion' || 'Peliculas' || 'Comedia' || 'Peliculas' ||'Anime' ||'Videojuegos' ||'Deporte' ||'Futbol' ||'Badminton'  ||'Basquet'){
-    //   // console.log("asdasd")
+    //   // console.log("funciona")
     //   this.BD.buscadorComunidadesTag(this.nombreTag).subscribe(
     //     result => this.BuscadorComunidades = result
     //   );
@@ -118,7 +118,7 @@ export class ComunidadComponent implements OnInit {
     );
 
   }
-  // }
+
 
   CrearComunidad(){
 
@@ -185,9 +185,5 @@ export class ComunidadComponent implements OnInit {
       result => this.SelectComunidad = result
     );
   }
-  selectTodasComunidades(){
-
-  }
-
 
 }

@@ -4,15 +4,16 @@ import { Router } from '@angular/router';
 import { ServicesService } from 'src/app/Services/services.service';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
 
   Usuario: FormGroup;
+  Idioma: string;
 
   user: any = {
     nick: String,
@@ -27,7 +28,13 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
     localStorage.clear();
-    localStorage.setItem("Idioma", "SP");
+  }
+
+  ngAfterContentInit(): void {
+    if (sessionStorage.getItem("switch") != "switch") {
+      sessionStorage.setItem("Idioma", "SP");
+    }
+    this.Idioma = sessionStorage.getItem("Idioma");
   }
 
   get Data() {
@@ -38,24 +45,35 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['Perfil']);
   }
 
-  LoginUsuario(){
+  LoginUsuario() {
 
     this.user.nick = this.Data.nick.value;
     this.user.password = this.Data.password.value;
 
     this.BD.loginUser(this.user).subscribe(
-      datos =>{
-        if(datos['response'] == 'OK' ){
+      datos => {
+        if (datos['response'] == 'OK') {
           environment.vsession = this.user.nick;
           localStorage.setItem("User", environment.vsession);
-          Swal.fire('Login correcto wachin', ' ');
+          Swal.fire('Login correcto', ' ');
           this.router.navigate(['/Comunidades']);
-        }else{
-          Swal.fire('Login erroneo wachin','');
+        } else {
+          Swal.fire('Login erroneo', '');
         }
       }
     )
   }
 
+  cambio_idioma(op: string): void {
+
+    if (op == "SP") {
+      this.Idioma = "SP";
+      sessionStorage.setItem("Idioma", op);
+    }
+    if (op == "EN") {
+      this.Idioma = "EN";
+      sessionStorage.setItem("Idioma", op);
+    }
+  }
 
 }
