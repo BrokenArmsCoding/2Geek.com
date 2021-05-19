@@ -19,10 +19,25 @@ a:hover{
   color:#00FF84;
 }
 
+img.flags{
+  max-height: 20px;
+  min-height: 20px;
+}
+
+h3{
+  text-decoration: none;
+  color:white;
+}
+
+div.dropdown-divider{
+  border-color: #00FF84;
+}
+
 .menu{
   background-color: #1D1F1E;
   border-color: #00FF84;
   max-width: 20px;
+  user-select: none;
 }
 
 .boton_menu:hover{

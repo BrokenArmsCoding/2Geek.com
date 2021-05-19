@@ -15,7 +15,7 @@ Correo: String;
 Fecha:Date;
 nick: String;
 datos: any = {};
-
+Idioma: String;
 
 DatosPerfil: any = {
   NombrePerfil: null,
@@ -31,7 +31,7 @@ DatosPerfil: any = {
 
   ngOnInit(): void {
     this.nick = localStorage.getItem('User');
-
+    this.Idioma =localStorage.getItem("Idioma");
 
     this.PerfilInfo = this.formBuilder.group({
       nombre: ['', Validators.required],

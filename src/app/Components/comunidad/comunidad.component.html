@@ -2,27 +2,39 @@
 <div class="container-fluid sep">
   <div class="btn-group d-flex border border-dark rounded">
 
-    <button type="button" class="btn btn-light w-100 sp_btt" (click)='Cambiar_Opcion("MisCom")'>Mis Comunidades</button>
-    <button type="button" class="btn btn-light w-100 sp_btt" (click)='Cambiar_Opcion("Busqueda")'>Buscar
-      Comunidad</button>
-    <button type="button" class="btn btn-light w-100 sp_btt" (click)='Cambiar_Opcion("CreaCom")'>Crear
-      Comunidad</button>
+    <button type="button" class="btn btn-light w-100 sp_btt" (click)='Cambiar_Opcion("MisCom")'>
+      <div *ngIf='Idioma == "SP"'>Mis Comunidades</div>
+      <div *ngIf='Idioma == "EN"'>My Communities</div>
+    </button>
+    <button type="button" class="btn btn-light w-100 sp_btt" (click)='Cambiar_Opcion("Busqueda")'>
+      <div *ngIf='Idioma == "SP"'>Buscar Comunidad</div>
+      <div *ngIf='Idioma == "EN"'>Search Community</div>
+    </button>
+    <button type="button" class="btn btn-light w-100 sp_btt" (click)='Cambiar_Opcion("CreaCom")'>
+      <div *ngIf='Idioma == "SP"'>Crear Comunidad</div>
+      <div *ngIf='Idioma == "EN"'>Create Community</div>
+    </button>
   </div>
 
   <div *ngIf="Opcion_Selec == 'MisCom'">
     <!-- Bucle que muestre solo las comunidades en las que esta el usuario -->
-    <div class="marco_claro mt-5" *ngFor="let comunidades of SelectComunidad">
+    <div class="marco_claro mt-5 mb-3" *ngFor="let comunidades of SelectComunidad">
       <div class="card border-dark">
         <div class="card-body ml-2">
           <div>
-            <p class="card-text d-inline">Comunidad: {{ comunidades.NombreComunidad }}</p>
+            <p *ngIf='Idioma == "SP"' class="card-text d-inline">Comunidad: {{ comunidades.NombreComunidad }}</p>
+            <p *ngIf='Idioma == "EN"' class="card-text d-inline">Community: {{ comunidades.NombreComunidad }}</p>
 
             <a class="card-text d-inline nodec ml-1">{{ Tag2 }}</a>
           </div>
           <div>
-            <p class="card-text mt-3">Descripcion: {{ comunidades.DescripcionComunidad }}</p>
-            <!-- Falta funcion para ir a la comunidad selecionada -->
-            <button class="btn btn-dark float-right busqueda" type="button" (click)="iraComunidad(comunidades.NombreComunidad,comunidades.DescripcionComunidad)">Ir a la comunidad</button>
+            <p *ngIf='Idioma == "SP"' class="card-text mt-3">Descripcion: {{ comunidades.DescripcionComunidad }}</p>
+            <p *ngIf='Idioma == "EN"' class="card-text mt-3">Description: {{ comunidades.DescripcionComunidad }}</p>
+            <button class="btn btn-dark float-right busqueda" type="button"
+              (click)="iraComunidad(comunidades.NombreComunidad,comunidades.DescripcionComunidad)">
+              <div *ngIf='Idioma == "SP"'>Ir a la comunidad</div>
+              <div *ngIf='Idioma == "EN"'>Go to the community </div>
+            </button>
           </div>
         </div>
       </div>
@@ -31,86 +43,122 @@
 
 
   <div *ngIf="Opcion_Selec == 'Busqueda'">
-    <!-- Faltara funcion (click) para recojer los datos y enviarlos para el select -->
-    <form class="mt-4 p-3 rounded Busq" [formGroup]="Parametros" method="POST">
+    <form class="mt-4 mb-3 p-3 rounded Busq" [formGroup]="Parametros" (ngSubmit)="buscarComunidades()" method="POST">
       <div class="form-group">
         <input type="text" class="form-control rounded w-100 border border-dark mb-2 p-1"
-          formControlName="nombreComunidad" placeholder="Introduce el nombre de la comunidad"
+          formControlName="nombreComunidad"
           [ngClass]="{'is-invalid': info.nombreComunidad.touched && info.nombreComunidad.errors}" />
       </div>
 
-      <button type="submit" [disabled]="Parametros.invalid" class="btn btn-dark busqueda" (click)="buscarComunidades()">
-        Buscar</button>
+      <button type="submit" [disabled]="Parametros.invalid" class="btn btn-dark busqueda">
+        <div *ngIf='Idioma == "SP"'>Buscar comunidad</div>
+        <div *ngIf='Idioma == "EN"'>Search community </div>
+      </button>
     </form>
 
-    <!-- Bucle que busque segun lo selecionado, de predetermiando que salgan todas las comunidades -->
-    <div class="marco_claro mt-5" *ngFor="let buscador of BuscadorComunidades">
+    <div class="marco_claro mt-5 mb-3" *ngFor="let buscador of BuscadorComunidades">
       <div class="card border-dark">
         <div class="card-body ml-2">
           <div class="d-inline">
-            Comunidad: <a class="card-text nodec ml-1"> {{ buscador.NombreComunidad }} </a>
+            <div class="d-inline" *ngIf='Idioma == "SP"'>Comunidad:</div>
+            <div class="d-inline" *ngIf='Idioma == "EN"'>Community:</div>
+            <a class="card-text nodec ml-1 d-inline"> {{ buscador.NombreComunidad }} </a>
             <a class="ml-5 mr-1 nodec">{{ Tag1 }} </a>
             <i class="card-text nodec ml-5 ">{{ buscador.DescripcionComunidad }}</i>
           </div>
-          <!-- Falta funcion para unirse a la comunidad selecionada -->
-          <button class="btn btn-dark float-right busqueda" type="button" (click)="unirseComunidad(buscador.NombreComunidad,buscador.DescripcionComunidad)">Unirse a la comunidad</button>
+          <button class="btn btn-dark float-right busqueda" type="button"
+            (click)="unirseComunidad(buscador.NombreComunidad,buscador.DescripcionComunidad)">
+            <div class="d-inline" *ngIf='Idioma == "SP"'>Unirse a la comunidad</div>
+            <div class="d-inline" *ngIf='Idioma == "EN"'>Join the community </div>
+          </button>
         </div>
       </div>
     </div>
   </div>
 
   <div *ngIf="Opcion_Selec == 'CreaCom'">
-    <!-- Faltara funcion (click) para recojer los datos y enviarlos para al insertar -->
-    <form class="mt-5 p-4 Crea rounded" [formGroup]="NuevaComunidad" method="POST">
+
+    <form class="mt-5 mb-3 p-4 Crea rounded" (ngSubmit)="CrearComunidad()" [formGroup]="NuevaComunidad" method="POST">
       <div class="form-group">
-        <lablel>Nombre Comunidad</lablel>
+        <lablel *ngIf='Idioma == "SP"'>Nombre Comunidad</lablel>
+        <lablel *ngIf='Idioma == "EN"'>Community Name</lablel>
         <input type="text" placeholder="Escribe un nombre para tu Comunidad" formControlName="nombre"
-          class="form-control border border-dark" [ngClass]="{'is-invalid': data.nombre.touched && data.nombre.errors}" />
+          class="form-control border border-dark"
+          [ngClass]="{'is-invalid': data.nombre.touched && data.nombre.errors}" />
 
         <div *ngIf="data.nombre.touched && data.nombre.errors" class="invalid-feedback">
-          <div *ngIf="data.nombre.errors.required">
+          <div *ngIf='data.nombre.errors.required && Idioma == "SP"'>
             Tu comunidad no tiene nombre todavia!
           </div>
-          <div *ngIf="data.nombre.errors.pattern">
+          <div *ngIf='data.nombre.errors.required && Idioma == "EN"'>
+            Your community has no name yet!
+          </div>
+          <div *ngIf='data.nombre.errors.pattern && Idioma == "SP"'>
             No se admiten espacios!
+          </div>
+          <div *ngIf='data.nombre.errors.pattern && Idioma == "EN"'>
+            Spaces are not allowed!
           </div>
         </div>
       </div>
 
       <div class="form-group mt-2">
-        <lablel>Mensaje Comunidad</lablel>
+        <lablel *ngIf='Idioma == "SP"'>Mensaje Comunidad</lablel>
+        <lablel *ngIf='Idioma == "EN"'>Community Message </lablel>
         <input type="text" placeholder="Escribe un mensaje o descrpcion para tu comunidad" formControlName="mensaje"
           class="form-control border border-dark"
           [ngClass]="{'is-invalid': data.mensaje.touched && data.mensaje.errors}" />
 
         <div *ngIf="data.mensaje.touched && data.mensaje.errors" class="invalid-feedback">
-          <div *ngIf="data.mensaje.errors.required">
+          <div *ngIf='data.mensaje.errors.required && Idioma == "SP"'>
             Tu comunidad no tiene mensaje!
+          </div>
+          <div *ngIf='data.mensaje.errors.required && Idioma == "EN"'>
+            Your community has no message!
           </div>
         </div>
       </div>
 
       <div class="form-group">
-        <lablel>Selecciona un tag para tu comunidad</lablel>
+        <lablel *ngIf='Idioma == "SP"'>Selecciona un tag para tu comunidad</lablel>
+        <lablel *ngIf='Idioma == "EN"'>Select a tag for your community</lablel>
         <select class="custom-select form-control border border-dark" formControlName="tag"
           [ngClass]="{ 'is-invalid': data.tag.touched && data.tag.errors }">
           <option selected></option>
-          <option value="Accion">Accion</option>
-          <option value="Comedia">Comedia</option>
-          <option value="Peliculas">Peliculas</option>
-          <option value="Anime">Anime</option>
-          <option value="Videojuegos">Videojuegos</option>
+          <div *ngIf='Idioma == "SP"'></div>
+          <div *ngIf='Idioma == "EN"'></div>
+          <option value="Accion">
+            <div *ngIf='Idioma == "SP"'>Accion</div>
+            <div *ngIf='Idioma == "EN"'>Action</div>
+          </option>
+          <option value="Comedia">
+            <div *ngIf='Idioma == "SP"'>Comedia</div>
+            <div *ngIf='Idioma == "EN"'>Comedy</div>
+          </option>
+          <option value="Peliculas">
+            <div *ngIf='Idioma == "SP"'>Peliculas</div>
+            <div *ngIf='Idioma == "EN"'>Movies</div>
+          </option>
+          <option value="Anime">
+            Anime
+          </option>
+          <option value="Videojuegos">
+            <div *ngIf='Idioma == "SP"'>Videojuegos</div>
+            <div *ngIf='Idioma == "EN"'>Videogame</div>
+          </option>
         </select>
 
         <div *ngIf="data.tag.touched && data.tag.errors" class="invalid-feedback">
-          <div *ngIf="data.tag.errors.required">Tu comunidad no tiene tag!</div>
+          <div *ngIf='data.tag.errors.required && Idioma == "SP"'>Tu comunidad no tiene tag!</div>
+          <div *ngIf='data.tag.errors.required && Idioma == "EN"'>Your community has no tag!</div>
         </div>
       </div>
 
-      <button type="submit" [disabled]="NuevaComunidad.invalid" (click)="CrearComunidad()"
-        class="btn btn-dark busqueda">
-        Crear Comunidad
+      <button type="submit" [disabled]="NuevaComunidad.invalid" class="btn btn-dark busqueda">
+        <div *ngIf='Idioma == "SP"'>Crear Comunidad</div>
+        <div *ngIf='Idioma == "EN"'>Create Community </div>
       </button>
+
     </form>
   </div>
 </div>

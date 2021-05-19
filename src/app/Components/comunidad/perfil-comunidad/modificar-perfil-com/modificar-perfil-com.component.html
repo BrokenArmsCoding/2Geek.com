@@ -1,25 +1,37 @@
-<form class="marco_oscuro mt-3 p-3 rounded" [formGroup]="PerfilCom" method="POST">
+<form class="marco_oscuro mt-3 p-3 rounded" [formGroup]="PerfilCom" (ngSubmit)="updateComunidad()" method="POST">
 
   <div class="form-group mt-2">
-    <p class="text-light">Nombre Comunidad</p>
+
+    <p *ngIf='Idioma == "SP"' class="text-light">Nombre Comunidad</p>
+    <p *ngIf='Idioma == "EN"' class="text-light">Community Name</p>
+
     <input type="text" formControlName="nombre" class="form-control"
-     [ngClass]="{'is-invalid': perfildata.nombre.touched && perfildata.nombre.errors}">
+      [ngClass]="{'is-invalid': perfildata.nombre.touched && perfildata.nombre.errors}">
 
     <div *ngIf="perfildata.nombre.touched && perfildata.nombre.errors" class="invalid-feedback">
-      <div *ngIf="perfildata.nombre.errors.required">El campo esta vacio!</div>
+      <div *ngIf='perfildata.nombre.errors.required && Idioma == "SP"'>El campo esta vacio!</div>
+      <div *ngIf='perfildata.nombre.errors.required && Idioma == "EN"'>The field is empty!</div>
     </div>
   </div>
 
   <div class="form-group mt-2">
-    <p class="text-light">Descripcion Comunidad</p>
+    <p *ngIf='Idioma == "SP"' class="text-light">Descripcion Comunidad</p>
+    <p *ngIf='Idioma == "EN"' class="text-light">Description Community</p>
     <textarea class="form-control" formControlName="mensaje" rows="3"
       [ngClass]="{'is-invalid': perfildata.mensaje.touched && perfildata.mensaje.errors}"></textarea>
 
     <div *ngIf="perfildata.mensaje.touched && perfildata.mensaje.errors" class="invalid-feedback">
-      <div *ngIf="perfildata.mensaje.errors.required">El campo esta vacio!</div>
+      <div *ngIf='perfildata.mensaje.errors.required && Idioma == "SP"'>El campo esta vacio!</div>
+      <div *ngIf='perfildata.mensaje.errors.required && Idioma == "EN"'>The field is empty!</div>
     </div>
   </div>
-    <!-- Falta funcion para cambiar cosas de la comuniad -->
-  <button class="btn btn-light text-dark mt-3 mr-4" type="submit" [disabled]="PerfilCom.invalid" (click)="updateComunidad()">Subir Cambios</button>
-  <button class="btn btn-light text-dark mt-3" type="button" (click)='Volver()'>Cancelar</button>
+
+  <button class="btn btn-light text-dark mt-3 mr-4" type="submit" [disabled]="PerfilCom.invalid">
+    <div *ngIf='Idioma == "SP"'>Guardar Cambios</div>
+    <div *ngIf='Idioma == "EN"'>Save changes </div>
+  </button>
+  <button class="btn btn-light text-dark mt-3" type="button" (click)='Volver()'>
+    <div *ngIf='Idioma == "SP"'>Cancelar</div>
+    <div *ngIf='Idioma == "EN"'>Cancel</div>
+  </button>
 </form>

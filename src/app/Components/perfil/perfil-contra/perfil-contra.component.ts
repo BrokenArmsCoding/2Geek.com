@@ -12,6 +12,7 @@ import { Comprobacion } from './Comprobador';
 export class PerfilContraComponent implements OnInit {
 
   nick = localStorage.getItem('User');
+  Idioma: String;
 
   updateContrasena: any = {
     nick: null,
@@ -29,6 +30,8 @@ export class PerfilContraComponent implements OnInit {
       rep_cont: ['', Validators.required],
     },
     { validator: Comprobacion('new_cont', 'rep_cont')});
+
+    this.Idioma =localStorage.getItem("Idioma");
   }
 
   get perfdata() {

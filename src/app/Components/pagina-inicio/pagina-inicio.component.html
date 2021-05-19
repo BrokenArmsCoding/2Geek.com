@@ -26,16 +26,14 @@
 
     <div class="col-4 col-sm-4 col-md-4 col-lg-4">
 
-
       <div class="marco_oscuro p-1">
-
-        <div></div>
 
         <div class="card marco_oscuro verde_bord">
           <div class="card-body ml-2">
             <a class="d-inline">
               <img class="img_trend mr-3" src="/assets/images/full_logo.png">
-              Nombre comunidad
+              <div class="d-inline" *ngIf='Idioma == "SP"'>Nombre comunidad</div>
+              <div class="d-inline" *ngIf='Idioma == "EN"'>Community name</div>
             </a>
           </div>
         </div>
@@ -44,11 +42,14 @@
 
 
       <div class="marco_oscuro mt-4 p-2">
-        <p><iframe src="https://discord.com/widget?id=772843749372985385&theme=dark" width="100%" height="450" allowtransparency="true"
-          frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
-        </iframe></p>
+        <p><iframe src="https://discord.com/widget?id=772843749372985385&theme=dark" width="100%" height="450"
+            allowtransparency="true" frameborder="0"
+            sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+          </iframe></p>
       </div>
+
     </div>
+
   </div>
 
 </div>

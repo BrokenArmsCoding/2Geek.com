@@ -14,6 +14,7 @@ export class PostComponent implements OnInit {
   comentario: FormGroup;
   comentarios: String;
   NombreUsuario: String;
+  Idioma: String;
 
   Posts: any = {
     nombrePost: String,
@@ -45,6 +46,7 @@ export class PostComponent implements OnInit {
 
     this.nombreComunidadLS = localStorage.getItem("NombreComunidad");
     this.NombreUsuario = localStorage.getItem("User");
+    this.Idioma =localStorage.getItem("Idioma");
     this.SelectPosts();
 
     this.comentario = this.formBuilder.group({

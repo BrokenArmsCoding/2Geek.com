@@ -10,7 +10,7 @@ export class PerfilComunidadesComponent implements OnInit {
 
 
   SelectComentarios: Object = {}
-
+  Idioma: String;
   NombreUsuario: String;
 
   constructor(private BD: ServicesService) { }
@@ -18,7 +18,7 @@ export class PerfilComunidadesComponent implements OnInit {
   ngOnInit(): void {
 
     this.NombreUsuario = localStorage.getItem("User");
-
+    this.Idioma =localStorage.getItem("Idioma");
     this.selectComunidades();
   }
 

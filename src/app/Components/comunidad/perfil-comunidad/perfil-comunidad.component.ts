@@ -23,6 +23,7 @@ export class PerfilComunidadComponent implements OnInit {
   nombreComunidadLS: String;
   descripcionComunidadLS: String;
   numUsuarios: Object;
+  Idioma: String;
 
   datosPost: any ={
     titulo: String,
@@ -53,6 +54,7 @@ export class PerfilComunidadComponent implements OnInit {
     this.NombreUsuario = localStorage.getItem("User");
     this.nombreComunidadLS = localStorage.getItem("NombreComunidad");
     this.descripcionComunidadLS = localStorage.getItem("DescripcionComunidad");
+    this.Idioma =localStorage.getItem("Idioma");
 
 
     this.NuevoPost = this.formBuilder.group({

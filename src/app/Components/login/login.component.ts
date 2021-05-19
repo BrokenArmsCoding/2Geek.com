@@ -22,12 +22,12 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, public router: Router, private BD: ServicesService) { }
 
   ngOnInit(): void {
-
     this.Usuario = this.formBuilder.group({
       nick: ['', Validators.required],
       password: ['', Validators.required]
     });
     localStorage.clear();
+    localStorage.setItem("Idioma", "SP");
   }
 
   get Data() {

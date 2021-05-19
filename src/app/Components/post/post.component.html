@@ -3,7 +3,7 @@
            estructura del objeto a usar, con condicion para cada caso -->
 <!------------------------------------------------------------------------------>
 <div class="card marco_claro mt-4 mb-n2" *ngFor="let post of Posts;">
-  <div class="card-header" >
+  <div class="card-header">
     <p class="card-text float-right">{{post.NomPerfil}}</p>
 
     <p class="card-text">{{post.NombreComunidad}}</p>
@@ -17,18 +17,25 @@
 
   </div>
   <div class="card-footer mt-2">
-    <button class="btn btn-dark" type="button">Reportar</button>
+    <button class="btn btn-dark" type="button">
+      <div class="d-inline" *ngIf='Idioma == "SP"'>Reportar</div>
+      <div class="d-inline" *ngIf='Idioma == "EN"'>Report</div>
+    </button>
   </div>
   <hr>
   <div class="mt-2">
 
     <!-- Caja para comentar -->
     <div class="pr-5 pl-5 mb-3">
-      <p>Comenta algo ...</p>
-      <div class="input-group " [formGroup] = "comentario">
+      <p *ngIf='Idioma == "SP"'>Comenta algo ...</p>
+      <p *ngIf='Idioma == "EN"'>Comment something ...</p>
+      <div class="input-group " [formGroup]="comentario">
         <input type="text" class="form-control" formControlName="comentario">
-        <div class="input-group-append" >
-          <button class="btn btn-dark" type="button" (click)='Comentar(post.TituloPost)'>Comentar</button>
+        <div class="input-group-append">
+          <button class="btn btn-dark" type="button" (click)='Comentar(post.TituloPost)'>
+            <div class="d-inline" *ngIf='Idioma == "SP"'>Comentar</div>
+            <div class="d-inline" *ngIf='Idioma == "EN"'>Report</div>
+          </button>
         </div>
       </div>
     </div>
@@ -37,14 +44,17 @@
 
 
 
-<div class="card-body marco_2 mb-2" >
-  <div class="pr-4 pl-3 pre-scrol lable" *ngFor="let comentarios of SelectComentariosDB; ">
-    <div class="marco_3 mt-2 p-2" *ngIf ="comentarios.IDPost == post.id_post">
-      <p class="mt-2">
-        {{comentarios.NombrePerfil}}
-        : {{comentarios.mensaje}}</p>
-      <button class="btn btn-light mt-1"> Reportar</button>
+  <div class="card-body marco_2 mt-1">
+    <div class="pr-4 pl-3" *ngFor="let comentarios of SelectComentariosDB; ">
+      <div class="card-text marco_3 mt-2 p-2" *ngIf="comentarios.IDPost == post.id_post">
+        <p class="mt-2">
+          {{comentarios.NombrePerfil}}
+          : {{comentarios.mensaje}}</p>
+        <button class="btn btn-light mt-1">
+          <div class="d-inline" *ngIf='Idioma == "SP"'>Reportar</div>
+          <div class="d-inline" *ngIf='Idioma == "EN"'>Report</div>
+        </button>
+      </div>
     </div>
   </div>
-</div>
 </div>

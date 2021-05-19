@@ -2,7 +2,8 @@
 
   <div class="form-group pr-5 pl-5">
 
-    <p>Entra tu contraseña Actual</p>
+    <p *ngIf='Idioma == "SP"'>Entra tu contraseña actual</p>
+    <p *ngIf='Idioma == "EN"'>Enter your current password</p>
 
     <div class="input-group">
 
@@ -19,7 +20,8 @@
       </div>
 
       <div *ngIf="perfdata.cont.touched && perfdata.cont.errors" class="invalid-feedback">
-        <div *ngIf="perfdata.cont.errors.required">El campo esta vacio !!</div>
+        <div *ngIf='perfdata.cont.errors.required && Idioma == "SP"'>El campo esta vacio !!</div>
+        <div *ngIf='perfdata.cont.errors.required && Idioma == "EN"'>The field is empty !!</div>
       </div>
 
     </div>
@@ -27,7 +29,8 @@
 
   <div class="form-group pr-5 pl-5">
 
-    <p>Entra tu Nueva contraseña</p>
+    <p *ngIf='Idioma == "SP"'>Entra tu Nueva contraseña</p>
+    <p *ngIf='Idioma == "EN"'>Enter your New password</p>
 
     <div class="input-group">
 
@@ -44,7 +47,8 @@
       </div>
 
       <div *ngIf="perfdata.new_cont.touched && perfdata.new_cont.errors" class="invalid-feedback">
-        <div *ngIf="perfdata.new_cont.errors.required">El campo esta vacio !!</div>
+        <div *ngIf='perfdata.new_cont.errors.required && Idioma == "SP"'>El campo esta vacio !!</div>
+        <div *ngIf='perfdata.new_cont.errors.required && Idioma == "EN"'>The field is empty !!</div>
       </div>
 
     </div>
@@ -53,7 +57,8 @@
 
   <div class="form-group pr-5 pl-5">
 
-    <p>Repite tu nueva contraseña</p>
+    <p *ngIf='Idioma == "SP"'>Repite tu nueva contraseña</p>
+    <p *ngIf='Idioma == "EN"'>Repeat your new password</p>
 
     <div class="input-group">
 
@@ -70,15 +75,23 @@
       </div>
 
       <div *ngIf="perfdata.rep_cont.touched && perfdata.rep_cont.errors" class="invalid-feedback">
-        <div *ngIf="perfdata.rep_cont.errors.required">El campo esta vacio !!</div>
-        <div *ngIf="perfdata.rep_cont.errors.Comprobacion"> La contraseña no coincide</div>
+        <div *ngIf='perfdata.rep_cont.errors.required && Idioma == "SP"'>El campo esta vacio !!</div>
+        <div *ngIf='perfdata.rep_cont.errors.required && Idioma == "EN"'>The field is empty !!</div>
+        <div *ngIf='perfdata.rep_cont.errors.Comprobacion && Idioma == "SP"'>La contraseña no coincide</div>
+        <div *ngIf='perfdata.rep_cont.errors.Comprobacion && Idioma == "EN"'>Password does not match</div>
       </div>
 
     </div>
 
   </div>
 
-  <button class="btn btn-dark ml-5 mt-2 mb-3" type="submit" [disabled]="PerfilCont.invalid" (click)='Cambiar_Contra()'>Cambiar Contraseña</button>
-  <button class="btn btn-dark ml-5 mt-2 mb-3" type="button" (click)="UpdateCont()">Cancelar</button>
+  <button class="btn btn-dark ml-5 mt-2 mb-3" type="submit" [disabled]="PerfilCont.invalid">
+    <div *ngIf='Idioma == "SP"'>Cambiar Contraseña</div>
+    <div *ngIf='Idioma == "EN"'>Change Password</div>
+  </button>
+  <button class="btn btn-dark ml-5 mt-2 mb-3" type="button" (click)="UpdateCont()">
+    <div *ngIf='Idioma == "SP"'>Cancelar</div>
+    <div *ngIf='Idioma == "EN"'>Cancel</div>
+  </button>
 
 </form>

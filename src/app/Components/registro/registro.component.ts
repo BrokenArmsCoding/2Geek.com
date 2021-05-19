@@ -15,7 +15,7 @@ import Swal from 'sweetalert2';
 export class RegistroComponent implements OnInit {
 
   Usuario: FormGroup;
-
+  Idioma: String;
   DatosUsuario : {
 
   }
@@ -35,6 +35,8 @@ export class RegistroComponent implements OnInit {
     }, {
       validator: Comprobacion('cont', 'rep_cont')
     });
+
+    this.Idioma =localStorage.getItem("Idioma");
 
   }
 

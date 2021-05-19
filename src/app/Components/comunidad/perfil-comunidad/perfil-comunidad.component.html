@@ -10,7 +10,8 @@
 
         <p>{{descripcionComunidadLS}}</p>
 
-        <p>Miembros Comunidad ( {{numUsuarios}} )</p>
+        <p *ngIf='Idioma == "SP"'>Miembros Comunidad ( {{numUsuarios}} )</p>
+        <p *ngIf='Idioma == "EN"'>Community Members ( {{numUsuarios}} )</p>
 
         <div class="border_v mt-4 mb-2 p-2">
           <p><iframe src="https://discord.com/widget?id=772843749372985385&theme=dark" width="100%" height="450"
@@ -21,37 +22,58 @@
 
         <div class="row mt-3 mb-3">
 
-            <!--  Condicion usuario normal y visitante -->
-            <div class="col pt-3" *ngIf="Permisos == 3 || Permisos == 4">
-              <button class="btn btn-light mt-2" type="button" (click)='Cambiar_Opcion("VerLista")'>Ver
-                Miembros</button>
-              <div *ngIf="Permisos == 3">
-                <button class="btn btn-light mt-2" type="button" (click)='DejarComunidad()'>Dejar Comunidad</button>
-              </div>
+          <!--  Condicion usuario normal y visitante -->
+          <div class="col pt-3" *ngIf="Permisos == 3 || Permisos == 4">
+            <button class="btn btn-light mt-2" type="button" (click)='Cambiar_Opcion("VerLista")'>
+              <div *ngIf='Idioma == "SP"'>Ver Miembros</div>
+              <div *ngIf='Idioma == "EN"'>View Members </div>
+            </button>
+            <div *ngIf="Permisos == 3">
+              <button class="btn btn-light mt-2" type="button" (click)='DejarComunidad()'>
+                <div *ngIf='Idioma == "SP"'>Dejar Comunidad</div>
+                <div *ngIf='Idioma == "EN"'>Leave Community</div>
+              </button>
             </div>
-            <div class="col pt-3" *ngIf="Permisos == 3 || Permisos == 4">
-              <div *ngIf="Permisos == 3">
-                <button class="btn btn-light float-right mt-2 pl-3 pr-3" type="button"
-                  (click)='Cambiar_Opcion("Crear")'>Crear Post</button>
-              </div>
+          </div>
+          <div class="col pt-3" *ngIf="Permisos == 3 || Permisos == 4">
+            <div *ngIf="Permisos == 3">
+              <button class="btn btn-light float-right mt-2 pl-3 pr-3" type="button" (click)='Cambiar_Opcion("Crear")'>
+                <div *ngIf='Idioma == "SP"'>Crear Post</div>
+                <div *ngIf='Idioma == "EN"'>Create Post</div>
+              </button>
             </div>
+          </div>
 
-            <!--  Condicion solo para creador y moderador -->
-            <div class="col pt-3" *ngIf="Permisos == 1 || Permisos == 2">
-              <button class="btn btn-light float-right" type="button" (click)='Cambiar_Opcion("Gestionar")'>Gestionar
-                Miembros</button>
-              <button class="btn btn-light float-right mt-4 pl-5 pr-5" type="button"
-                (click)='Cambiar_Opcion("Crear")'>Crear Post</button>
+          <!--  Condicion solo para creador y moderador -->
+          <div class="col pt-3" *ngIf="Permisos == 1 || Permisos == 2">
+            <button class="btn btn-light float-right" type="button" (click)='Cambiar_Opcion("Gestionar")'>
+              <div *ngIf='Idioma == "SP"'>Gestionar Miembros</div>
+              <div *ngIf='Idioma == "EN"'>Manage Members </div>
+            </button>
+
+            <button *ngIf='Idioma == "SP"' class="btn btn-light float-right mt-4 pl-5 pr-5" type="button"
+              (click)='Cambiar_Opcion("Crear")'>Crear Post
+            </button>
+
+            <button *ngIf='Idioma == "EN"' class="btn btn-light mt-4 ml-3" type="button"
+              (click)='Cambiar_Opcion("Crear")'>Create Post
+            </button>
+
+          </div>
+
+          <div class="col pt-3" *ngIf="Permisos == 1 || Permisos == 2">
+            <button class="btn btn-light" type="button" (click)='Cambiar_Opcion("Modificar")'>
+              <div *ngIf='Idioma == "SP"'>Modificar Comunidad</div>
+              <div *ngIf='Idioma == "EN"'>Modify Community </div>
+            </button>
+            <div *ngIf="Permisos == 1">
+              <!--Condicion solo para creador -->
+              <button class="btn btn-light mt-4" type="button" (click)='BorrarComunidad(nombreComunidad)'>
+                <div *ngIf='Idioma == "SP"'>Eliminar Comunidad</div>
+                <div *ngIf='Idioma == "EN"'>Delete Community </div>
+              </button>
             </div>
-            <div class="col pt-3" *ngIf="Permisos == 1 || Permisos == 2">
-              <button class="btn btn-light" type="button" (click)='Cambiar_Opcion("Modificar")'>Modificar
-                Comunidad</button>
-              <div *ngIf="Permisos == 1">
-                <!--Condicion solo para creador -->
-                <button class="btn btn-light mt-4" type="button" (click)='BorrarComunidad(nombreComunidad)'>Eliminar
-                  Comunidad</button>
-              </div>
-            </div>
+          </div>
 
         </div>
       </div>
@@ -67,12 +89,13 @@
       <div *ngIf='ModoCambio == "VerLista"'>
         <ul class="list-group mt-3" *ngFor="let usuarios of selectUsuarios">
           <!--  Condicion *ngFor que le paseis la lista de usuarios -->
-          <li class="list-group-item" *ngIf ="usuarios.Permisos == 1" >
-            <p class="d-inline ml-5">{{usuarios.NombreUsuario}} : El capo</p>
+          <li class="list-group-item" *ngIf="usuarios.Permisos == 1">
+            <p *ngIf='Idioma == "SP"' class="d-inline ml-5">{{usuarios.NombreUsuario}} : El capo</p>
+            <p *ngIf='Idioma == "EN"' class="d-inline ml-5">{{usuarios.NombreUsuario}} : The capo</p>
           </li>
-          <li class="list-group-item" *ngIf ="usuarios.Permisos != 1">
-          <p class="d-inline ml-5">{{usuarios.NombreUsuario}}</p>
-        </li>
+          <li class="list-group-item" *ngIf="usuarios.Permisos != 1">
+            <p class="d-inline ml-5">{{usuarios.NombreUsuario}}</p>
+          </li>
         </ul>
       </div>
 
@@ -82,32 +105,43 @@
 
           <div class="form-group mt-2">
 
-            <p class="text-light">Titulo</p>
+            <p *ngIf='Idioma == "SP"' class="text-light">Titulo</p>
+            <p *ngIf='Idioma == "EN"' class="text-light">Title</p>
+
             <input type="text" placeholder="Entra un titulo para tu Post" formControlName="titulo" class="form-control"
               [ngClass]="{'is-invalid': infopost.titulo.touched && infopost.titulo.errors}">
 
             <div *ngIf="infopost.titulo.touched && infopost.titulo.errors" class="invalid-feedback">
-              <div *ngIf="infopost.titulo.errors.required">El campo Nick esta vacio!!</div>
+              <div *ngIf='infopost.titulo.errors.required && Idioma == "SP"'>El campo Nick esta vacio!!</div>
+              <div *ngIf='infopost.titulo.errors.required && Idioma == "EN"'>Nick field is empty !!</div>
             </div>
 
           </div>
 
           <div class="form-group mt-2">
 
-            <p class="text-light">Texto</p>
+            <p *ngIf='Idioma == "SP"' class="text-light">Texto</p>
+            <p *ngIf='Idioma == "EN"' class="text-light">Text</p>
+
             <textarea class="form-control" formControlName="texto" rows="5"
               [ngClass]="{'is-invalid': infopost.texto.touched && infopost.texto.errors}"></textarea>
 
             <div *ngIf="infopost.texto.touched && infopost.texto.errors" class="invalid-feedback">
-              <div *ngIf="infopost.texto.errors.required">Necesitas escribir algo para tu post</div>
+              <div *ngIf='infopost.texto.errors.required && Idioma == "SP"'>Necesitas escribir algo para tu post</div>
+              <div *ngIf='infopost.texto.errors.required && Idioma == "EN"'>Necesitas escribir algo para tu post</div>
             </div>
 
           </div>
 
           <button class="btn btn-light text-dark mt-3 mr-4" type="submit" [disabled]="NuevoPost.invalid"
-            (click)=" crearPost()">Subir
-            Post</button>
-          <button class="btn btn-light text-dark mt-3" type="button" (click)='Volver()'>Cancelar</button>
+            (click)=" crearPost()">
+            <div *ngIf='Idioma == "SP"'>Subir Post</div>
+            <div *ngIf='Idioma == "EN"'>Upload Post</div>
+          </button>
+          <button class="btn btn-light text-dark mt-3" type="button" (click)='Volver()'>
+            <div *ngIf='Idioma == "SP"'>Cancelar</div>
+            <div *ngIf='Idioma == "EN"'>Cancel</div>
+          </button>
         </form>
       </div>
 
@@ -119,28 +153,42 @@
 
         <div *ngIf='ModoCambio == "Gestionar"'>
           <ul class="list-group mt-3" *ngFor="let usuarios of selectUsuarios">
-            <li class="list-group-item" *ngIf ="usuarios.NombreUsuario != NombreUsuario">
-              <p class="d-inline ml-5" >{{usuarios.NombreUsuario}}</p>
+            <li class="list-group-item" *ngIf="usuarios.NombreUsuario != NombreUsuario">
+              <p class="d-inline ml-5">{{usuarios.NombreUsuario}}</p>
+              <button class="btn btn-dark d-inline sep mt-1" type="button" (click)='Cambiar_Opcion("Gestionar_P")'>
+                <div *ngIf='Idioma == "SP"'>Permisos</div>
+                <div *ngIf='Idioma == "EN"'>Permissions </div>
+              </button>
               <button class="btn btn-dark d-inline sep mt-1" type="button"
-                (click)='Cambiar_Opcion("Gestionar_P")'>Permisos</button> <!-- Podeis poner mas de una funcion -->
-              <button class="btn btn-dark d-inline sep mt-1" type="button" (click)="expulsarUsuario(usuarios.NombreUsuario)">Expulsar</button>
+                (click)="expulsarUsuario(usuarios.NombreUsuario)">
+                <div *ngIf='Idioma == "SP"'>Expulsar</div>
+                <div *ngIf='Idioma == "EN"'>Kick</div>
+              </button>
             </li>
           </ul>
         </div>
 
         <div *ngIf='ModoCambio == "Gestionar_P"'>
-          <!-- Neceitareis guardar el id usuario escogido o algo aqui-->
           <ul class="list-group mt-3" *ngFor="let usuarios of selectUsuarios">
-            <li class="list-group-item" *ngIf ="usuarios.NombreUsuario != NombreUsuario">
+            <li class="list-group-item" *ngIf="usuarios.NombreUsuario != NombreUsuario">
               <p class="">{{usuarios.NombreUsuario}}</p>
               <!-- Añadid funcion para mas permisos y dejad la funcion de 'cambiar opcion' para volver atras  -->
-              <button class="btn btn-dark d-inline sep2 mt-1" type="button" (click)='menosPermisos(usuarios.NombreUsuario)' (click)='Cambiar_Opcion("Gestionar")'>Menos
-                permisos</button>
-              <button class="btn btn-dark d-inline sep2 mt-1" type="button" (click)="masPermisos(usuarios.NombreUsuario)" (click)='Cambiar_Opcion("Gestionar")'>Mas
-                permisos</button>
-              <!--Opcion solo para el lider -->
               <button class="btn btn-dark d-inline sep2 mt-1" type="button"
-              (click)="ascenderaCapo(usuarios.NombreUsuario)" (click)='Cambiar_Opcion("Gestionar")'>Ascender a Lider</button>
+                (click)='menosPermisos(usuarios.NombreUsuario)' (click)='Cambiar_Opcion("Gestionar")'>
+                <div *ngIf='Idioma == "SP"'>Menos permisos</div>
+                <div *ngIf='Idioma == "EN"'>Less permissions </div>
+              </button>
+              <button class="btn btn-dark d-inline sep2 mt-1" type="button"
+                (click)="masPermisos(usuarios.NombreUsuario)" (click)='Cambiar_Opcion("Gestionar")'>
+                <div *ngIf='Idioma == "SP"'>Mas permisos</div>
+                <div *ngIf='Idioma == "EN"'>More permissions </div>
+              </button>
+              <!--Opcion solo para el lider -->
+              <button *ngIf="Permisos == 1" class="btn btn-dark d-inline sep2 mt-1" type="button"
+                (click)="ascenderaCapo(usuarios.NombreUsuario)" (click)='Cambiar_Opcion("Gestionar")'>
+                <div *ngIf='Idioma == "SP"'>Ascender a Lider</div>
+                <div *ngIf='Idioma == "EN"'>Promote to Leader</div>
+              </button>
             </li>
           </ul>
         </div>

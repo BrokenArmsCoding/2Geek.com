@@ -8,6 +8,7 @@ import { ServicesService } from 'src/app/Services/services.service';
 })
 export class PerfilPostsComponent implements OnInit {
 
+  Idioma: String;
 
   Posts: any = {
     nombrePost: String,
@@ -25,6 +26,7 @@ export class PerfilPostsComponent implements OnInit {
   ngOnInit(): void {
 
     this.NombreUsuario = localStorage.getItem("User");
+    this.Idioma =localStorage.getItem("Idioma");
 
     this.SelectPosts();
   }

@@ -15,6 +15,7 @@ export class ModificarPerfilComComponent implements OnInit {
   NombreUsuario: String;
   nombreComunidadLS: String;
   descripcionComunidadLS: String;
+  Idioma: String;
 
   nuevosDatosComunidad: any = {}
 
@@ -30,6 +31,7 @@ export class ModificarPerfilComComponent implements OnInit {
     this.NombreUsuario = localStorage.getItem("User");
     this.nombreComunidadLS = localStorage.getItem("NombreComunidad");
     this.descripcionComunidadLS = localStorage.getItem("DescripcionComunidad");
+    this.Idioma =localStorage.getItem("Idioma");
   }
   get perfildata() {
     return this.PerfilCom.controls;

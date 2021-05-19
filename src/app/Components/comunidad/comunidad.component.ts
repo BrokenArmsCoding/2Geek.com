@@ -20,6 +20,7 @@ export class ComunidadComponent implements OnInit {
   nombreComunidad: String;
   nombreTag: String;
   pasarNombreComunidad: string;
+  Idioma: String;
 
 
   DatosComunidad: any = {
@@ -61,6 +62,7 @@ export class ComunidadComponent implements OnInit {
 
     localStorage.removeItem("NombreComunidad");
     localStorage.removeItem("DescripcionComunidad");
+    this.Idioma =localStorage.getItem("Idioma");
     this.NombreUsuario = localStorage.getItem("User");
 
     this.SelectComunidades();
