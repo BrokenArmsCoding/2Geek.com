@@ -105,14 +105,6 @@ export class ComunidadComponent implements OnInit {
 
   buscarComunidades(){
     this.nombreComunidad = this.info.nombreComunidad.value;
-
-    // if(this.nombreTag = 'Accion' || 'Peliculas' || 'Comedia' || 'Peliculas' ||'Anime' ||'Videojuegos' ||'Deporte' ||'Futbol' ||'Badminton'  ||'Basquet'){
-    //   // console.log("funciona")
-    //   this.BD.buscadorComunidadesTag(this.nombreTag).subscribe(
-    //     result => this.BuscadorComunidades = result
-    //   );
-    // }else{
-
     this.BD.buscadorComunidades(this.nombreComunidad).subscribe(
       result => this.BuscadorComunidades = result
     );
