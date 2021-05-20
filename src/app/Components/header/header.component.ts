@@ -9,11 +9,13 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   idioma : string = "SP";
+  User : String;
 
   constructor() { }
 
   ngOnInit(): void {
     this.idioma = sessionStorage.getItem("Idioma");
+    this.User = localStorage.getItem("User");
   }
 
   cambio_idioma(op:string):void {
