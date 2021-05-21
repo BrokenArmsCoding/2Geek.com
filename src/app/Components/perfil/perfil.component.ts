@@ -29,7 +29,6 @@ export class PerfilComponent implements OnInit {
   }
 
   GetUsuario(){
-    console.log(this.nombreUsuario);
     this.DB.GetUsuario(this.nombreUsuario).subscribe(
       result => this.usuario = result[0]
     );

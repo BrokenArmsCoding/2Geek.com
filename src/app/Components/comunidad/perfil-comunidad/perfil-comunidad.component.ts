@@ -94,8 +94,6 @@ export class PerfilComunidadComponent implements OnInit {
     this.datosPost.texto = this.infopost.texto.value;
     this.datosPost.nombreUsuario = this.NombreUsuario;
 
-    console.log(this.datosPost);
-
     this.BD.insertPost(this.datosPost).subscribe(
       datos => {
         if(datos['response'] == 'OK'){
@@ -211,8 +209,6 @@ export class PerfilComunidadComponent implements OnInit {
     this.DatosPermisos.nombreUsuario = usuario;
     this.DatosPermisos.nombreComunidad = this.nombreComunidadLS;
 
-    console.log(this.DatosPermisos);
-
     this.BD.menosPermisos(this.DatosPermisos).subscribe(
       datos => {
         if(datos['response'] == 'OK'){
@@ -231,8 +227,6 @@ export class PerfilComunidadComponent implements OnInit {
     this.DatosPermisos.nombreUsuario = usuario;
     this.DatosPermisos.nombreComunidad = this.nombreComunidadLS;
 
-    console.log(this.DatosPermisos);
-
     this.BD.MasPermisos(this.DatosPermisos).subscribe(
       datos => {
         if(datos['response'] == 'OK'){
@@ -249,8 +243,6 @@ export class PerfilComunidadComponent implements OnInit {
 
     this.DatosPermisos.nombreUsuario = usuario;
     this.DatosPermisos.nombreComunidad = this.nombreComunidadLS;
-
-    console.log(this.DatosPermisos);
 
     this.BD.ascenderaCapo(this.DatosPermisos).subscribe(
       datos => {

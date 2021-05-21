@@ -67,7 +67,6 @@ export class RegistroComponent implements OnInit {
     this.BD.createPerfil(this.Usuario.getRawValue()).subscribe(
 
       datos => {
-        console.log(this.Usuario);
         if (datos['response'] == 'OK') {
           Swal.fire('Creado', '');
           this.router.navigate(['/Login']);

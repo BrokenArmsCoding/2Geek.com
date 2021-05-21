@@ -52,8 +52,6 @@ export class ModificarPerfilComComponent implements OnInit {
     this.nuevosDatosComunidad.nombreComunidad = this.perfildata.nombre.value;
     this.nuevosDatosComunidad.descripcionComunidad = this.perfildata.mensaje.value;
 
-    console.log(this.nuevosDatosComunidad);
-
     this.BD.updateInfoComunidadUserCom(this.nuevosDatosComunidad).subscribe();
 
     this.BD.updateInfoComunidad(this.nuevosDatosComunidad).subscribe();

@@ -121,10 +121,6 @@ export class ComunidadComponent implements OnInit {
     this.DatosComunidad.tagComunidad = this.data.tag.value;
     this.DatosComunidad.idComunidad;
 
-
-    console.log(this.DatosComunidad);
-
-
     this.BD.createComunidad(this.DatosComunidad).subscribe(
       datos => {
         if(datos['response'] == 'OK'){
@@ -156,8 +152,6 @@ export class ComunidadComponent implements OnInit {
     this.unirseComunidadDatos.nombreComunidad = nombreComundad;
     this.unirseComunidadDatos.nombreUsuario = this.NombreUsuario;
     this.unirseComunidadDatos.descripcionComunidad = DescripcionComunidad;
-
-    console.log(this.unirseComunidadDatos);
 
     this.BD.comprobarUnirseComunidad(this.unirseComunidadDatos).subscribe(
       datos => {
