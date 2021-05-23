@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
           environment.vsession = this.user.nick;
           localStorage.setItem("User", environment.vsession);
           Swal.fire('Login correcto', ' ');
-          this.router.navigate(['/Comunidades']);
+          this.router.navigate(['/PaginaInicio']);
         } else {
           Swal.fire('Login erroneo', '');
         }

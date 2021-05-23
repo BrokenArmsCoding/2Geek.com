@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ServicesService } from 'src/app/Services/services.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-perfil-editar',
   templateUrl: './perfil-editar.component.html',
@@ -27,7 +29,7 @@ export class PerfilEditarComponent implements OnInit {
 
 
   PerfilInfo: FormGroup;
-  constructor(private formBuilder: FormBuilder, private DB: ServicesService) { }
+  constructor(private formBuilder: FormBuilder, private DB: ServicesService, public router: Router) { }
 
   ngOnInit(): void {
     this.nick = localStorage.getItem('User');
@@ -64,9 +66,8 @@ export class PerfilEditarComponent implements OnInit {
     this.DatosPerfil.Apellido = this.PerfilInfo.controls.apellido.value;
     this.DatosPerfil.nick = this.nick;
 
-    this.DB.UpdatePerfil(this.DatosPerfil).subscribe(
-
-    )
+    this.DB.UpdatePerfil(this.DatosPerfil).subscribe()
+    Swal.fire('Actualizado Correctamente', '');
 
   }
 

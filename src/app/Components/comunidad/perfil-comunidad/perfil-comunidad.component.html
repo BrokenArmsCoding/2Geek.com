@@ -90,7 +90,7 @@
         <ul class="list-group mt-3" *ngFor="let usuarios of selectUsuarios">
           <li class="list-group-item" *ngIf="usuarios.Permisos == 1">
             <p *ngIf='Idioma == "SP"' class="d-inline ml-5">{{usuarios.NombreUsuario}} : El capo</p>
-            <p *ngIf='Idioma == "EN"' class="d-inline ml-5">{{usuarios.NombreUsuario}} : The capo</p>
+            <p *ngIf='Idioma == "EN"' class="d-inline ml-5">{{usuarios.NombreUsuario}} : El capo</p>
           </li>
           <li class="list-group-item" *ngIf="usuarios.Permisos != 1">
             <p class="d-inline ml-5">{{usuarios.NombreUsuario}}</p>
@@ -127,7 +127,7 @@
 
             <div *ngIf="infopost.texto.touched && infopost.texto.errors" class="invalid-feedback">
               <div *ngIf='infopost.texto.errors.required && Idioma == "SP"'>Necesitas escribir algo para tu post</div>
-              <div *ngIf='infopost.texto.errors.required && Idioma == "EN"'>Necesitas escribir algo para tu post</div>
+              <div *ngIf='infopost.texto.errors.required && Idioma == "EN"'>You need to write something</div>
             </div>
 
           </div>

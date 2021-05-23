@@ -8,6 +8,8 @@ import { ServicesService } from 'src/app/Services/services.service';
 })
 export class PaginaInicioComponent implements OnInit {
 
+  nick: String;
+
   Idioma: String;
 
   Posts: any = {
@@ -19,9 +21,15 @@ export class PaginaInicioComponent implements OnInit {
     idPost: String
   }
 
+
+
+
   constructor(private BD: ServicesService) { }
 
   ngOnInit(): void {
+    this.nick = localStorage.getItem('User');
+
+
     this.SelectPosts();
   }
 

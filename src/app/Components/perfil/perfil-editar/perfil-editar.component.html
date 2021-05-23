@@ -2,7 +2,7 @@
 
   <div class="form-group">
     <p *ngIf='Idioma == "SP"'>Nombre</p>
-    <p *ngIf='Idioma == "EN"'>Name</p>
+    <p *ngIf='Idioma == "EN"'>First Name</p>
     <input class="form-control" type="text" formControlName="nombre"
       [ngClass]="{'is-invalid': perfdata.nombre.dirty && perfdata.nombre.errors}">
 
@@ -14,7 +14,7 @@
 
   <div class="form-group">
     <p *ngIf='Idioma == "SP"'>Apellido</p>
-    <p *ngIf='Idioma == "EN"'>Surname</p>
+    <p *ngIf='Idioma == "EN"'>Last Name</p>
     <input class="form-control" type="text" formControlName="apellido"
       [ngClass]="{'is-invalid': perfdata.apellido.dirty && perfdata.apellido.errors}">
 
@@ -52,8 +52,8 @@
   </button>
 
   <button class="btn btn-dark mt-2 ml-3" type="button" (click)="UpdateCont()">
-    <div *ngIf='Idioma == "SP"'>Cancelar</div>
-    <div *ngIf='Idioma == "EN"'>Cancel</div>
+    <div *ngIf='Idioma == "SP"'>Atras</div>
+    <div *ngIf='Idioma == "EN"'>Back</div>
   </button>
 
 </form>

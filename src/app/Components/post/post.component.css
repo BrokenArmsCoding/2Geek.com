@@ -43,4 +43,4 @@ hr{
 background-color: #2a2929;
 }
 
-p{ user-select: none; }
+.Notarget{ user-select: none; }

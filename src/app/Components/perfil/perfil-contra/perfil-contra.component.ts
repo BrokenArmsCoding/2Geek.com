@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ServicesService } from 'src/app/Services/services.service';
+import Swal from 'sweetalert2';
 import { Comprobacion } from './Comprobador';
 
 @Component({
@@ -45,7 +46,9 @@ export class PerfilContraComponent implements OnInit {
     this.updateContrasena.password = this.PerfilCont.controls.new_cont.value;
 
     this.DB.UpdateContrasena(this.updateContrasena).subscribe();
+    Swal.fire('Actualizado Correctamente', '');
   }
+
 
   UpdateCont() {
     this.refresh();

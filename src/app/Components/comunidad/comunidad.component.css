@@ -36,3 +36,4 @@ form.Crea{
   border-style: solid;
   border-color:#1d1f1e;
 }
+.Notarget{ user-select: none; }

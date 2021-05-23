@@ -1,23 +1,23 @@
 <div class="card marco_claro mt-4 mb-n2" *ngFor="let post of Posts;">
   <div class="card-header">
-    <p class="card-text float-right">{{post.NomPerfil}}</p>
+    <p class="card-text float-right Notarget">{{post.NomPerfil}}</p>
 
     <p class="card-text">{{post.NombreComunidad}}</p>
   </div>
   <div class="card-body">
     <h5 class="card-title">{{post.TituloPost}}</h5>
 
-    <p class="card-text">{{post.informacion}}</p>
+    <p class="card-text">{{post.informacion}} </p>
 
-    <p class="card-text float-right">{{post.fecha_subida}}</p>
+    <p class="card-text float-right Notarget">{{post.fecha_subida}}</p>
 
   </div>
-  <div class="card-footer mt-2">
+  <!-- <div class="card-footer mt-2">
     <button class="btn btn-dark" type="button">
       <div class="d-inline" *ngIf='Idioma == "SP"'>Reportar</div>
       <div class="d-inline" *ngIf='Idioma == "EN"'>Report</div>
     </button>
-  </div>
+  </div> -->
   <hr>
   <div class="mt-2">
 
@@ -44,10 +44,10 @@
         <p class="mt-2">
           {{comentarios.NombrePerfil}}
           : {{comentarios.mensaje}}</p>
-        <button class="btn btn-light mt-1">
+        <!-- <button class="btn btn-light mt-1">
           <div class="d-inline" *ngIf='Idioma == "SP"'>Reportar</div>
           <div class="d-inline" *ngIf='Idioma == "EN"'>Report</div>
-        </button>
+        </button> -->
       </div>
     </div>
   </div>

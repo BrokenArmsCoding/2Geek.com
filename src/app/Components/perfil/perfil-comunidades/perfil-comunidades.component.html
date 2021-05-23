@@ -4,13 +4,13 @@
       <div class="card cardo mr-3 ml-3 mb-3">
         <div class="card-body ml-2">
           <div>
-            <p *ngIf='Idioma == "SP"' class="card-text">En el post: {{comentario.Nombre_Post}}</p>
-            <p *ngIf='Idioma == "EN"' class="card-text">In the post: {{comentario.Nombre_Post}}</p>
+            <p *ngIf='Idioma == "SP"' class="card-text">Post: {{comentario.Nombre_Post}}</p>
+            <p *ngIf='Idioma == "EN"' class="card-text">Post: {{comentario.Nombre_Post}}</p>
           </div>
           <div>
 
-            <p *ngIf='Idioma == "SP"' class="card-text mt-3">Has comentado: {{comentario.mensaje}}</p>
-            <p *ngIf='Idioma == "EN"' class="card-text mt-3">You have commented: {{comentario.mensaje}}</p>
+            <p *ngIf='Idioma == "SP"' class="card-text mt-3">Tu comentario: {{comentario.mensaje}}</p>
+            <p *ngIf='Idioma == "EN"' class="card-text mt-3">Your Comment: {{comentario.mensaje}}</p>
           </div>
         </div>
       </div>
