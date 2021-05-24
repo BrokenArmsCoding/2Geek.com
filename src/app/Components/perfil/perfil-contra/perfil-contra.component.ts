@@ -26,7 +26,7 @@ export class PerfilContraComponent implements OnInit {
 
   ngOnInit(): void {
     this.PerfilCont = this.formBuilder.group({
-      cont: ['', Validators.required],
+      // cont: ['', Validators.required],
       new_cont: ['', Validators.required],
       rep_cont: ['', Validators.required],
     },
