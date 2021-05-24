@@ -46,7 +46,7 @@
     </div>
   </div>
 
-  <button class="btn btn-dark mt-2" type="submit">
+  <button class="btn btn-dark mt-2" type="submit"  [disabled]="PerfilInfo.invalid">
     <div *ngIf='Idioma == "SP"'>Cambiar datos</div>
     <div *ngIf='Idioma == "EN"'>Change data</div>
   </button>
