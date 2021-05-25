@@ -1,13 +1,13 @@
 <div class="card marco_claro mt-4 mb-n2" *ngFor="let post of Posts;">
   <div class="card-header">
-    <p class="card-text float-right Notarget">{{post.NomPerfil}}</p>
+    <p class="card-text float-right Notarget"><strong>NICK</strong>  <br> {{post.NomPerfil}}</p>
 
-    <p class="card-text">{{post.NombreComunidad}}</p>
+    <p class="card-text"> <strong>NOMBRE COMUNIDAD </strong>   <br>{{post.NombreComunidad}}</p>
   </div>
   <div class="card-body">
-    <h5 class="card-title">{{post.TituloPost}}</h5>
+    <h5 class="card-title"> <strong>TÍTULO</strong> - {{post.TituloPost}}</h5>
 
-    <p class="card-text">{{post.informacion}} </p>
+    <p class="card-text"> <strong>INFORMACIÓN</strong> <br> {{post.informacion}} </p>
 
     <p class="card-text float-right Notarget">{{post.fecha_subida}}</p>
 

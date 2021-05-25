@@ -203,4 +203,8 @@ export class ServicesService {
 
   }
 
+  selectPermisos(UsuarioPermisos){
+    return this.http.post(`${environment.serverUrl}SelectUsuariosPermisos.php`,JSON.stringify(UsuarioPermisos));
+  }
+
 }

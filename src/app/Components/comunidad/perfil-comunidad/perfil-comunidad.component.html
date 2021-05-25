@@ -89,11 +89,16 @@
       <div *ngIf='ModoCambio == "VerLista"'>
         <ul class="list-group mt-3" *ngFor="let usuarios of selectUsuarios">
           <li class="list-group-item" *ngIf="usuarios.Permisos == 1">
-            <p *ngIf='Idioma == "SP"' class="d-inline ml-5">{{usuarios.NombreUsuario}} : El capo</p>
-            <p *ngIf='Idioma == "EN"' class="d-inline ml-5">{{usuarios.NombreUsuario}} : El capo</p>
+            <p *ngIf='Idioma == "SP"' class="d-inline ml-5">{{usuarios.NombreUsuario}} : Administrador</p>
+            <p *ngIf='Idioma == "EN"' class="d-inline ml-5">{{usuarios.NombreUsuario}} : Admin</p>
           </li>
-          <li class="list-group-item" *ngIf="usuarios.Permisos != 1">
-            <p class="d-inline ml-5">{{usuarios.NombreUsuario}}</p>
+          <li class="list-group-item" *ngIf="usuarios.Permisos == 2">
+            <p *ngIf='Idioma == "SP"' class="d-inline ml-5">{{usuarios.NombreUsuario}} : Moderador</p>
+            <p *ngIf='Idioma == "EN"' class="d-inline ml-5">{{usuarios.NombreUsuario}} : Mod</p>
+          </li>
+          <li class="list-group-item" *ngIf="usuarios.Permisos == 3">
+            <p *ngIf='Idioma == "SP"' class="d-inline ml-5">{{usuarios.NombreUsuario}} : Usuario Normal </p>
+            <p *ngIf='Idioma == "EN"' class="d-inline ml-5">{{usuarios.NombreUsuario}} : Normal User</p>
           </li>
         </ul>
       </div>
@@ -152,9 +157,35 @@
 
         <div *ngIf='ModoCambio == "Gestionar"'>
           <ul class="list-group mt-3" *ngFor="let usuarios of selectUsuarios">
-            <li class="list-group-item" *ngIf="usuarios.NombreUsuario != NombreUsuario">
-              <p class="d-inline ml-5">{{usuarios.NombreUsuario}}</p>
-              <button class="btn btn-dark d-inline sep mt-1" type="button" (click)='Cambiar_Opcion("Gestionar_P")'>
+            <li class="list-group-item"  *ngIf="usuarios.Permisos == 1">
+              <p class="d-inline ml-5">{{usuarios.NombreUsuario}} : Admin</p>
+              <button class="btn btn-dark d-inline sep mt-1" type="button" (click)='Cambiar_Opcion("Gestionar_P", usuarios.NombreUsuario)'>
+                <div *ngIf='Idioma == "SP"'>Permisos</div>
+                <div *ngIf='Idioma == "EN"'>Permissions </div>
+              </button>
+              <button class="btn btn-dark d-inline sep mt-1" type="button"
+                (click)="expulsarUsuario(usuarios.NombreUsuario)">
+                <div *ngIf='Idioma == "SP"'>Expulsar</div>
+                <div *ngIf='Idioma == "EN"'>Kick</div>
+              </button>
+            </li>
+
+            <li class="list-group-item"  *ngIf="usuarios.Permisos == 2">
+              <p class="d-inline ml-5">{{usuarios.NombreUsuario}} : Moderador</p>
+              <button class="btn btn-dark d-inline sep mt-1" type="button" (click)='Cambiar_Opcion("Gestionar_P", usuarios.NombreUsuario)'>
+                <div *ngIf='Idioma == "SP"'>Permisos</div>
+                <div *ngIf='Idioma == "EN"'>Permissions </div>
+              </button>
+              <button class="btn btn-dark d-inline sep mt-1" type="button"
+                (click)="expulsarUsuario(usuarios.NombreUsuario)">
+                <div *ngIf='Idioma == "SP"'>Expulsar</div>
+                <div *ngIf='Idioma == "EN"'>Kick</div>
+              </button>
+            </li>
+
+            <li class="list-group-item"  *ngIf="usuarios.Permisos == 3">
+              <p class="d-inline ml-5">{{usuarios.NombreUsuario}} : Usuario Normal</p>
+              <button class="btn btn-dark d-inline sep mt-1" type="button" (click)='Cambiar_Opcion("Gestionar_P", usuarios.NombreUsuario)'>
                 <div *ngIf='Idioma == "SP"'>Permisos</div>
                 <div *ngIf='Idioma == "EN"'>Permissions </div>
               </button>
@@ -168,24 +199,64 @@
         </div>
 
         <div *ngIf='ModoCambio == "Gestionar_P"'>
-          <ul class="list-group mt-3" *ngFor="let usuarios of selectUsuarios">
-            <li class="list-group-item" *ngIf="usuarios.NombreUsuario != NombreUsuario">
-              <p class="">{{usuarios.NombreUsuario}}</p>
+          <ul class="list-group mt-3" *ngFor="let usuarios of Datos">
+            <li class="list-group-item" *ngIf="usuarios.Permisos == 1">
+              <p class="">{{usuarios.NombreUsuario}}: Admin</p>
               <button class="btn btn-dark d-inline sep2 mt-1" type="button"
                 (click)='menosPermisos(usuarios.NombreUsuario)' (click)='Cambiar_Opcion("Gestionar")'>
-                <div *ngIf='Idioma == "SP"'>Menos permisos</div>
-                <div *ngIf='Idioma == "EN"'>Less permissions </div>
+                <div *ngIf='Idioma == "SP"'>Degradar a Usuario Normal</div>
+                <div *ngIf='Idioma == "EN"'>Demote to Normal User </div>
               </button>
               <button class="btn btn-dark d-inline sep2 mt-1" type="button"
                 (click)="masPermisos(usuarios.NombreUsuario)" (click)='Cambiar_Opcion("Gestionar")'>
-                <div *ngIf='Idioma == "SP"'>Mas permisos</div>
-                <div *ngIf='Idioma == "EN"'>More permissions </div>
+                <div *ngIf='Idioma == "SP"'>Ascender a Moderador</div>
+                <div *ngIf='Idioma == "EN"'>Promote to Mod </div>
               </button>
               <!--Opcion solo para el lider -->
               <button *ngIf="Permisos == 1" class="btn btn-dark d-inline sep2 mt-1" type="button"
                 (click)="ascenderaCapo(usuarios.NombreUsuario)" (click)='Cambiar_Opcion("Gestionar")'>
-                <div *ngIf='Idioma == "SP"'>Ascender a Lider</div>
-                <div *ngIf='Idioma == "EN"'>Promote to Leader</div>
+                <div *ngIf='Idioma == "SP"'>Ascender a Admin</div>
+                <div *ngIf='Idioma == "EN"'>Promote to Admin</div>
+              </button>
+            </li>
+
+            <li class="list-group-item" *ngIf="usuarios.Permisos == 2">
+              <p class="">{{usuarios.NombreUsuario}}: Moderador</p>
+              <button class="btn btn-dark d-inline sep2 mt-1" type="button"
+                (click)='menosPermisos(usuarios.NombreUsuario)' (click)='Cambiar_Opcion("Gestionar")'>
+                <div *ngIf='Idioma == "SP"'>Degradar a Usuario Normal</div>
+                <div *ngIf='Idioma == "EN"'>Demote to Normal User </div>
+              </button>
+              <button class="btn btn-dark d-inline sep2 mt-1" type="button"
+                (click)="masPermisos(usuarios.NombreUsuario)" (click)='Cambiar_Opcion("Gestionar")'>
+                <div *ngIf='Idioma == "SP"'>Ascender a Moderador</div>
+                <div *ngIf='Idioma == "EN"'>Promote to Mod </div>
+              </button>
+              <!--Opcion solo para el lider -->
+              <button *ngIf="Permisos == 1" class="btn btn-dark d-inline sep2 mt-1" type="button"
+                (click)="ascenderaCapo(usuarios.NombreUsuario)" (click)='Cambiar_Opcion("Gestionar")'>
+                <div *ngIf='Idioma == "SP"'>Ascender a Admin</div>
+                <div *ngIf='Idioma == "EN"'>Promote to Admin</div>
+              </button>
+            </li>
+
+            <li class="list-group-item" *ngIf="usuarios.Permisos == 3">
+              <p class="">{{usuarios.NombreUsuario}}: Usuario Normal</p>
+              <button class="btn btn-dark d-inline sep2 mt-1" type="button"
+                (click)='menosPermisos(usuarios.NombreUsuario)' (click)='Cambiar_Opcion("Gestionar")'>
+                <div *ngIf='Idioma == "SP"'>Degradar a Usuario Normal</div>
+                <div *ngIf='Idioma == "EN"'>Demote to Normal User </div>
+              </button>
+              <button class="btn btn-dark d-inline sep2 mt-1" type="button"
+                (click)="masPermisos(usuarios.NombreUsuario)" (click)='Cambiar_Opcion("Gestionar")'>
+                <div *ngIf='Idioma == "SP"'>Ascender a Moderador</div>
+                <div *ngIf='Idioma == "EN"'>Promote to Mod </div>
+              </button>
+              <!--Opcion solo para el lider -->
+              <button *ngIf="Permisos == 1" class="btn btn-dark d-inline sep2 mt-1" type="button"
+                (click)="ascenderaCapo(usuarios.NombreUsuario)" (click)='Cambiar_Opcion("Gestionar")'>
+                <div *ngIf='Idioma == "SP"'>Ascender a Admin</div>
+                <div *ngIf='Idioma == "EN"'>Promote to Admin</div>
               </button>
             </li>
           </ul>

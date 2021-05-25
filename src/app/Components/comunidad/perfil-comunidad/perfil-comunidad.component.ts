@@ -23,6 +23,7 @@ export class PerfilComunidadComponent implements OnInit {
   descripcionComunidadLS: String;
   numUsuarios: Object;
   Idioma: String;
+  UsuarioPermisos: Object;
 
   datosPost: any ={
     titulo: String,
@@ -35,12 +36,15 @@ export class PerfilComunidadComponent implements OnInit {
 
   salirComunidad: any = {}
 
-
   SelectPermisos: any = {}
 
   ExpulsarUsuario: any = {}
 
   DatosPermisos: any = {}
+
+  DatosUsuariosPermisos: any = {}
+
+  Datos: any = {}
 
 
   constructor(private formBuilder: FormBuilder, private BD: ServicesService, public router: Router) { }
@@ -73,13 +77,27 @@ export class PerfilComunidadComponent implements OnInit {
     this.Idioma = sessionStorage.getItem("Idioma");
   }
 
-  Cambiar_Opcion(op: String): void {
+  Cambiar_Opcion(op: String, NombreUsuario: String): void {
+    this.DatosUsuariosPermisos.UsuarioPermisos = NombreUsuario;
+    this.DatosUsuariosPermisos.nombreComunidad = this.nombreComunidadLS;
+    this.selectPermisos();
+
     this.ModoCambio = op;
+
+  }
+
+
+  selectPermisos(){
+    this.BD.selectPermisos(this.DatosUsuariosPermisos).subscribe(
+      result => this.Datos = result
+    )
+    this.UsuarioPermisos = undefined;
+
   }
 
   Volver(): void {
     this.NuevoPost.reset();
-    this.Cambiar_Opcion("Posts");
+    this.Cambiar_Opcion("Posts","s");
   }
 
   get infopost() {
@@ -98,7 +116,7 @@ export class PerfilComunidadComponent implements OnInit {
       datos => {
         if(datos['response'] == 'OK'){
           Swal.fire('Post creado correctamente', '' );
-          this.Cambiar_Opcion("Posts");
+          this.Cambiar_Opcion("Posts","");
           this.NuevoPost.reset();
         }
       }
@@ -219,10 +237,6 @@ export class PerfilComunidadComponent implements OnInit {
       }
     })
 
-
-
-
-
   }
 
   menosPermisos(usuario: String){
@@ -234,7 +248,7 @@ export class PerfilComunidadComponent implements OnInit {
       datos => {
         if(datos['response'] == 'OK'){
           Swal.fire("Permisos actualizados correctamente a  "+  this.DatosPermisos.nombreUsuario);
-
+          this.refresh();
         }else{
           Swal.fire("Error al actualizar permisos ", '');
         }
@@ -252,7 +266,7 @@ export class PerfilComunidadComponent implements OnInit {
       datos => {
         if(datos['response'] == 'OK'){
           Swal.fire("Permisos actualizados correctamente a  "+  this.DatosPermisos.nombreUsuario);
-
+          this.refresh();
         }else{
           Swal.fire("Error al actualizar permisos ", '');
         }
