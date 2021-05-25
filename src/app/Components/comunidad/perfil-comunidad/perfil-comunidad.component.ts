@@ -191,16 +191,37 @@ export class PerfilComunidadComponent implements OnInit {
     this.ExpulsarUsuario.nombreUsuario = nombreUsuario;
     this.ExpulsarUsuario.nombreComunidad = this.nombreComunidadLS;
 
-    this.BD.expulsarUsuario(this.ExpulsarUsuario).subscribe(
-      datos => {
-        if(datos['response'] == 'OK'){
-          Swal.fire("Expulsado Correctamente a "+   this.ExpulsarUsuario.nombreUsuario);
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "¡Este usuario se expulsara !",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#4a4a50',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, Expulsar!'
 
-        }else{
-          Swal.fire("Unido correctamente ", '');
+    }).then((result) => {
+
+      if (result.isConfirmed == true) {
+
+
+        this.BD.expulsarUsuario(this.ExpulsarUsuario).subscribe(
+
+      datos => {
+        if (datos['response'] == 'OK') {
+          Swal.fire('Expulsado Correctamente', '');
+          this.refresh();
+        } else if (datos['response'] == 'FAIL'){
+          Swal.fire('Error al Expulsar', '');
         }
       }
-    )
+    );
+      }
+    })
+
+
+
+
 
   }
 
