@@ -26,7 +26,7 @@ export class PerfilContraComponent implements OnInit {
 
   ngOnInit(): void {
     this.PerfilCont = this.formBuilder.group({
-      // cont: ['', Validators.required],
+      cont: ['', Validators.required],
       new_cont: ['', Validators.required],
       rep_cont: ['', Validators.required],
     },
@@ -43,10 +43,21 @@ export class PerfilContraComponent implements OnInit {
 
   Cambiar_Contra(){
     this.updateContrasena.nick = this.nick;
+    this.updateContrasena.oldPass = this.PerfilCont.controls.cont.value;
     this.updateContrasena.password = this.PerfilCont.controls.new_cont.value;
 
-    this.DB.UpdateContrasena(this.updateContrasena).subscribe();
-    Swal.fire('Actualizado Correctamente', '');
+    this.DB.selectPasswordeditPerfil(this.updateContrasena).subscribe(
+      datos => {
+        if (datos['response'] == 'FAIL'){
+          this.DB.UpdateContrasena(this.updateContrasena).subscribe();
+          Swal.fire('Actualizado Correctamente', '');
+        }else{
+          Swal.fire('Error al actualizar', '');
+        }
+      }
+    )
+
+
   }
 
 

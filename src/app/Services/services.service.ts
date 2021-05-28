@@ -207,4 +207,9 @@ export class ServicesService {
     return this.http.post(`${environment.serverUrl}SelectUsuariosPermisos.php`,JSON.stringify(UsuarioPermisos));
   }
 
+  selectPasswordeditPerfil(password){
+    console.log(password);
+    return this.http.post(`${environment.serverUrl}SelectPasswordUsuario.php`,JSON.stringify(password));
+  }
+
 }
