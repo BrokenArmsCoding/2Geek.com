@@ -10,6 +10,8 @@
 .marco_2{
   background-color: #2a2929;
   color:white;
+  border-radius: 5px;
+  margin:-1px;
   border-top: none;
 }
 

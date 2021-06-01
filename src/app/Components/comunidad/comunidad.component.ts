@@ -64,6 +64,7 @@ export class ComunidadComponent implements OnInit {
 
     this.SelectComunidades();
     this.selectUserComunidad();
+    document.getElementById("to_top").style.setProperty('display','none',);
   }
 
   ngAfterContentInit(): void{
@@ -170,6 +171,23 @@ export class ComunidadComponent implements OnInit {
     this.BD.selectUserComunidades(this.NombreUsuario).subscribe(
       result => this.SelectComunidad = result
     );
+  }
+
+  onWindowScroll(){
+    if( window.pageYOffset > 200){
+      document.getElementById("to_top").style.setProperty('display','initial',);
+    }
+    else{
+      document.getElementById("to_top").style.setProperty('display','none',);
+    }
+  }
+
+  top() {
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      });
   }
 
 }

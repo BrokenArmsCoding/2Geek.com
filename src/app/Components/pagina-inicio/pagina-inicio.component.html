@@ -1,5 +1,9 @@
 <app-header></app-header>
-<div class="container-fluid sep">
+<div class="container-fluid sep" (window:scroll)="onWindowScroll()">
+
+  <div class="fixed-bottom" id="to_top">
+    <a (click)="top()"><img class="delta float-right mb-3 mr-3" src="/assets/images/gotop.png"></a>
+  </div>
 
   <div class="row row-cols-1">
 

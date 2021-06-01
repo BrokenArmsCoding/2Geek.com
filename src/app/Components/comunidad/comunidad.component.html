@@ -1,5 +1,8 @@
 <app-header></app-header>
-<div class="container-fluid sep">
+<div class="container-fluid sep" (window:scroll)="onWindowScroll()">
+  <div class="fixed-bottom" id="to_top">
+    <a (click)="top()"><img class="delta float-right mb-1 mr-1" src="/assets/images/gotop.png"></a>
+  </div>
   <div class="btn-group d-flex border border-dark rounded">
 
     <button type="button" class="btn btn-light w-100 sp_btt" (click)='Cambiar_Opcion("MisCom")'>

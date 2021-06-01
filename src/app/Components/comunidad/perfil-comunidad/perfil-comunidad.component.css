@@ -27,3 +27,8 @@ button.sep{
 button.sep2{
   margin-left: 5%;
 }
+
+.delta{
+  max-height: 30px;
+  max-width: 30px;
+}

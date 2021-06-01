@@ -47,3 +47,8 @@ p{ user-select: none; }
 h5{ user-select: none; }
 
 .sep { margin-top: 90px; }
+
+.delta{
+  max-height: 30px;
+  max-width: 30px;
+}

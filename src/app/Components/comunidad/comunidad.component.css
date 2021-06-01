@@ -36,4 +36,10 @@ form.Crea{
   border-style: solid;
   border-color:#1d1f1e;
 }
-.Notarget{ user-select: none; }
+
+.Notarget{ user-select: none;}
+
+.delta{
+  max-height: 30px;
+  max-width: 30px;
+}

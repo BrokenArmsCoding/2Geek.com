@@ -71,6 +71,7 @@ export class PerfilComunidadComponent implements OnInit {
     this.countUsuarios();
     this.selectUsuariosGestion();
     this.selectPermisosUsuario();
+    document.getElementById("to_top").style.setProperty('display','none',);
   }
 
   ngAfterContentInit(): void{
@@ -293,6 +294,23 @@ export class PerfilComunidadComponent implements OnInit {
 
   refresh(): void {
     window.location.reload();
+  }
+
+  onWindowScroll(){
+    if( window.pageYOffset > 200){
+      document.getElementById("to_top").style.setProperty('display','initial',);
+    }
+    else{
+      document.getElementById("to_top").style.setProperty('display','none',);
+    }
+  }
+
+  top() {
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      });
   }
 
 }
