@@ -13,14 +13,19 @@
         <div class="card-header">
           <p class="card-text float-right"><strong>NICK</strong> <br>{{post.NomPerfil}}</p>
 
-          <p class="card-text"><strong>NOMBRE COMUNIDAD </strong> <br>{{post.NombreComunidad}}</p>
+          <p *ngIf='Idioma == "SP"' class="card-text"><strong>NOMBRE COMUNIDAD </strong> <br>{{post.NombreComunidad}}</p>
+          <p *ngIf='Idioma == "EN"' class="card-text"><strong>COMMUNITY NAME </strong> <br>{{post.NombreComunidad}}</p>
+
         </div>
         <div class="card-body">
-          <h5 class="card-title"><strong>TÍTULO</strong> {{post.TituloPost}}</h5>
+          <h5 *ngIf='Idioma == "SP"'><strong>TÍTULO</strong> {{post.TituloPost}}</h5>
+          <h5 *ngIf='Idioma == "EN"'><strong>TITLE</strong> {{post.TituloPost}}</h5>
 
-          <p class="card-text"><strong>INFORMACIÓN</strong> <br>{{post.informacion}}</p>
+          <p class="card-text" *ngIf='Idioma == "SP"'><strong>INFORMACIÓN</strong> <br>{{post.informacion}}</p>
+          <p class="card-text" *ngIf='Idioma == "EN"'><strong>INF</strong> <br>{{post.informacion}}</p>
 
-          <p class="card-text float-right">{{post.fecha_subida}}</p>
+
+          <p class="card-text float-right ">{{post.fecha_subida}}</p>
 
         </div>
       </div>
