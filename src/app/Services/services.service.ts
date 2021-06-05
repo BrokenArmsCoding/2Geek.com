@@ -212,4 +212,13 @@ export class ServicesService {
     return this.http.post(`${environment.serverUrl}SelectPasswordUsuario.php`,JSON.stringify(password));
   }
 
+  subirimagen(nombreImagen){
+    console.log(nombreImagen);
+    return this.http.post(`${environment.serverUrl}SubirImagenes.php`,JSON.stringify(nombreImagen));
+  }
+
+  moverAssets(img){
+    return this.http.post(`${environment.serverUrl}EnviarImagenAssets.php`,JSON.stringify(img));
+  }
+
 }

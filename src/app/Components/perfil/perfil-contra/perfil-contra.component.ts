@@ -61,6 +61,7 @@ export class PerfilContraComponent implements OnInit {
   }
 
 
+
   UpdateCont() {
     this.refresh();
   }
