@@ -45,13 +45,12 @@
 
           <div class="float-right sep_right">
 
-            <div class="img_perfil mb-3" *ngIf="url" [src]="url" class="rounded mb-3" width="180">
-              <img *ngIf="url" [src]="url" class="rounded mb-3" width="180">
+            <div class="img_perfil mb-3" class="rounded mb-3">
+              <img  src="./../../../assets/ImagenesPerfil/{{ usuario.Imagen }}" class="rounded mb-3" width="280">
             </div>
 
             <div class="btn-group mt-4">
               <button class="btn btn-dark">
-
 
                 <input *ngIf='Idioma == "SP"' type="file" name="file" multiple (change)="detectFiles($event)">
                 <input *ngIf='Idioma == "EN"' type="file" name="file" multiple (change)="detectFiles($event)">

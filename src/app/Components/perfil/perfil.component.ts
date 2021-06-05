@@ -17,6 +17,7 @@ export class PerfilComponent implements OnInit {
 
   selectedFiles: any;
   url: any;
+  ImagenUsuario: Object;
 
   Usuario: any = {}
 
@@ -27,6 +28,7 @@ export class PerfilComponent implements OnInit {
   localStorage.removeItem("NombreComunidad");
   localStorage.removeItem("DescripcionComunidad");
   this.GetUsuario();
+  this.selectImagen()
   }
 
   ngAfterContentInit(): void{
@@ -37,6 +39,7 @@ export class PerfilComponent implements OnInit {
     this.DB.GetUsuario(this.nombreUsuario).subscribe(
       result => this.usuario = result[0]
     );
+
   }
 
   Cambiar_Opcion(op: String): void {
@@ -55,12 +58,23 @@ export class PerfilComponent implements OnInit {
       this.Usuario.nombre = this.nombreUsuario;
       this.Usuario.imagen = this.selectedFiles[0].name;
 
-      console.log(this.selectedFiles[0])
-      this.DB.moverAssets(this.selectedFiles[0]).subscribe()
+
       this.DB.subirimagen(this.Usuario).subscribe(
 
       )
+      this.refresh();
     }
+    }
+
+  refresh(): void {
+    window.location.reload();
+  }
+
+    selectImagen(){
+      this.DB.selectImagen(this.nombreUsuario).subscribe(
+        result => this.ImagenUsuario = result[0]
+      );
+      this.url = "/assets/ImagenesPerfil/"+this.ImagenUsuario;
     }
 
 

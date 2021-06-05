@@ -213,12 +213,11 @@ export class ServicesService {
   }
 
   subirimagen(nombreImagen){
-    console.log(nombreImagen);
     return this.http.post(`${environment.serverUrl}SubirImagenes.php`,JSON.stringify(nombreImagen));
   }
 
-  moverAssets(img){
-    return this.http.post(`${environment.serverUrl}EnviarImagenAssets.php`,JSON.stringify(img));
+  selectImagen(nombreUsuario){
+    return this.http.post(`${environment.serverUrl}SelectImagen.php`,JSON.stringify(nombreUsuario));
   }
 
 }
